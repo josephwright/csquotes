@@ -1,4 +1,6 @@
-#About
+# `etoolbox`: Con­text sensitive quotation facilities
+
+##About
 
 This package provides advanced facilities for inline and display
 quotations. It is designed for a wide range of tasks ranging from
@@ -12,7 +14,7 @@ demands of academic writing, especially in the humanities and the
 social sciences. All quote styles as well as the optional active
 quotes are freely configurable.
 
-#License
+##License
 
 Copyright (c) 2003-2011 Philipp Lehman, 2015 Joseph Wright.
 Permission is granted to copy, distribute and/or modify this
@@ -24,7 +26,7 @@ either expressed or implied, including, but not limited to, the
 implied warranties of merchantability and fitness for a particular
 purpose.
 
-#Requirements
+##Requirements
 
 - e-TeX
 - `etoolbox` 1.7 or later
@@ -38,7 +40,7 @@ TeX Live: The `csquotes` package is included in TeX Live.
 MiKTeX:   The `csquotes` package is included in MiKTeX.
           Use the MiKTeX package manager to install it.
 
-#Semi-automatic installation
+##Semi-automatic installation
 
 1. Download the file
 
@@ -65,7 +67,7 @@ MiKTeX:   The `csquotes` package is included in MiKTeX.
    window or use the 'Refresh FNDB' button of the MiKTeX Options
    window.
 
-#Manual installation
+##Manual installation
 
 1. Copy the files `csquotes.sty`,  `csquotes.def`, `csq-compat.def`,
    and `csquotes.cfg` to
@@ -101,11 +103,11 @@ Note that you may have to create some or all of the above
 directories if this is the first package you're installing locally
 (as opposed to via a package manager).
 
-#Usage
+##Usage
 
 Refer to `csquotes.pdf` for a systematic reference manual.
 
-#Changes
+##Changes
 
 A list of changes relevant to users of this package is included at
 the end of `csquotes.pdf`. Skimming the respective section of the
