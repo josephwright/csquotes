@@ -1,4 +1,4 @@
-# `etoolbox`: Con­text sensitive quotation facilities
+# `csquotes`: Context sensitive quotation facilities
 
 ##About
 
