@@ -14,10 +14,10 @@ quotes are freely configurable.
 
 #License
 
-Copyright (c) 2003-2011 Philipp Lehman, author-maintained.
+Copyright (c) 2003-2011 Philipp Lehman, 2015 Joseph Wright.
 Permission is granted to copy, distribute and/or modify this
 software under the terms of the LaTeX Project Public License (LPPL),
-version 1.3.
+version 1.3c or any later version.
 
 This software is provided 'as is', without warranty of any kind,
 either expressed or implied, including, but not limited to, the
