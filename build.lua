@@ -11,6 +11,9 @@ module = "csquotes"
 installfiles = {"*.cfg", "*.def", "*.sty"}
 sourcefiles  = installfiles
 
+-- Multiple Markdown files to send to CTAN
+readmefiles = {"*.md"}
+
 -- Documentation is standalone
 typesetfiles = {"*.tex"}
 
