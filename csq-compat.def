@@ -1,8 +1,5 @@
-% $Id: csq-compat.def,v 5.1d 2011/10/22 19:17:39 lehman stable $
-
 \ProvidesFile{csquotes.def}
-[\csq@rcsid $Id: csq-compat.def,v 5.1d 2011/10/22 19:17:39 lehman stable $
- csquotes backwards compatibility]
+  [2015/03/10 v5.1e csquotes backwards compatibility (JAW)]
 
 \def\csq@getversion#1{%
   \expandafter\csq@getversion@i

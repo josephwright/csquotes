@@ -1,8 +1,5 @@
-% $Id: csquotes.def,v 5.1d 2011/10/22 19:17:39 lehman stable $
-
 \ProvidesFile{csquotes.def}
-[\csq@rcsid $Id: csquotes.def,v 5.1d 2011/10/22 19:17:39 lehman stable $
- csquotes generic definitions]
+  [2015/03/10 v5.1e csquotes generic definitions (JAW)]
 
 % Set defaults
 
