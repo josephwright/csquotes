@@ -1,0 +1,1946 @@
+% $Id: csquotes.tex,v 5.1d 2011/10/22 19:17:39 lehman stable $
+\documentclass{ltxdockit}[2010/09/26]
+\usepackage[latin9]{inputenc}
+\usepackage[american]{babel}
+\usepackage[strict,autostyle=once]{csquotes}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{shortvrb}
+\usepackage{needspace}
+\usepackage{pifont}
+\MakeAutoQuote{«}{»}
+\MakeAutoQuote*{<}{>}
+\MakeShortVerb{\|}
+
+\rcsid{$Id: csquotes.tex,v 5.1d 2011/10/22 19:17:39 lehman stable $}
+
+\titlepage{%
+  title={The \sty{csquotes} Package},
+  subtitle={Context Sensitive Quotation Facilities},
+  url={http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/},
+  author={Philipp Lehman},
+  email={plehman@gmx.net},
+  revision={\rcsrevision},
+  date={\rcstoday}}
+
+\hypersetup{%
+  pdftitle={The csquotes Package},
+  pdfsubject={Context Sensitive Quotation Facilities},
+  pdfauthor={Philipp Lehman},
+  pdfkeywords={tex, e-tex, latex, quote, quotation,
+  smart quotes, babel, polyglossia, multilingual typesetting}}
+
+\AtBeginToc{\setcounter{tocdepth}{1}}
+\AtEndToc{\setcounter{tocdepth}{5}}
+
+% tables
+
+\newcolumntype{H}{>{\sffamily\bfseries\spotcolor}l}
+\newcolumntype{P}{>{\raggedright}p{120pt}}
+\newcolumntype{Q}{>{\raggedright}p{70pt}}
+\newcolumntype{V}{>{\raggedright\displayverbfont}l}
+
+\newcommand*{\vcmd}[1]{\rotatehead{1.5em}{9.5em}{\cmd{#1}}}
+\newcommand*{\venv}[1]{\rotatehead{1.5em}{9.5em}{\env{#1}}}
+\newcommand*{\rotatehead}[3]{%
+  \makebox[#1][c]{\rotatebox{90}{\makebox[#2][l]{\scriptsize #3}}}}
+\newcommand{\tickmarkyes}{\Pisymbol{psy}{183}}
+\newcommand{\tickmarkno}{\textendash}
+
+% samples
+
+\definecolor{grid}{rgb}{0.7,0.7,0.7}
+
+\newcommand*{\mksample}[2][25]{%
+  \mkmetrics[#1]{#2\,\textcolor{grid}{AaGg}\,#2}}
+\newcommand*{\mkmetrics}[2][25]{%
+  \setlength{\unitlength}{1pt}%
+  \linethickness{0.25pt}%
+  \begin{picture}(#1,0)(0,0)
+   %\put(0,0){\parbox[b]{#1\unitlength}{\mkgrid{\fontdimen9\font}}}
+    \put(0,0){\parbox[b]{#1\unitlength}{\mkgrid{\fontdimen5\font}}}
+    \put(0,0){\parbox[b]{#1\unitlength}{\mkgrid{0pt}}}
+   %\put(0,0){\parbox[b]{#1\unitlength}{\mkgrid{-\fontdimen11\font}}}
+    \put(0,0){\parbox[b]{#1\unitlength}{\centering #2}}
+  \end{picture}}
+\newcommand*{\mkgrid}[1]{%
+  \begingroup\color{grid}%
+  \hrule height 0.25pt depth 0pt width \linewidth
+  \hrule height #1     depth 0pt width 0pt
+  \endgroup}
+
+\makeatletter
+
+\newcounter{@pseudofootnote}
+\newcommand{\@pseudofootnote}[1]{%
+  \stepcounter{@pseudofootnote}%
+  \textsuperscript{\number\value{@pseudofootnote}}}
+
+\newenvironment{quotesample}[2][]
+  {\setquotestyle[#1]{#2}%
+   \setcounter{@pseudofootnote}{0}%
+   \let\footnote\@pseudofootnote
+   \trivlist
+   \leftskip\parindent
+   \small}
+  {\endtrivlist}
+
+\makeatother
+
+% hyphenation
+
+\hyphenation{%
+  star-red
+  New-speak
+  thres-hold
+  re-pre-sent-ing
+  hand-ling
+}
+
+\begin{document}
+
+\printtitlepage
+\tableofcontents
+\listoftables
+
+\section{Introduction}
+\label{int}
+
+\subsection[About]{About \sty{csquotes}}
+
+This package provides advanced facilities for inline and display quotations. It is designed for a wide range of tasks ranging from the most simple applications to the more complex demands of formal quotations. The facilities include commands, environments, and user"=definable <smart quotes> which dynamically adjust to their context. Quotation marks are switched automatically if quotations are nested and can adjust to the current language. There are additional features designed to cope with the more specific demands of academic writing. All quote styles as well as the optional active quotes are freely configurable.
+
+\subsection{License}
+
+Copyright © 2003--2011 Philipp Lehman. Permission is granted to copy, distribute and\slash or modify this software under the terms of the \lppl, version 1.3c.\fnurl{http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt} This package is author"=maintained.
+
+\subsection{Contributions}
+
+The multilingual support of this package depends on user contributions. If you want to contribute a quote style, please refer to \secref{cfg:sty} for an overview of the components a quote style is composed of and to \tabref{tab:out} for a list of commands which should be used in the definition of quote styles.
+
+\section{Package Options}
+\label{opt}
+
+All package options are given in \keyval syntax.
+
+\subsection{Main Options}
+\label{opt:opt}
+
+\begin{optionlist}
+
+\boolitem[false]{strict}
+
+This option turns all package warnings into error messages. This is useful to ensure that no problem will go unnoticed when finalizing a document. The short form \opt{strict} is equivalent to \kvopt{strict}{true}.
+
+\optitem[american]{style}{\prm{style}}
+
+This option selects a fixed quotation style. The style is used throughout the document unless it is changed manually, see \secref{bas:set} for details. This option implicitly sets \kvopt{autostyle}{false}. Please refer to \tabref{tab:sty,tab:als} for a list of available quote styles and aliases. See \secref{cfg:sty,cfg:als,use:spl} for instructions on adding or modifying quote styles.
+
+\optitem[tryonce]{autostyle}{\opt{true}, \opt{false}, \opt{try}, \opt{once}, \opt{tryonce}}
+
+This option controls multilingual support. It requires either the \sty{babel} package or the \sty{polyglossia} package.\footnote{Note that \sty{polyglossia} support is currently in a preliminary state because \sty{polyglossia} is lacking a proper interface for other packages. In practice, this means that \sty{csquotes} can detect the language (\eg \texttt{english}) but not the language variant (\eg \texttt{british}).} \kvopt{autostyle}{true} continuously adapts the quote style to the current document language; \opt{once} will only adapt the style once so that it matches the main language of the document. \kvopt{autostyle}{try} and \opt{tryonce} are similar to \opt{true} and \opt{once} if multilingual support is available but will not issue any warnings if not (\ie if neither \sty{babel} nor \sty{polyglossia} have been loaded). The short form \opt{autostyle} is equivalent to \kvopt{autostyle}{true}. See also \secref{bas:set}.
+
+\begin{table}
+\tablesetup
+\begin{tabularx}{\columnwidth}{@{}P@{}X@{}}
+  \toprule
+  \multicolumn{1}{@{}H}{Option key} & \multicolumn{1}{@{}H}{Possible values} \\
+  \cmidrule(r){1-1}\cmidrule{2-2}
+  croatian	& quotes, guillemets, guillemets\*\\
+  danish	& quotes, guillemets \\
+  english	& american, british\\
+  french	& quotes, quotes\*, guillemets, guillemets\*\\
+  german	& quotes, guillemets, swiss \\
+  italian	& guillemets, quotes \\
+  norwegian	& guillemets, quotes \\
+  portuguese	& portuguese, brazilian \\
+  spanish	& spanish, mexican \\
+  swedish	& quotes, guillemets, guillemets\*\\
+  \bottomrule
+\end{tabularx}
+\caption[Language Options]{Language Options Defined by Default}
+\label{tab:lng}
+\end{table}
+
+\varitem{language}{\prm{variant}}
+
+Use the language options listed in \tabref{tab:lng} to choose a style variant if there is more than one for a certain language. The first variant in the list is the default for the respective style. In the following example, the \opt{autostyle} option causes \sty{csquotes} to continuously adapt the quote style to the current language using the default style for that language. The defaults for German and Norwegian are changed:
+
+\begin{ltxcode}
+\usepackage[english,ngerman]{babel}
+\usepackage[autostyle,german=guillemets,norwegian=quotes]{csquotes}
+\end{ltxcode}
+%
+Note that \sty{babel}'s language name is \opt{ngerman} here whereas \sty{csquotes} uses \opt{german}. When selecting a quote style automatically, this package will essentially normalize the language names first, using a list of aliases which map languages to quote styles. See \tabref{tab:als} for details. \Tabref{tab:lng} indicates the language options defined by default. Additional options may be defined in the configuration file. See \secref{cfg:opt,use:spl} for details. Also see \secref{hnt:pre} for some additional notes concerning the predefined styles.
+
+\intitem[2]{maxlevel}
+
+This option controls the maximum nesting level of quotations. By default, this package supports two levels of quotations, outer and inner ones, and issues an error if quotations are nested more deeply. Alternatively, it can reuse the outer and inner quotes on further quotation levels. This alternative behavior is enabled implicitly when increasing the value of the \opt{maxlevel} option. The minimum is~\texttt{2}.
+
+\boolitem[true]{autopunct}
+
+This option controls whether the quotation commands scan ahead for trailing punctuation marks. See \secref{bas:txt:reg,bas:blk:reg,int:txt:reg,int:blk:reg} for details. Also see \cmd{DeclareAutoPunct} in \secref{cfg:dap} and \secref{cfg:aux} on how to configure and use the punctuation look-ahead feature. The short form \opt{autopunct} is equivalent to \kvopt{autopunct}{true}.
+
+\intitem[3]{threshold}
+
+This option defines the number of lines or words the block quotation facilities use as a threshold when determining whether a quotation should be typeset in inline or in display mode. It corresponds to the \cmd{SetBlockThreshold} command. See \secref{bas:blk:reg, cfg:blk} for further details.
+
+\optitem[lines]{thresholdtype}{\opt{lines}, \opt{words}}
+
+This option selects the block threshold type. With \kvopt{thresholdtype}{lines}, the block quotation facilities will determine the number of lines required to typeset the quotation; with \kvopt{thresholdtype}{words}, they count the number of words in the quotation.\footnote{The word counting code is based on an idea by Donald Arseneau.} The default threshold setup is 3~lines. If you prefer something like 50~words, set \kvopt{threshold}{50} and \kvopt{thresholdtype}{words}. See \secref{bas:blk:reg} for further details.
+
+\boolitem[true]{parthreshold}
+
+This option fine-tunes the block threshold detection. If enabled, any explicit paragraph or line break in the quotation will trigger the threshold, \ie the quotation will be typeset in display mode regardless of its length. If disabled, explicit paragraph or line breaks are applied normally if \kvopt{thresholdtype}{lines}, and treated as a regular word boundary if \kvopt{thresholdtype}{words}. The short form \opt{parthreshold} is equivalent to \kvopt{parthreshold}{true}.
+
+\boolitem[true]{splitcomp}
+
+This option is applicable with \kvopt{thresholdtype}{words} only. It fine-tunes the handling of compounds with explicit hyphens. If enabled, compounds are split up at all hyphens and the components are counted as separate words. If disabled, compounds are treated as a single word. The short form \opt{splitcomp} is equivalent to \kvopt{splitcomp}{true}.
+
+\boolitem[false]{csdisplay}
+
+By default, the block quotation facilities will automatically force inline quotations in footnotes, parboxes, minipages, and floats. Setting this option to \texttt{true} will permit context-sensitive switching to display quotations in these contexts, as in the text body. The short form \opt{csdisplay} is equivalent to \kvopt{csdisplay}{true}. This option may also be set locally with \cmd{csdisplaytrue} and \cmd{csdisplayfalse}, respectively.
+
+\boolitem[false]{debug}
+
+This option controls the debugging feature of the block quotation facilities. If enabled, all block quotation commands will output diagnostic messages to the transcript file. These messages indicate the calculated line\slash word count, explicit paragaph or line breaks detected in the quotation text, and the final inline\slash display determination. The short form \opt{debug} is equivalent to \kvopt{debug}{true}.
+
+\end{optionlist}
+
+\subsection{Compatibility Options}
+\label{opt:leg}
+
+\begin{optionlist}
+
+\optitem{version}{\prm{version}, \opt{4.4}, \opt{3.6}, \opt{3.0}}
+
+This option is an attempt at making \sty{csquotes} backwards compatible with earlier versions, at least to some extent. Currently, it supports backwards compatibility with version 4.4, which covers 3.7--4.4, version 3.6, which covers 3.1--3.6, and version 3.0. Older versions are not supported. It is possible to specify any arbitrary \prm{version}, even if it is not explicitly listed above. In this case, the package will keep increasing the \prm{version} number until it either finds a suitable compatibility mode or hits the current version number. For example, when specifying \kvopt{version}{4.0}, \sty{csquotes} will increase the version number until it hits 4.4, and activate the v4.4 compatibility mode because this is the highest version still compatible with the requested 4.0 release. This implies that \sty{csquotes} may be invoked in a, to some extent, <future proof> way by making the version which is current at the time of writing sticky. If future versions break backwards compatibility, they will automatically activate the best compatibility mode. If not, the \opt{version} option will simply have no effect.
+
+\optitem{babel}{\opt{true}, \opt{false}, \opt{try}, \opt{once}, \opt{tryonce}}
+
+An older name of the \opt{autostyle} option. This option is depreciated.
+
+\end{optionlist}
+
+\section{Basic Interface}
+\label{bas}
+
+This package supports two ways to tag quotations: built-in commands and active quotes defined in the document preamble or the configuration file. This section will introduce the basic commands, active quotes are discussed in \secref{act}. When working with automated citations, you might also want to learn about the integrated quotation facilities presented in \secref{cit}.
+
+\subsection{Quoting Regular Text}
+\label{bas:reg}
+
+The most basic command will simply enclose its argument in quotation marks:
+
+\begin{ltxsyntax}
+
+\cmditem{enquote}{text}
+\cmditem*{enquote*}{text}
+
+Like all quotation facilities, this command is context sensitive. Depending on the nesting level, it will toggle between outer and inner quotation marks with plain and nested quotations. The starred version of this command skips directly to the inner level. If multilingual support is enabled, the style of all quotation marks will be adapted to the current language.
+
+\end{ltxsyntax}
+
+\subsection{Quoting Text in a Foreign Language}
+\label{bas:bbl}
+
+To facilitate typesetting quotations in a foreign language, \sty{csquotes} provides two commands which combine \cmd{enquote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\begin{ltxsyntax}
+
+\cmditem{foreignquote}{lang}{text}
+\cmditem*{foreignquote*}{lang}{text}
+
+This command combines \cmd{enquote} with \cmd{foreignlanguage}. It switches hyphenation patterns and enables the extra definitions provided by \sty{babel}\slash\sty{polyglossia} for \prm{lang}, which must be a language name known to the respective package. The quotation marks will match the language of the quoted piece of text.
+
+\cmditem{hyphenquote}{lang}{text}
+\cmditem*{hyphenquote*}{lang}{text}
+
+This command combines \cmd{enquote} with the \env{hyphenrules} environment, that is, it merely switches hyphenation patterns. The quotation marks will match the language of the text surrounding the quotation.
+
+\end{ltxsyntax}
+
+\subsection{Formal Quoting of Regular Text}
+\label{bas:txt:reg}
+
+Formal quotations are typically accompanied by a citation indicating the source of the quoted text. The following command is an extended version of \cmd{enquote} which encloses the quoted piece of text in quotation marks and adds a citation after the quotation:
+
+\begin{ltxsyntax}
+
+\cmditem{textquote}[cite][punct]{text}<tpunct>
+\cmditem*{textquote*}[cite][punct]{text}<tpunct>
+
+The \prm{text} may be any arbitrary piece of text to be enclosed in quotation marks. The optional arguments \prm{cite} and \prm{punct} specify the citation and any terminal punctuation of \prm{text}. \prm{tpunct} denotes trailing punctuation after the command. If the \opt{autopunct} option is enabled, the quotation commands will scan ahead for punctuation marks immediately following their last argument and can move them around if required. See \secref{cfg:aux} on how to change the way these arguments are handled and \secref{use:hok} for reasons why you may want to specify the punctuation as a separate argument. The starred version of this command skips directly to the inner quotation level. Here are some usage examples:
+
+\begin{ltxcode}
+\textquote{...}
+\textquote[][.]{...}
+\textquote[Doe 1990, 67]{...}
+\textquote[{\cite[67]{doe90}}]{...}
+\end{ltxcode}
+%
+Note the use of the optional arguments in the examples above. As seen in the second example, \prm{cite} is required whenever \prm{punct} is used, even if it is empty. Also keep in mind that an optional argument containing square brackets must be wrapped in an additional pair of curly braces as shown in the last example. When working with automated citations, you might also want to learn about the integrated quotation facilities presented in \secref{cit}.
+
+\end{ltxsyntax}
+
+\subsection{Formal Quoting of Text in a Foreign Language}
+\label{bas:txt:bbl}
+
+There are two additional commands which combine \cmd{textquote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\begin{ltxsyntax}
+
+\cmditem{foreigntextquote}{lang}[cite][punct]{text}<tpunct>
+\cmditem*{foreigntextquote*}{lang}[cite][punct]{text}<tpunct>
+
+This command combines \cmd{textquote} with \cmd{foreignlanguage}. Apart from the language, the arguments are handled as with \cmd{textquote}.
+
+\cmditem{hyphentextquote}{lang}[cite][punct]{text}<tpunct>
+\cmditem*{hyphentextquote*}{lang}[cite][punct]{text}<tpunct>
+
+This command combines \cmd{textquote} with the \env{hyphenrules} environment. Apart from the language, the arguments are handled as with \cmd{textquote}.
+
+\end{ltxsyntax}
+
+\subsection{Block Quoting of Regular Text}
+\label{bas:blk:reg}
+
+Formal requirements in academic writing frequently demand that quotations be embedded in the text if they are short but set off as a distinct and typically indented paragraph, a so-called block quotation, if they are longer than a certain number of lines or words. In the latter case no quotation marks are inserted. The following command deals with this requirement automatically:
+
+\begin{ltxsyntax}
+
+\cmditem{blockquote}[cite][punct]{text}<tpunct>
+
+This command determines the length of the \prm{text}. If the length exceeds a certain threshold, the \prm{text} will be typeset in display mode, \ie as a block quotation. If not, \cmd{blockquote} will behave like \cmd{textquote}. Depending on the \opt{thresholdtype} option, the threshold may be based on the number of lines required to typeset the \prm{text} or on the number of words in the \prm{text}. If the \opt{parthreshold} option has been enabled, any explicit paragraph or line break in the \prm{text} will trigger the threshold, \ie it will be typeset in display mode regardless of its length. The default threshold setup is three lines with \opt{parthreshold} enabled. The default environment used for display quotations is the \env{quote} environment. See \secref{opt:opt, cfg:blk} on how to change these parameters. Note that \sty{csquotes} will force inline quotations in footnotes, parboxes, minipages, and floats by default. Use the \opt{csdisplay} option from \secref{opt:opt} to change this behavior. The optional arguments \prm{cite} and \prm{punct} specify the citation and any terminal punctuation of the \prm{text}. \prm{tpunct} denotes trailing punctuation after the command. If the \opt{autopunct} option is enabled, the quotation commands will scan ahead for punctuation marks immediately following their last argument and can move them around if required. See \secref{cfg:aux} on how to change the way these arguments are handled and \secref{use:hok} for reasons why you may want to specify the punctuation as a separate argument.
+
+\end{ltxsyntax}
+
+\subsection{Block Quoting of Text in a Foreign Language}
+\label{bas:blk:bbl}
+
+The following commands combine \cmd{blockquote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\begin{ltxsyntax}
+
+\cmditem{foreignblockquote}{lang}[cite][punct]{text}<tpunct>
+
+This command behaves like \cmd{foreignquote} if the quotation is short. If it exceeds the threshold, it will be wrapped in an \env{otherlanguage*} environment which is in turn wrapped in a block quotation environment. The arguments are handled as with \cmd{blockquote}.
+
+\cmditem{hyphenblockquote}{lang}[cite][punct]{text}<tpunct>
+
+This command behaves like \cmd{hyphenquote} if the quotation is short. If it exceeds the threshold, it will be wrapped in a \env{hyphenrules} environment which is in turn wrapped in a block quotation environment. The arguments are handled as with \cmd{blockquote}.
+
+\cmditem{hybridblockquote}{lang}[cite][punct]{text}<tpunct>
+
+This command behaves like \cmd{hyphenquote} if the quotation is short. If it exceeds the threshold, the command behaves like \cmd{foreignblockquote}. In other words, it combines features of \cmd{foreignblockquote} and \cmd{hyphenblockquote}. The arguments are handled as with \cmd{blockquote}.
+
+\end{ltxsyntax}
+
+\subsection{Selecting Quote Styles}
+\label{bas:set}
+
+Quote styles may be selected manually at any point in the document body by way of the following command:
+
+\begin{ltxsyntax}
+
+\cmditem{setquotestyle}[variant]{style}
+\cmditem*{setquotestyle}{alias}
+\cmditem*{setquotestyle}*
+
+The regular form of this command selects a quote style and disables multilingual support. Its mandatory argument may be a quote style or an alias. If it is a quote style, the optional argument indicates the style variant. The starred version, which takes no arguments, enables multilingual support. Please refer to \tabref{tab:sty,tab:als} for a list of available styles, style variants, and language aliases.
+
+\end{ltxsyntax}
+
+\section{Active Quotes}
+\label{act}
+
+This package also supports active characters corresponding to the commands presented in \secref{bas}. Roughly speaking, an active character is a single character which functions as a command. Like the corresponding control sequences, active quotes are fully"=fledged markup elements which verify the nesting level and issue an error if quotations are nested in an invalid way. If multilingual support is enabled, the style of all quotation marks will be adapted to the current language. The commands presented in the following allocate such active quotes. They may be used in the configuration file, the preamble, or the document body. Note that all characters are automatically checked for validity as they are allocated. This package will reject characters which are unsuitable as active quotes. See \secref{hnt:val} for details on the characters which may be used as active quotes.
+
+\subsection{Quoting Regular Text}
+\label{act:reg}
+
+\cmd{MakeOuterQuote} and \cmd{MakeInnerQuote} define active quotes which print outer and inner quotation marks. Both take one mandatory argument, the character serving as both opening and closing mark:
+
+\begin{ltxsyntax}
+
+\cmditem{MakeOuterQuote}{character}
+\cmditem{MakeInnerQuote}{character}
+
+\cmd{MakeAutoQuote} defines active quotes which toggle between outer and inner quotations automatically. The two mandatory arguments serve as opening and closing mark and must be distinct:
+
+\cmditem{MakeAutoQuote}{character 1}{character 2}
+\cmditem*{MakeAutoQuote*}{character 1}{character 2}
+
+All active quotes defined with \cmd{MakeAutoQuote} work like \cmd{enquote}. Those defined with \cmd{MakeOuterQuote} and \cmd{MakeInnerQuote} cover only a part of this functionality. The former correspond to the outer level of \cmd{enquote} whereas the latter correspond to the starred version. \cmd{MakeAutoQuote*} is similar to \cmd{MakeInnerQuote}, i.e. it corresponds to \cmd{enquote*}.
+
+\end{ltxsyntax}
+
+\subsection{Quoting Text in a Foreign Language}
+\label{act:bbl}
+
+These commands combine \cmd{MakeAutoQuote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\begin{ltxsyntax}
+
+\cmditem{MakeForeignQuote}{lang}{character 1}{character 2}
+\cmditem*{MakeForeignQuote*}{lang}{character 1}{character 2}
+
+The active quotes defined with the above commands are similar in concept and function to \cmd{foreignquote} and \cmd{foreignquote*}, respectively.
+
+\cmditem{MakeHyphenQuote}{lang}{character 1}{character 2}
+\cmditem*{MakeHyphenQuote*}{lang}{character 1}{character 2}
+
+The active quotes defined with the above commands are similar in concept and function to \cmd{hyphenquote} and \cmd{hyphenquote*}, respectively.
+
+\end{ltxsyntax}
+
+\subsection{Block Quoting of Regular Text}
+\label{act:blk:reg}
+
+\cmd{MakeBlockQuote} defines active quotes which will set quotations inline or as a separate paragraph, depending on their length. This command takes three mandatory arguments which must be distinct:
+
+\begin{ltxsyntax}
+
+\cmditem{MakeBlockQuote}{character 1}{delimiter}{character 2}
+
+The arguments are checked for validity, see \secref{hnt:val} for details. All active quotes defined with \cmd{MakeBlockQuote} behave essentially the same as \cmd{blockquote}, but the handling of the citation is slightly different. \prm{character 1} will serve as the opening mark in the source file, \prm{character 2} as the closing one. The character indicated by the middle argument \prm{delimiter} will serve as a delimiter separating the quoted text from the citation which is given last as the active quotes are used:
+
+\begin{ltxcode}
+\MakeBlockQuote{<}{|}{>}
+...
+<text|citation>
+\end{ltxcode}
+%
+If the delimiter is omitted, the entire text between the opening and the closing mark will be treated as quotation text.
+
+\end{ltxsyntax}
+
+\subsection{Block Quoting of Text in a Foreign Language}
+\label{act:blk:bbl}
+
+These commands combine \cmd{MakeBlockQuote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\begin{ltxsyntax}
+
+\cmditem{MakeForeignBlockQuote}{lang}{character 1}{delimiter}{character 2}
+
+The active quotes defined with this command are similar in concept and function to \cmd{foreignblockquote}. The behavior of the delimiter character is similar to \cmd{MakeBlockQuote}.
+
+\cmditem{MakeHyphenBlockQuote}{lang}{character 1}{delimiter}{character 2}
+
+The active quotes defined with this command are similar in concept and function to \cmd{hyphenblockquote}. The behavior of the delimiter character is similar to \cmd{MakeBlockQuote}.
+
+\cmditem{MakeHybridBlockQuote}{lang}{character 1}{delimiter}{character 2}
+
+The active quotes defined with this command are similar in concept and function to \cmd{hybridblockquote}. The behavior of the delimiter character is similar to \cmd{MakeBlockQuote}.
+
+\end{ltxsyntax}
+
+\subsection{Controlling Active Quotes}
+\label{act:ctl}
+
+The commands introduced above merely allocate active quotes, but these characters are not immediately made active. All allocated quotes are automatically enabled at the beginning of the document body. If any active quotes are allocated in the document body, they need to be enabled with \cmd{EnableQuotes}. The following commands control the state of the active quotes within a local scope.
+
+\begin{ltxsyntax}
+
+\csitem{EnableQuotes}
+Enables all active quotes by redefining the allocated characters and making them active. It also restores them when disabled, set to verbatim, or overwritten.
+
+\csitem{DisableQuotes}
+Disables all active quotes by restoring the original category codes and definitions of all allocated characters.
+
+\csitem{VerbatimQuotes}
+Switches to verbatim active quotes. All active quotes will be printed verbatim until their default behavior is restored with \cmd{EnableQuotes}.
+
+\csitem{DeleteQuotes}
+Disables and deallocates all active quotes, i.e. performs a complete reset of all allocated characters so that they may be newly defined.
+
+\end{ltxsyntax}
+
+\section{Integrated Interface}
+\label{cit}
+
+The commands presented in this section are extended versions of some of those discussed in \secref{bas}. They differ from their counterparts in that they integrate automated citations into their syntax. Instead of adding \cmd{cite} manually, you pass the citation arguments to the respective quotation command. See \secref{cfg:blk} on how to use a command other than \cmd{cite} to handle the citations.
+
+\subsection{Formal Quoting of Regular Text}
+\label{int:txt:reg}
+
+The basic integrated command is an extended version of \cmd{textquote}:
+
+\begin{ltxsyntax}
+
+\cmditem{textcquote}[prenote][postnote]{key}[punct]{text}<tpunct>
+\cmditem*{textcquote*}[prenote][postnote]{key}[punct]{text}<tpunct>
+
+The \prm{text} may be any arbitrary piece of text to be enclosed in quotation marks. The optional arguments \prm{cite} and \prm{punct} specify the citation and any terminal punctuation of \prm{text}. \prm{tpunct} denotes trailing punctuation after the command. If the \opt{autopunct} option is enabled, the quotation commands will scan ahead for punctuation marks immediately following their last argument and can move them around if required. See \secref{cfg:aux} on how to change the way these arguments are handled and \secref{use:hok} for reasons why you may want to specify the punctuation as a separate argument. The starred version of this command skips directly to the inner quotation level. The remaining arguments are handed over to \cmd{cite}. Note that \cmd{cite} normally supports one optional argument only. \prm{prenote} is only available in conjunction with the \sty{natbib}, \sty{jurabib}, and \sty{biblatex} packages. How these arguments are handled depends on the citation command. With \sty{natbib} and \sty{biblatex}, \prm{prenote} is in fact a notice such as <see>. With jurabib, this argument has a different function by default. The argument \prm{postnote}, which is always available, indicates the citation postnote. This is usually a page number. \prm{key} is the citation key. See \secref{cfg:blk,cfg:aux} on how to customize the citation.
+
+\end{ltxsyntax}
+
+\subsection{Formal Quoting of Text in a Foreign Language}
+\label{int:txt:bbl}
+
+The following commands combine \cmd{textcquote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\begin{ltxsyntax}
+
+\cmditem{foreigntextcquote}{lang}[prenote][postnote]{key}[punct]{text}<tpunct>
+\cmditem*{foreigntextcquote*}{lang}[prenote][postnote]{key}[punct]{text}<tpunct>
+
+This command combines \cmd{textcquote} with \cmd{foreignlanguage}. The handling of the arguments is similar to \cmd{textcquote}.
+
+\cmditem{hyphentextcquote}{lang}[prenote][postnote]{key}[punct]{text}<tpunct>
+\cmditem*{hyphentextcquote*}{lang}[prenote][postnote]{key}[punct]{text}<tpunct>
+
+This command combines \cmd{textcquote} with the \env{hyphenrules} environment. The handling of the arguments is similar to \cmd{textcquote}.
+
+\end{ltxsyntax}
+
+\subsection{Block Quoting of Regular Text}
+\label{int:blk:reg}
+
+Block quotations may be combined with automated citations by using the extended version of \cmd{blockquote}:
+
+\begin{ltxsyntax}
+
+\cmditem{blockcquote}[prenote][postnote]{key}[punct]{text}<tpunct>
+
+The difference between \cmd{blockcquote} and \cmd{blockquote} is that there are three citation arguments instead of one. The handling of these citation arguments is similar to \cmd{textcquote}; see \secref{int:txt:reg} for details. Also see \secref{cfg:blk,cfg:aux,use:hok} on how to customize block quotations.
+
+\end{ltxsyntax}
+
+\subsection{Block Quoting of Text in a Foreign Language}
+\label{int:blk:bbl}
+
+The following commands combine \cmd{blockcquote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\begin{ltxsyntax}
+
+\cmditem{foreignblockcquote}{lang}[prenote][postnote]{key}[punct]{text}<tpunct>
+
+This command combines \cmd{blockcquote} with \cmd{foreignlanguage}. Long quotations will be wrapped in an \env{otherlanguage*} environment. The handling of the citation arguments is similar to \cmd{textcquote}.
+
+\cmditem{hyphenblockcquote}{lang}[prenote][postnote]{key}[punct]{text}<tpunct>
+
+This command combines \cmd{blockcquote} with the \env{hyphenrules} environment. The handling of the citation arguments is similar to \cmd{textcquote}.
+
+\cmditem{hybridblockcquote}{lang}[prenote][postnote]{key}[punct]{text}<tpunct>
+
+This command behaves like \cmd{hyphenblockcquote} if the quotation is short, and like \cmd{foreignblockquote} if it is long. The handling of the citation arguments is similar to \cmd{textcquote}.
+
+\end{ltxsyntax}
+
+\section{Display Environments}
+\label{env}
+
+The environments introduced in this section will typeset quotations as a separate paragraph which looks exactly like a long quotation set by means of the block quotation facilities. Use them for quotations which are to be presented as a separate paragraph regardless of their length. Note that these environments are not replacements for the standard \env{quote} environment in the strict sense. They function as an additional layer on top of the latter, just like the block quotation facilities. The advantage of using these environments instead of resorting to the standard \env{quote} environment is that they are configurable, support citations, and will always be in sync with the block quotation facilities with respect to the configuration options discussed in \secref{cfg:blk,cfg:aux}.
+
+\subsection{Basic Display Environments}
+\label{env:bas}
+
+The arguments of all display environments are generally appended to the \cmd{begin} section of the environment:
+
+\begin{ltxsyntax}
+
+\envitem{displayquote}[cite][punct]
+
+The optional arguments \prm{cite} and \prm{punct} specify the citation and any terminal punctuation of the quotation. See \secref{cfg:blk,cfg:aux} on how to customize this environment. Also see \secref{cfg:aux} on how to change the way the optional arguments are handled and \secref{use:hok} for reasons why you may want to specify the punctuation as a separate argument. Trailing white space at the end of the environment is removed automatically. There are two additional environments which combine \env{displayquote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\envitem{foreigndisplayquote}{lang}[cite][punct]
+
+This environment combines \env{displayquote} with \env{otherlanguage*}. Apart from the language, the arguments are handled as with \env{displayquote}.
+
+\envitem{hyphendisplayquote}{lang}[cite][punct]
+
+This environment combines \env{displayquote} with \env{hyphenrules}. Apart from the language, the arguments are handled as with \env{displayquote}.
+
+\end{ltxsyntax}
+
+\subsection{Integrated Display Environments}
+\label{env:cit}
+
+The following environment is an extended version of \env{displayquote}:
+
+\begin{ltxsyntax}
+
+\envitem{displaycquote}[prenote][postnote]{key}[punct]
+
+The difference between \env{displaycquote} and its more basic counterpart is that there are three citation arguments instead of one. The placement of the citation is similar to \env{displayquote}. The handling of the citation arguments is similar to \cmd{textcquote}, see \secref{int:txt:reg} for details. See \secref{cfg:blk,cfg:aux} on how to customize this environment. Also see \secref{cfg:aux} on how to change the way the optional arguments are handled and \secref{use:hok} for reasons why you may want to specify the punctuation as a separate argument. There are two environments which combine \env{displaycquote} with the language switches of the \sty{babel} or the \sty{polyglossia} package:
+
+\envitem{foreigndisplaycquote}{lang}[prenote][postnote]{key}[punct]
+
+This environment combines \env{displaycquote} with \env{otherlanguage*}. Apart from the language, the arguments are handled as with \env{displaycquote}.
+
+\envitem{hyphendisplaycquote}{lang}[prenote][postnote]{key}[punct]
+
+This environment combines \env{displaycquote} with \env{hyphenrules}. Apart from the language, the arguments are handled as with \env{displaycquote}.
+
+\end{ltxsyntax}
+
+\section{Auxiliary Commands}
+\label{aux}
+
+When quoting text in a formal way, any changes applied to the quoted material, such as omissions, insertions, or alterations, are typically marked as such by using the ellipsis mark and square brackets or parentheses. Use the following commands to indicate such changes in formal quotations:
+
+\begin{ltxsyntax}
+
+\cmditem{textelp}{}
+\cmditem*{textelp}{text}
+\cmditem*{textelp}*{text}
+
+When used with an empty \prm{text} argument, this command prints an ellipsis symbol to indicate the omission of material from the quoted material. When used with a non-empty argument, the ellipsis symbol is followed by the \prm{text} enclosed in square brackets to indicate that the \prm{text} has been added after the omitted material. The starred version reverts the order, \ie it prints the \prm{text} followed by an ellipsis symbol to indicate that the \prm{text} has been added before the omitted material. In sum, there are three ways to use this command:
+
+\begin{ltxcode}[escapechar={\%},escapebegin={\rmfamily}]
+\textelp{}	%= \textelp{} %
+\textelp{text}	%= \textelp{text} %
+\textelp*{text}	%= \textelp*{text} %
+\end{ltxcode}
+%
+The insertion of text or individual letters may be indicated with the following command:
+
+\cmditem{textins}{text}
+\cmditem*{textins}*{text}
+
+By default, \cmd{textins} will enclose the \prm{text} added to the quoted material in square brackets. The starred version is intended for minor changes, such as the capitalization of a word, which are required to adapt the quoted material to the new context in which it is quoted.
+
+\begin{ltxcode}[escapechar={\%},escapebegin={\rmfamily}]
+\textins{text}	%= \textins{text} %
+\textins*{T}ext	%= \textins*{T}ext %
+\end{ltxcode}
+%
+See \secref{cfg:elp} on how to configure the appearance of ellipses and insertions.
+
+\end{ltxsyntax}
+
+\section{Configuration}
+\label{cfg}
+
+If available, this package will load the configuration file \path{csquotes.cfg}. You may use this file to define new quote styles and aliases or redefine existing ones.
+
+\begin{table}
+\tablesetup
+\begin{tabularx}{\columnwidth}{@{}P@{}X@{}}
+  \toprule
+  \multicolumn{1}{@{}H}{Quote style} & \multicolumn{1}{@{}H}{Style variants} \\
+  \cmidrule(r){1-1}\cmidrule{2-2}
+  croatian	& quotes, guillemets, guillemets\*\\
+  danish	& quotes, guillemets \\
+  dutch		& -- \\
+  english	& american, british\\
+  finnish	& -- \\
+  french	& quotes, quotes\*, guillemets, guillemets\*\\
+  german	& quotes, guillemets, swiss \\
+  greek		& -- \\
+  italian	& guillemets, quotes \\
+  norwegian	& guillemets, quotes \\
+  portuguese	& portuguese, brazilian \\
+  russian	& -- \\
+  spanish	& spanish, mexican \\
+  swedish	& quotes, guillemets, guillemets\*\\
+  \bottomrule
+\end{tabularx}
+\caption[Styles and Variants]{Quote Styles and Style Variants Defined by Default}
+\label{tab:sty}
+\end{table}
+
+\subsection{Defining Quote Styles}
+\label{cfg:sty}
+
+Use the following command to define quote styles and style variants:
+
+\begin{ltxsyntax}
+
+\cmditem{DeclareQuoteStyle}[variant]{style}[outer init][inner init]\\
+{opening outer mark}[middle outer mark]{closing outer mark}[kern]\\
+{opening inner mark}[middle inner mark]{closing inner mark}
+
+This command may be used in the configuration file or in the document preamble. The term <outer> refers to the first quotation level, <inner> means quotations within another quotation. A <middle mark> is a quotation mark inserted at the beginning of every paragraph within a quotation spanning multiple paragraphs. In most cases, the arguments defining the quotation marks will simply contain one of the commands listed in \tabref{tab:out}. If both an outer and an inner quotation begin or end simultaneously, the kerning specified by the value \prm{kern} will be inserted between the adjoining quotation marks. While this value can be given in any unit known to \tex, it is advisable to use the relative, font"=dependent unit <em> instead of absolute units such as points, inches, or millimeters. Note that \prm{kern} is used as a fallback value only. If the font provides kerning data for the respective pair of quotation marks the font's kerning takes precedence. \prm{outer init} and \prm{inner init} are all"=purpose hooks initializing the quote style. Selecting a quote style will make these hooks available to all quotation commands without expanding them. The execution of \prm{outer init} will take place immediately before the opening outer quote is inserted, but inside the group formed by the quotation. \prm{inner init} is executed before the opening inner quote is inserted. It is advisable to avoid any global assignments in this context to prevent interference with other styles. Whenever \prm{inner init} is used \prm{outer init} has to be given as well, even if the argument is empty. Refer to \tabref{tab:sty} for a list of all predefined quote styles and their variants. These are the backend styles only, see also \tabref{tab:als} for a list of language aliases. See \secref{use:spl} for some examples as well as an illustration of how quote styles, aliases, and package options interact.
+
+\end{ltxsyntax}
+
+\subsection{Defining Quote Aliases}
+\label{cfg:als}
+
+The following command defines quote aliases:
+
+\begin{ltxsyntax}
+
+\cmditem{DeclareQuoteAlias}[variant]{style}{alias}
+\cmditem*{DeclareQuoteAlias}{first-level alias}{second-level alias}
+
+This command may be used in the configuration file or in the document preamble. The alias may point to a backend style or to another alias. Most language aliases refer to a backend style, but some point to an intermediate alias instead. If the alias is defined for the sake of the \sty{babel} or the \sty{polyglossia} package, its name must be identical to the language name used by \sty{babel}\slash\sty{polyglossia}, \ie the expansion of \cmd{languagename}. See \secref{use:spl} for an illustration of how quote styles, aliases, and package options interact. A list of all aliases defined by default is given in \tabref{tab:als}.
+
+\end{ltxsyntax}
+
+\begin{table}
+\tablesetup
+\begin{tabularx}{\columnwidth}{@{}Q@{}X@{}Q@{}X@{}}
+  \toprule
+  \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias} &
+  \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias} \\
+  \cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule{4-4}
+  american	& english/american	&
+	  naustrian	& austrian		\\
+  australian	& english/british	&
+	  newzealand	& english/british	\\
+  austrian	& german/quotes		&
+	  ngerman	& german		\\
+  brazil	& brazilian 		&
+	  norsk		& norwegian		\\
+  brazilian	& portuguese/brazilian	&
+	  norwegian	& norwegian/guillemets	\\
+  british	& english/british	&
+	  nynorsk	& norwegian		\\
+  canadian	& english/american	&
+	  portuges	& portuguese		\\
+  croatian	& croatian/quotes	&
+	  portuguese	& portuguese/portuguese \\
+  danish	& danish/quotes		&
+	  spanish	& spanish/spanish	\\
+  english	& english/american	&
+	  swedish	& swedish/quotes	\\
+  french	& french/quotes		&
+	  swiss		& german/swiss		\\
+  german	& german/quotes		&
+	  UKenglish	& british		\\
+  italian	& italian/guillemets	&
+	  USenglish	& american		\\
+  mexican	& spanish/mexican	&
+						\\
+  \bottomrule
+\end{tabularx}
+\caption[Language Aliases]{Language Aliases Defined by Default}
+\label{tab:als}
+\end{table}
+
+\subsection{Defining Package Options}
+\label{cfg:opt}
+
+The following command creates a new package option based on a key\slash value syntax. It takes one mandatory argument, the quote style name:
+
+\begin{ltxsyntax}
+
+\cmditem{DeclareQuoteOption}{style}
+
+When using the new option, the name of the quote style will serve as the key. The value may be any style variant defined for the respective style. The package option will select a variant by defining an alias pointing to the desired backend style. This command is available in the configuration file only. See \secref{use:spl} for an illustration of how quote styles, aliases, and package options interact.
+
+\end{ltxsyntax}
+
+\subsection{Executing Package Options}
+\label{cfg:exe}
+
+Apart from passing options to this package as it is loaded, you may also execute options using the following command:
+
+\begin{ltxsyntax}
+
+\cmditem{ExecuteQuoteOptions}{key=value,\,\dots}
+
+This command permits presetting package options in the configuration file. It may also be used in the document preamble.
+
+\end{ltxsyntax}
+
+\subsection{Defining Quotes for \pdf Strings}
+\label{cfg:pdf}
+
+The following command specifies the quotation marks for \pdf strings:
+
+\begin{ltxsyntax}
+
+\cmditem{DeclarePlainStyle}{opening outer mark}{closing outer mark}\\
+{opening inner mark}{closing inner mark}
+
+This command may be used in the configuration file or in the document preamble. By default, outer quotations get straight double quotes and inner quotations straight single quotes. See \secref{hnt:pdf} for additional hints concerning \pdf strings.
+
+\end{ltxsyntax}
+
+\subsection{Configuring Quotations and Citations}
+\label{cfg:blk}
+
+The following commands change the default values used by various quotation facilities of this package. The commands affected by these parameters are indicated in \tabref{tab:blk}.
+
+\begin{table}
+\tablesetup
+\let\+\tickmarkyes
+\let\_\tickmarkno
+\begin{tabularx}{\columnwidth}{@{}X@{}*{21}{@{}c}@{}}
+  \toprule
+  \multicolumn{1}{@{}H}{Parameter} & \multicolumn{21}{@{}H}{Command or environment} \\
+  \cmidrule{2-22}
+  & \vcmd{enquote}
+  & \vcmd{foreignquote}
+  & \vcmd{hyphenquote}
+  & \vcmd{textquote}
+  & \vcmd{foreigntextquote}
+  & \vcmd{hyphentextquote}
+  & \vcmd{textcquote}
+  & \vcmd{foreigntextcquote}
+  & \vcmd{hyphentextcquote}
+  & \vcmd{blockquote}
+  & \vcmd{foreignblockquote}
+  & \vcmd{hyphenblockquote}
+  & \vcmd{blockcquote}
+  & \vcmd{foreignblockcquote}
+  & \vcmd{hyphenblockcquote}
+  & \venv{displayquote}
+  & \venv{foreigndisplayquote}
+  & \venv{hyphendisplayquote}
+  & \venv{displaycquote}
+  & \venv{foreigndisplaycquote}
+  & \venv{hyphendisplaycquote} \\
+  \cmidrule(r){1-1}\cmidrule{2-22}
+  Threshold	&\_&\_&\_&\_&\_&\_&\_&\_&\_&\+&\+&\+&\+&\+&\+&\_&\_&\_&\_&\_&\_\\
+  Environment	&\_&\_&\_&\_&\_&\_&\_&\_&\_&\+&\+&\+&\+&\+&\+&\+&\+&\+&\+&\+&\+\\
+  Cite command	&\_&\_&\_&\_&\_&\_&\+&\+&\+&\_&\_&\_&\+&\+&\+&\_&\_&\_&\+&\+&\+\\
+  \bottomrule
+\end{tabularx}
+\caption[Configurable Parameters]{Scope of Configurable Parameters}
+\label{tab:blk}
+\end{table}
+
+\begin{ltxsyntax}
+
+\cmditem{SetBlockThreshold}{integer}
+\cmditem{SetBlockEnvironment}{environment}
+\cmditem{SetCiteCommand}{command}
+
+\cmd{SetBlockThreshold} defines the number of lines or words the block quotation facilities use as a threshold when determining whether a quotation should be typeset in inline or in display mode. The default is three. \cmd{SetBlockEnvironment} specifies the environment used for block and display quotations. It takes the name of an existing environment as its argument. The default is the \env{quote} environment provided by most document classes. The argument to \cmd{SetCiteCommand} specifies a replacement for \cmd{cite} which will be used by all integrated quotation facilities to handle citations. It must be a single command which takes one or two optional arguments followed by a mandatory one, the citation key. The default is \cmd{cite}. The citation commands of the \sty{natbib}, \sty{jurabib}, and \sty{biblatex} packages, which take two optional arguments, are supported.
+
+\end{ltxsyntax}
+
+\subsection{Hooks for Quotations and Citations}
+\label{cfg:aux}
+
+The appearance of quotes may be configured at a low level by redefining the hooks introduced below. This section will give an overview of their syntax. See \secref{use:hok} for practical examples. The quotation facilities which are responsive to these hooks are indicated in \tabref{tab:aux}. Also see \secref{cfg:tst} for tests which may be useful when redefining the hooks.
+
+\begin{table}
+\tablesetup
+\let\+\tickmarkyes
+\let\_\tickmarkno
+\begin{tabularx}{\columnwidth}{@{}X@{}*{21}{@{}c}@{}}
+  \toprule
+  \multicolumn{1}{@{}H}{Hook} & \multicolumn{21}{@{}H}{Command or environment} \\
+  \cmidrule{2-22}
+  & \vcmd{enquote}
+  & \vcmd{foreignquote}
+  & \vcmd{hyphenquote}
+  & \vcmd{textquote}
+  & \vcmd{foreigntextquote}
+  & \vcmd{hyphentextquote}
+  & \vcmd{textcquote}
+  & \vcmd{foreigntextcquote}
+  & \vcmd{hyphentextcquote}
+  & \vcmd{blockquote}
+  & \vcmd{foreignblockquote}
+  & \vcmd{hyphenblockquote}
+  & \vcmd{blockcquote}
+  & \vcmd{foreignblockcquote}
+  & \vcmd{hyphenblockcquote}
+  & \venv{displayquote}
+  & \venv{foreigndisplayquote}
+  & \venv{hyphendisplayquote}
+  & \venv{displaycquote}
+  & \venv{foreigndisplaycquote}
+  & \venv{hyphendisplaycquote} \\
+  \cmidrule(r){1-1}\cmidrule{2-22}
+  \cmd{mktextquote}	&\_&\_&\_&\+&\+&\+&\+&\+&\+&\+&\+&\+&\+&\+&\+&\_&\_&\_&\_&\_&\_\\
+  \cmd{mkblockquote}	&\_&\_&\_&\_&\_&\_&\_&\_&\_&\+&\+&\+&\+&\+&\+&\_&\_&\_&\_&\_&\_\\
+  \cmd{mkbegdispquote}	&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\+&\+&\+&\+&\+&\+\\
+  \cmd{mkenddispquote}	&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\_&\+&\+&\+&\+&\+&\+\\
+  \cmd{mkcitation}	&\_&\_&\_&\+&\+&\+&\_&\_&\_&\+&\+&\+&\_&\_&\_&\+&\+&\+&\_&\_&\_\\
+  \cmd{mkccitation}	&\_&\_&\_&\_&\_&\_&\+&\+&\+&\_&\_&\_&\+&\+&\+&\_&\_&\_&\+&\+&\+\\
+  \bottomrule
+\end{tabularx}
+\caption[Auxiliary Hooks]{Availability of Auxiliary Hooks}
+\label{tab:aux}
+\end{table}
+
+\begin{ltxsyntax}
+
+\cmditem{mkcitation}{cite}
+
+All facilities which take a \prm{cite} argument will pass it to the \cmd{mkcitation} hook, which may be redefined to format the citation. \cmd{mkcitation} will only be executed if there is a citation. The default behavior is to separate the citation from the preceding text by an interword space and enclose it in parentheses. This is equivalent to the following definition:
+
+\begin{ltxcode}[showspaces=true]
+\newcommand*{<<\mkcitation>>}[1]{ (#1)}
+\end{ltxcode}
+
+\cmditem{mkccitation}{cite code}
+
+The integrated quotation facilities use \cmd{mkccitation} instead of \cmd{mkcitation}. The default behavior of this command is to separate the citation from the preceding text by an interword space. This is equivalent to the following definition:
+
+\begin{ltxcode}[showspaces=true]
+\newcommand*{<<\mkccitation>>}[1]{ #1}
+\end{ltxcode}
+
+\cmditem{mktextquote}{open}{text}{close}{punct}{tpunct}{cite}
+
+The \cmd{mktextquote} hook controls the layout of all text quotations. This hook is used by \cmd{textquote} and related commands from \secref{bas:txt:reg,bas:txt:bbl,int:txt:reg,int:txt:bbl}. \cmd{blockquote} and related commands from \secref{bas:blk:reg,bas:blk:bbl,int:blk:reg,int:blk:bbl} use this hook for short quotations. It takes six arguments which may be arranged according to the desired output:
+
+\begin{argumentlist}{00}
+\item[\#1] The opening quotation mark.
+\item[\#2] The \prm{text} argument of the command.
+\item[\#3] The closing quotation mark.
+\item[\#4] The optional \prm{punct} argument of the command. If there is no \prm{punct} argument, this parameter is empty.
+\item[\#5] Trailing \prm{tpunct} punctuation immediately after the command. If there is no such punctuation or if the \opt{autopunct} feature is disabled, this parameter is empty.
+\item[\#6] The optional \prm{cite} argument of the command, wrapped in \cmd{mkcitation}. If there is no \prm{cite} argument, this parameter is empty. With integrated quotation commands, this parameter is the citation code, wrapped in \cmd{mkccitation}.
+\end{argumentlist}
+%
+By default, \cmd{mktextquote} encloses the \prm{punct} argument in the quotation marks along with the \prm{text} and inserts the \prm{cite} argument or the citation code before any trailing \prm{tpunct} punctuation. This is equivalent to the following definition:
+
+\begin{ltxcode}
+\newcommand{<<\mktextquote>>}[6]{#1#2#4#3#6#5}
+\end{ltxcode}
+%
+The way in which \cmd{mktextquote} hooks into the formatting process is best seen when looking at an example. The commands
+
+\begin{ltxcode}
+\textquote[<<cite>>]{<<short quote>>}
+\textcquote[<<55>>]{<<key1>>}[<<.>>]{<<short quote>>}
+\blockcquote[<<87>>]{<<key2>>}{<<short quote>>}<<.>>
+\end{ltxcode}
+%
+would execute \cmd{mktextquote} with the following arguments:
+
+\begin{ltxcode}
+\mktextquote{open}{<<short quote>>}{close}{}{}{\mkcitation{<<cite>>}}
+\mktextquote{open}{<<short quote>>}{close}{<<.>>}{}{\mkccitation{\cite[<<55>>]{<<key1>>}}}
+\mktextquote{open}{<<short quote>>}{close}{}{<<.>>}{\mkccitation{\cite[<<87>>]{<<key2>>}}}
+\end{ltxcode}
+%
+where \cmd{cite} is the command selected with \cmd{SetCiteCommand} and \texttt{open}\slash\texttt{close} are internal macros which print the opening and closing quotation marks. Note that these internal macros are fully"=fledged markup elements with grouping and nesting control. They must be placed in the correct order, otherwise \sty{csquotes} will report errors about unbalanced groups or invalidly nested quotations. Since the \prm{text} should obviously be enclosed in the quotation marks, the parameter order |#1#2#3| is effectively fixed. The parameters |#4|, |#5|, |#6| may be placed freely.
+
+\cmditem{mkblockquote}{text}{punct}{tpunct}{cite}
+
+The \cmd{mkblockquote} hook controls the layout of all block quotations. This hook is used by \cmd{blockquote} and related commands from \secref{bas:blk:reg,bas:blk:bbl,int:blk:reg,int:blk:bbl} for long quotations. It takes four arguments which may be arranged according to the desired output:
+
+\begin{argumentlist}{00}
+\item[\#1] The \prm{text} argument of the command.
+\item[\#2] The optional \prm{punct} argument of the command. If there is no \prm{punct} argument, this parameter is empty.
+\item[\#3] Trailing \prm{tpunct} punctuation immediately after the command. If there is no such punctuation or if the \opt{autopunct} feature is disabled, this parameter is empty.
+\item[\#4] The optional \prm{cite} argument of the command, wrapped in \cmd{mkcitation}. If there is no \prm{cite} argument, this parameter is empty. With integrated quotation commands, this parameter is the citation code, wrapped in \cmd{mkccitation}.
+\end{argumentlist}
+%
+By default, \cmd{mkblockquote} inserts the \prm{cite} argument or the citation code immediately after the \prm{text} and adds any trailing \prm{tpunct} punctuation at the very end. This is equivalent to the following definition:
+
+\begin{ltxcode}
+\newcommand{<<\mkblockquote>>}[4]{#1#2#4#3}
+\end{ltxcode}
+
+\cmditem{mkbegdispquote}{punct}{cite}
+\cmditem{mkenddispquote}{punct}{cite}
+
+The \cmd{mkbegdispquote} and \cmd{mkenddispquote} hooks are used by \env{displayquote} and related environments from \secref{env:bas,env:cit}. These hooks take two arguments:
+
+\begin{argumentlist}{00}
+\item[\#1] The \prm{punct} argument passed to the \cmd{begin} line of the environment. If there is no \prm{punct} argument, this parameter is empty.
+\item[\#2] The \prm{cite} argument passed to the environment, wrapped in \cmd{mkcitation}. If there is no \prm{cite} argument, this parameter is empty. With integrated quotation environments, this parameter is the citation code, wrapped in \cmd{mkccitation}.
+\end{argumentlist}
+%
+By default, \cmd{mkenddispquote} adds the \prm{punct} argument as well as the \prm{cite} argument or the citation code at the very end of the quotation. \cmd{mkbegdispquote} does not insert anything be default. This is equivalent to the following definition:
+
+\begin{ltxcode}
+\newcommand{<<\mkbegdispquote>>}[2]{}
+\newcommand{<<\mkenddispquote>>}[2]{#1#2}
+\end{ltxcode}
+%
+See \secref{use:hok} for practical examples.
+
+\end{ltxsyntax}
+
+\subsection{Additional Tests in Quotation Hooks}
+\label{cfg:tst}
+
+The commands in this section increase the flexibility of the hooks discussed in \secref{cfg:aux}. For example, it may be desirable to adjust the format of a citation depending on the way the corresponding quotation is typeset. It may also be useful to known if the quotation ends with a punctuation mark.
+
+\begin{ltxsyntax}
+
+\cmditem{ifpunctmark}{character}{true}{false}
+
+Expands to \prm{true} if preceeded by the punctuation mark \prm{character}, and to \prm{false} otherwise. The \prm{character} may be a period, a comma, a semicolon, a colon, an exclamation mark, or a question mark. Note that this test is only available in the definition of the hooks from \secref{cfg:aux}.
+
+\cmditem{ifpunct}{true}{false}
+
+Expands to \prm{true} if preceeded by any punctuation mark, and to \prm{false} otherwise. Note that this test is only available in the definition of the hooks from \secref{cfg:aux}.
+
+\cmditem{ifterm}{true}{false}
+
+Expands to \prm{true} if preceeded by a terminal punctuation mark (period, exclamation mark, or question mark), and to \prm{false} otherwise. Note that this test is only available in the definition of the hooks from \secref{cfg:aux}.
+
+\cmditem{iftextpunctmark}{text}{character}{true}{false}
+
+Executes \prm{true} if the \prm{text} ends with the punctuation mark \prm{character}, and to \prm{false} otherwise. The \prm{character} may be a period, a comma, a semicolon, a colon, an exclamation mark, or a question mark. This command is robust.
+
+\cmditem{iftextpunct}{text}{true}{false}
+
+Executes \prm{true} if the \prm{text} ends with any punctuation mark, and to \prm{false} otherwise. This command is robust.
+
+\cmditem{iftextterm}{text}{true}{false}
+
+Executes \prm{true} if the \prm{text} ends with a terminal punctuation mark (period, exclamation mark, or question mark), and to \prm{false} otherwise. This command is robust.
+
+\cmditem{ifblockquote}{true}{false}
+
+Expands to \prm{true} in all block and display quotations, and to \prm{false} otherwise.
+
+\cmditem{ifblank}{string}{true}{false}
+
+This generic command, which is provided by the \sty{etoolbox} package, expands to \prm{true} if the \prm{string} is blank (empty or spaces), and to \prm{false} otherwise. This is useful to test for an empty argument in the definition of the \cmd{mk...quote} commands. Note that this test is redundant in the definition of the citation hooks because they are only executed if there is a citation.
+
+\csitem{unspace}
+
+Removes preceding whitespace, \ie removes all skips and penalties from the end of the current horizontal list.
+
+\end{ltxsyntax}
+
+\subsection{Configuring Punctuation Look-Ahead}
+\label{cfg:dap}
+
+\begin{ltxsyntax}
+
+\cmditem{DeclareAutoPunct}{characters}
+
+This command defines the punctuation marks to be considered by the quotation commands as they scan ahead for punctuation. Note that \prm{characters} is an undelimited list of characters. Valid \prm{characters} are period, comma, semicolon, colon, exclamation and question mark. The default setting is:
+
+\begin{lstlisting}[style=latex]{}
+\DeclareAutoPunct{.,;:!?}
+\end{lstlisting}
+%
+This definition is restored automatically whenever the \opt{autopunct} package option is set to \texttt{true}. Executing |\DeclareAutoPunctuation{}| is equivalent to setting \kvopt{autopunct}{false}, \ie it disables this feature.
+
+\end{ltxsyntax}
+
+\subsection{Configuring Ellipses}
+\label{cfg:elp}
+
+The appearance of ellipses and insertions formatted with the auxiliary commands from \secref{aux} is controlled by five hooks. When \cmd{textelp} is used with an empty argument (ellipsis only), it will execute \cmd{mktextelp}. When used with a non-empty \prm{text} argument (ellipsis and insertion), the \prm{text} will be passed as an argument to \cmd{mktextelpins}. The starred form will pass the \prm{text} to \cmd{mktextinselp} instead. These are the default definitions:
+
+\begin{ltxcode}[showspaces=true]
+\newcommand{<<\mktextelp>>}{[\textellipsis\unkern]}
+\newcommand{<<\mktextelpins>>}[1]{[\textellipsis\unkern] [#1]}
+\newcommand{<<\mktextinselp>>}[1]{[#1] [\textellipsis\unkern]}
+\end{ltxcode}
+%
+The \cmd{textins} command passes its \prm{text} argument to \cmd{mktextins} for further processing. The starred variant of \cmd{textins} uses \cmd{mktextmod} instead. These are the default definitions:
+
+\begin{ltxcode}[showspaces=true]
+\newcommand{<<\mktextins>>}[1]{[#1]}
+\newcommand{<<\mktextmod>>}[1]{[#1]}
+\end{ltxcode}
+%
+You may redefine the above hooks to change the format of the printed output. For example, if you prefer replacements to be indicated by «[\textellipsis text]» rather than «[\textellipsis\unkern] [text]», redefine \cmd{mktextelpins} accordingly:
+
+\begin{ltxcode}
+\newcommand{<<\mktextelpins>>}[1]{[\textellipsis #1]}
+\end{ltxcode}
+%
+The \cmd{unkern} in the default definitions is required because \cmd{textellipsis} adds asymmetric kerning by default. The kerning after the final dot is similar to the spacing between the dots, which is fine if \cmd{textellipsis} is followed by any text, but undesirable if it is enclosed in brackets.
+
+\section{Usage Notes}
+\label{use}
+
+\subsection{Adding a New Quote Style}
+\label{use:spl}
+
+This section will give some comprehensive examples of how to define new quote styles. The examples presented here will only make use of the most basic components a quote style can be composed of. The main point is to illustrate the interaction of quote styles, variants, aliases, and package options. To get started, consider a simple house style which may be selected by way of the package option \opt{style} or the command \cmd{setquotestyle}:
+
+\begin{ltxcode}
+\DeclareQuoteStyle{house}
+  {\textquotedblleft}{\textquotedblright}
+  {\textquoteleft}{\textquoteright}
+\end{ltxcode}
+%
+Now suppose that we wanted to add a quote style for an imaginary language called Newspeak and that there were two quote styles commonly used in Newspeak, an official one and an unofficial one. In this case, we need two backend styles implemented as variants of the \opt{newspeak} style, \opt{newspeak/official} and \opt{newspeak/unofficial}:
+
+\needspace{3\baselineskip}
+\begin{ltxcode}
+\DeclareQuoteStyle[official]{newspeak}
+  {\textquotedblleft}{\textquotedblright}
+  {\textquoteleft}{\textquoteright}
+\DeclareQuoteStyle[unofficial]{newspeak}
+  {\textquotedblright}{\textquotedblleft}
+  {\textquoteright}{\textquoteleft}
+\end{ltxcode}
+%
+The official variant should be the default for this style. There is no need to copy the definition of the \opt{official} variant to accomplish that. We simply define an alias labeled \opt{newspeak} which points to the desired variant:
+
+\begin{ltxcode}
+\DeclareQuoteAlias[official]{newspeak}{newspeak}
+\end{ltxcode}
+%
+The reason why we are using variants and aliases instead of two independent styles will become clear in a moment. Suppose that the \sty{babel} package offered support for Newspeak, but this language was known to \sty{babel} as \opt{otherspeak}:
+
+\begin{ltxcode}
+\DeclareQuoteAlias{newspeak}{otherspeak}
+\end{ltxcode}
+%
+This is an example of a second"=level alias pointing to a first"=level alias. If the current language is \opt{otherspeak}, the above aliases will be expanded as follows:
+
+\begin{lstlisting}[style=plain]{}
+otherspeak = newspeak = newspeak/official
+\end{lstlisting}
+%
+We also define a new package option to choose a style variant:
+
+\begin{ltxcode}
+\DeclareQuoteOption{newspeak}
+\end{ltxcode}
+%
+This will add a new package option with a key called \opt{newspeak}. The value of this option may be any variant of the \opt{newspeak} style defined in the configuration file. In this example, there are two possible values: \opt{official} and \opt{unofficial}. To select the default or the alternative style for the entire document we use:
+
+\begin{ltxcode}
+\usepackage[style=newspeak]{csquotes}
+\usepackage[style=newspeak,newspeak=unofficial]{csquotes}
+\end{ltxcode}
+%
+To select the default or the alternative style with multilingual support we use:
+
+\begin{ltxcode}
+\usepackage[babel]{csquotes}
+\usepackage[babel,newspeak=unofficial]{csquotes}
+\end{ltxcode}
+%
+The base style must be implemented as an alias in this case since the \opt{newspeak} option will select a variant by redefining and thus overwriting the \opt{newspeak} alias. Since the \opt{otherspeak} alias points to \opt{newspeak} and not directly to any backend style, using the \opt{newspeak} option will also have the desired effect if multilingual support is enabled. Note that there are some style names which have a special meaning. See \secref{hnt:pre} for details.
+
+\subsection{Using Quotation and Citation Hooks}
+\label{use:hok}
+
+Style guides for writers usually make detailed provisions concerning the formatting of quotations and citations, including rules dealing with punctuation placement. This section will discuss some typical usage scenarios, using hooks and other facilities introduced in \secref{cfg:aux,cfg:tst,cfg:dap}. In the examples below, we assume the following input:
+
+\begin{ltxcode}
+\textquote[citation][.]{This is a complete sentence}
+\textquote[citation][]{This is an incomplete sentence}.
+\end{ltxcode}
+%
+We start off with semantically strict punctuation placement, \ie terminal punctuation is enclosed in the quotation marks if it in fact is part of the quotation, and printed after the closing mark if it is not. Our first sample cases will use German quotation marks, but the formatting convention, as far as punctuation placement is concerned, is very common. We assume citations in footnotes in the first example, hence the desired output is as follows:
+
+\begin{quotesample}{german}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#4#3#5#6}
+
+\item \textquote[citation][.]{This is a complete sentence}
+\item \textquote[citation][]{This is an incomplete sentence}.
+\end{quotesample}
+%
+This is accomplished by the following definitions:
+
+\begin{ltxcode}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#4#3#5#6}
+\end{ltxcode}
+%
+In some cases, slightly different placement of the punctuation in the second line is requested:
+
+\begin{quotesample}{german}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#4#3#6#5}
+
+\item \textquote[citation][.]{This is a complete sentence}
+\item \textquote[citation][]{This is an incomplete sentence}.
+\end{quotesample}
+%
+This is accomplished by the following definitions:
+
+\begin{ltxcode}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#4#3#6#5}
+\end{ltxcode}
+%
+Let's switch to American quotation marks in the next examples. When using parenthetical citations, the terminal punctuation mark is typically placed at the very end of the entire sentence, after the closing quotation mark and the citation, even if it is part of the original quotation:
+
+\begin{quotesample}{american}
+\renewcommand{\mkcitation}[1]{ (#1)}
+\renewcommand{\mktextquote}[6]{#1#2#3#6#4#5}
+
+\item \textquote[citation][.]{This is a complete sentence}
+\item \textquote[citation][]{This is an incomplete sentence}.
+\end{quotesample}
+%
+This is accomplished by the following definitions:
+
+\begin{ltxcode}
+\renewcommand{\mkcitation}[1]{ (#1)}
+\renewcommand{\mktextquote}[6]{#1#2#3#6#4#5}
+\end{ltxcode}
+%
+The American quotation style is special in that it requires that a period or a comma immediately after a closing quotation mark be moved inside the quotes, even if it is not part of the original quotation. Given the above input (and assuming citations in footnotes in the next example), we need the same output in both cases:
+
+\begin{quotesample}{american}
+\DeclareAutoPunct{.,}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#4#5#3#6}
+
+\item \textquote[citation][.]{This is a complete sentence}
+\item \textquote[citation][]{This is an incomplete sentence}.
+\end{quotesample}
+%
+This is accomplished by the following definitions:
+
+\begin{ltxcode}
+\DeclareAutoPunct{.,}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#4#5#3#6}
+\end{ltxcode}
+%
+The style usually seen in French books uses semantically strict punctuation placement. The unusual aspect of this style is the footnote mark, which is placed inside the quotes, before the terminal punctuation mark. Given the above input, we need the following output:
+
+\begin{quotesample}{french}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#6#4#3#5}
+
+\item \textquote[citation][.]{This is a complete sentence}
+\item \textquote[citation][]{This is an incomplete sentence}.
+\end{quotesample}
+%
+This is accomplished by the following definitions:
+
+\begin{ltxcode}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2#6#4#3#5}
+\end{ltxcode}
+%
+Note that the spacing of the quotation marks, as is common in French typography, is handled by the quote style, as defined with \cmd{DeclareQuoteStyle}. There is no need to deal with these details when redefining \cmd{mktextquote} and similar hooks. \cmd{mktextquote} will get the quotation marks plus spacing as parameters |#1| and |#3|.
+
+In addition to language and style specific adaptions, the formatting hooks discussed in this section may be used to further automate the quoting process. For example, they can be configured to automatically insert an ellipsis mark when quoting a sentence truncated at the end. In the following examples, we assume these lines of input:
+
+\begin{ltxcode}
+\textquote[citation]{This is an incomplete sentence}.
+\textquote[citation][.]{This is a complete sentence}
+\textquote[citation]{This is a complete sentence.}
+\end{ltxcode}
+%
+Let's assume American-style quotes combined with citations in footnotes. Our previous definition for that was:
+
+\begin{ltxcode}
+\renewcommand{\mktextquote}[6]{#1#2#4#5#3#6}
+\end{ltxcode}
+%
+We need to insert an ellipsis mark if the \prm{punct} argument of the citation command is empty, or if it was omitted. Parameter |#4| will be blank in both cases:
+
+\begin{ltxcode}
+\renewcommand{\mktextquote}[6]{%
+  #1#2<<\ifblank{#4}{ \textelp{}}{#4}>>#5#3#6}
+\end{ltxcode}
+%
+Given the above input, this definition will yield the following output:
+
+\begin{quotesample}{american}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2\ifblank{#4}{ \textelp{}}{#4}#5#3#6}
+
+\item \textquote[citation]{This is an incomplete sentence}.
+\item \textquote[citation][.]{This is a complete sentence}
+\item \textquote[citation]{This is a complete sentence.}
+\end{quotesample}
+%
+The first two cases are handled correctly but the third one needs more tuning: there is a spurious 
+ellipsis because the final period is not passed to \cmd{textquote} as a separate \prm{punct} argument, but included in the quotation. To fix that, we add an additional \cmd{ifpunct} test to check if the quoted text ends with a punctuation mark, and omit the ellipsis if this is the case:
+
+\begin{ltxcode}
+\renewcommand{\mktextquote}[6]{%
+  #1#2<<\ifblank{#4}{\ifpunct{}{ \textelp{}}}{#4}>>#5#3#6}
+\end{ltxcode}
+%
+The \cmd{ifpunct} test will check the last character in |#2| and omit the ellipsis when detecting a punctuation mark. This yields the desired output:
+
+\begin{quotesample}{american}
+\renewcommand{\mkcitation}[1]{\footnote{#1}}
+\renewcommand{\mktextquote}[6]{#1#2\ifpunct{}{\ifblank{#4}{ \textelp{}}}{#4}#5#3#6}
+
+\item \textquote[citation]{This is an incomplete sentence}.
+\item \textquote[citation][.]{This is a complete sentence}
+\item \textquote[citation]{This is a complete sentence.}
+\end{quotesample}
+%
+When using automated citations, it is convenient to employ the integrated quotations commands from \secref{cit}. For example, instead of this:
+
+\begin{ltxcode}
+\textquote[{\cite[55]{key}}][.]{This is a complete sentence}
+\textquote[{\cite[55]{key}}][]{This is an incomplete sentence}.
+\end{ltxcode}
+%
+you might use \cmd{textcquote} instead of \cmd{textquote}:
+
+\begin{ltxcode}
+\textcquote[55]{key}[.]{This is a complete sentence}
+\textcquote[55]{key}{This is an incomplete sentence}.
+\end{ltxcode}
+%
+The definition of the punctuation hooks is the same in both cases, but citations are set up in a slightly different way in the second case, using \cmd{mkccitation} instead of \cmd{mkcitation}. The first line in the example below is intended for parenthetical citations, the second one for citations in footnotes:
+
+\begin{ltxcode}
+\renewcommand{\mkccitation}[1]{ (#1)}
+\renewcommand{\mkccitation}[1]{\footnote{#1}}
+\end{ltxcode}
+%
+Advanced citation packages such as \sty{natbib} and \sty{biblatex} provide dedicated commands for various types of citations. In this case, it is advisable to hand control of citations to the respective citation command, \ie \cmd{mkccitation} is used to add spacing where required but will leave the rest to the citation command. In the case of \sty{biblatex}, this boils down to:
+
+\begin{ltxcode}
+\SetCiteCommand{\parencite}
+\renewcommand{\mkccitation}[1]{ #1}
+\end{ltxcode}
+%
+for parenthetical citations and
+
+\begin{ltxcode}
+\SetCiteCommand{\footcite}
+\renewcommand{\mkccitation}[1]{#1}
+\end{ltxcode}
+%
+for citations in footnotes.
+
+\section{Hints and Caveats}
+\label{hnt}
+
+\subsection{Input Encodings}
+\label{hnt:inc}
+
+The active quotes provided by this package may depend on or benefit from the \sty{inputenc}\slash \sty{inputenx} packages under certain circumstances. As long as the active quotes are in the range 0--127, there is no benefit in loading \sty{inputenc}. If you are using an 8-bit input encoding such as \opt{latin1}, \sty{inputenc} is required for the quotes to function properly in a \emph{verbatim} context. It should therefore be loaded before any active quotes are allocated (not necessarily before \sty{csquotes} is loaded). The macro-level \utf support of this package builds on the \path{utf8} module of the inputenc package. When using this encoding, make sure that inputenc is loaded with the \opt{utf8} option. Do not use the \opt{utf8x} option as this would implicitly load the \sty{ucs} package which is not supported by \sty{csquotes}. \utf encoding will be detected automatically. All commands discussed in \secref{act} work as usual with this encoding. \xetex and \luatex in native \utf mode will also work as expected and do not require any additional packages. See also \secref{hnt:mod}.
+
+\subsection{Output Encodings}
+\label{hnt:onc}
+
+The \acr{OT1} font encoding, which is the default output encoding of \latex, merely includes the quotation marks used in English. You will need an encoding like \acr{T1}, \acr{LY1}, or, with \xetex or \luatex, \acr{EU1}\slash \acr{EU2}, in order to get guillemets or baseline quotation marks. This package deliberately refrains from providing any workarounds for the \acr{OT1} legacy encoding. If you need \acr{T1} or some other extended encoding for some of the quotation marks, you will most likely need it anyway to get proper hyphenation for the respective language. See \tabref{tab:out} for a list of common quotation marks included in \acr{T1}, \acr{LY1}, and \acr{EU1}\slash \acr{EU2}.
+
+\begin{table}
+\tablesetup
+\begin{tabularx}{\columnwidth}{@{}X@{}p{60pt}X@{}p{60pt}@{}}
+  \toprule
+  \multicolumn{2}{@{}H}{Double quotation marks} & \multicolumn{2}{H}{Single quotation marks} \\
+  \cmidrule(r){1-2}\cmidrule(l){3-4}
+  \multicolumn{1}{@{}H}{Command} & \multicolumn{1}{@{}H}{Example} &
+  \multicolumn{1}{H}{Command} & \multicolumn{1}{@{}H}{Example} \\
+  \cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(lr){3-3}\cmidrule{4-4}
+  \cmd{textquotedblleft}	& \mksample[60]{\textquotedblleft} &
+  \cmd{textquoteleft}		& \mksample[60]{\textquoteleft} \\
+  \cmd{textquotedblright}	& \mksample[60]{\textquotedblright} &
+  \cmd{textquoteright}		& \mksample[60]{\textquoteright} \\
+  \cmd{quotedblbase}		& \mksample[60]{\quotedblbase} &
+  \cmd{quotesinglbase}		& \mksample[60]{\quotesinglbase} \\
+  \cmd{guillemotleft}		& \mksample[60]{\guillemotleft} &
+  \cmd{guilsinglleft}		& \mksample[60]{\guilsinglleft} \\
+  \cmd{guillemotright}		& \mksample[60]{\guillemotright} &
+  \cmd{guilsinglright}		& \mksample[60]{\guilsinglright} \\
+  \bottomrule
+\end{tabularx}
+\caption[Quotation Marks]{Quotation Marks Provided by Encodings \acr{T1}, \acr{LY1}, \acr{EU1}\slash \acr{EU2}}
+\label{tab:out}
+\end{table}
+
+\subsection{Valid Active Quotes}
+\label{hnt:val}
+
+In general, an active quote may be any single character with category code 12 or 13, or any multibyte \utf sequence representing a single character. However, there are a few exceptions: numbers, punctuation marks, the apostrophe, the hyphen, and all characters which are part of the \latex syntax are rejected. In sum, the following characters will be considered as reserved by this package: \texttt{A--Z a--z 0--9 . , ; : ! ? \textquotesingle\ - \# \$ \% \& \textasciicircum\ \textunderscore\ \textasciigrave\, \textasciitilde\ \textbackslash\ @ \textasteriskcentered\ \{ \} [ ]}
+
+\subsection{Invalid Nesting and Unbalanced Active Quotes}
+\label{hnt:grp}
+
+Every quotation forms a group which includes both the quoted piece of text and the quotation marks. This package tracks the nesting level of all quotations and thus allows for basic validation. If quotations are nested in an invalid way, it will issue an error message. Keep in mind that the active quotes are more than a convenient way to enter quotation marks. They are fully"=fledged markup elements which imply grouping as well, hence they must always be balanced and must not interfere with other group boundaries. This package ensures that an error is triggered if quotes are unbalanced or nested in an invalid way. However, note that packages generally can not catch low-level errors caused by grouping mistakes, nor do they have any control over the wording of generic error messages.
+
+\subsection{Active Quotes in Special Contexts}
+\label{hnt:mod}
+
+All quotation commands are designed for use in text mode and will issue an error message in math mode. Note that all active quotes retain their original function in math mode. It is perfectly possible to use a character like the greater-than symbol as an active quote without interfering with math mode. In a verbatim context, the active quotes will normally be disabled. If a character is in the range 128--255, its original function is restored so that the \sty{inputenc}\slash \sty{inputenx} package may handle it in verbatim environments. This feature is available with the standard verbatim environments and with those provided by (or defined via) the packages \sty{verbatim}, \sty{fancyvrb}, \sty{moreverb}, and \sty{alltt}. This also applies to the \cmd{verb} command and the \sty{shortvrb} package. The \sty{listings} package provides dedicated support for extended input encodings. When using this package, activate its <extended characters> option and specify the input encoding. Note that \sty{listings} does not support macro-level \utf decoding. \xetex and \luatex in native \utf mode will work as expected and do not require the \sty{inputenc} package.
+
+Some care is still required when choosing active quotes. Note that you normally cannot use active characters in the argument to commands expecting a string of characters, such as \cmd{input}, \cmd{label}, or \cmd{cite}. There are two packages which try to remedy this situation: the \sty{babel} package and the \sty{underscore} package (when loaded with the \opt{strings} option). Both packages redefine several standard commands affected by this general problem. If any one of these packages is loaded, \sty{csquotes} will take advantage of all improvements automatically. Unfortunately, both packages patch a different set of commands and neither one covers all possibly vulnerable commands.
+
+\subsection{\pdf Strings and \sty{hyperref} Support}
+\label{hnt:pdf}
+
+This package interfaces with the \sty{hyperref} package as \pdf strings such as bookmarks are generated. See \secref{cfg:pdf} on how to configure the quotation marks used in \pdf strings. Support for \pdf strings is only available with the basic facilities presented in \secref{bas:reg,bas:bbl} as well as \secref{act:reg,act:bbl}. Be advised that the way \sty{hyperref} builds \pdf strings imposes severe limitations on the capabilities of all commands. Most notably, the nesting level of quotations cannot be tracked in this context. Nested quotations will generally get outer marks, but you may use starred commands or active inner quotes to request inner marks explicitly. If quotation marks are to be included in the document properties of a \pdf file, you must use \cmd{hypersetup} to specify the strings. The replacement mechanism will not function within the optional argument to \cmd{usepackage}. See the \sty{hyperref} manual for information further details.
+
+\subsection{Footnotes Inside Quotations}
+\label{hnt:ftn}
+
+This package will automatically reset the nesting level within any footnote included in a quotation. If the \sty{babel} or the \sty{polyglossia} package has been loaded, it will also reset the language. The language of the footnote text including the hyphenation patterns will match the language of the text surrounding the quotation. This applies to parboxes, minipages, and floats as well.
+
+\subsection{Using \sty{csquotes} with \sty{babel}'s Shorthands}
+\label{hnt:bbl}
+
+The commands discussed in \secref{aut:amk} may be combined with the shorthands of the \sty{babel} package such that \sty{babel} provides the user interface and \sty{csquotes} the backend.\footnote{This also applies to the \sty{polyglossia} package if the \opt{babelshorthands} option of \sty{polyglossia} has been enabled.} For example, the German module of the \sty{babel} package defines, amongst other things, the shorthands |"`| and |"'|. Such shorthands are input aids, \ie physical markup elements with a fixed definition. Typing |"`| is a short way of saying |\quotedblbase| but it is not different in concept. These shorthands can be transformed into <smart quotes> which behave like \cmd{enquote}. Here is a simple ad~hoc solution suitable for documents with only one language:
+
+\begin{ltxexample}[upquote]
+\documentclass{...}
+\usepackage[german]{babel}
+\usepackage[babel=once]{csquotes}
+\defineshorthand{"`}{\openautoquote} 
+\defineshorthand{"'}{\closeautoquote}
+\end{ltxexample}
+%
+It is possible to move such definitions to \path{csquotes.cfg}. In this case, the code is slightly more complex because it needs to be more general:
+
+\begin{ltxcode}[upquote]
+\AtEndPreamble{%
+  \@ifpackageloaded{babel}
+    {\iflanguage{german}
+       {\declare@shorthand{german}{"`}{\openautoquote}%
+	\declare@shorthand{german}{"'}{\closeautoquote}}
+       {}}
+    {}}
+\end{ltxcode}
+%
+This code redefines the shorthands only if the \sty{babel} package has been loaded and the main language is \texttt{german}. Note that \sty{babel}'s shorthands are language"=specific. The way they are configured and handled is technically and conceptually different from the active quotes discussed in \secref{act}. Active quotes are defined globally and automatically adapt to the current language. With \sty{babel}, each language has its own set of shorthands. Also note that \sty{babel} uses \cmd{AtBeginDocument} to initialize the main document language, including the corresponding shorthands. We use \cmd{AtEndPreamble} to defer the code until the end of the preamble. This way, we can be sure that \sty{babel} has been loaded but that the main document language has not been initialized yet. See the \sty{babel} manual for further details. The \cmd{AtEndPreamble} command is provided by the \sty{etoolbox} package.
+
+\subsection{Miscellaneous Notes about the Predefined Styles}
+\label{hnt:pre}
+
+There are three styles which serve a special purpose: \opt{default}, \opt{fallback}, and \opt{debug}. The \opt{default} style is a dynamic alias pointing to the default quote style used if the multilingual interface is not enabled. The package option \opt{style} and the command \cmd{setquotestyle} will redefine this alias. The \opt{fallback} style is a backend style used as a fallback whenever the multilingual interface is enabled but there is no matching quote style for the current language. It will print bold question marks by default. The \opt{debug} style will not print quotation marks but the current quote level as a bold number. This style may be selected using the \opt{style} option or the \cmd{setquotestyle} command. It is intended for debugging only.
+
+All variants of the \opt{french} style use spaced out guillemets as outer marks. The style variant \opt{quotes} uses double quotes as inner marks. The starred variant \opt{quotes*} is similar to its regular counterpart except that it will also space out the inner marks. The \opt{guillemets} variant employs spaced out guillemets on all levels. It will also insert guillemets at the beginning of every paragraph inside a quotation spanning multiple paragraphs. In addition to that, two adjoining marks at the end of a quotation are replaced by a single one; if two nested quotations end simultaneously, the second closing mark is omitted automatically. The starred variant \opt{guillemets*} is similar to its regular counterpart, differing only in the middle mark inserted at the beginning of every paragraph. The regular variant uses a left"=pointing guillemet whereas the starred one uses a right"=pointing one.
+
+\section{Author Interface}
+\label{aut}
+
+The following sections discuss the programmer interface to the \sty{csquotes} package as well as some details of the implementation. They are intended for class and package authors who want to interface with this package.
+
+\subsection{Controlling Active Quotes}
+\label{aut:ctl}
+
+The author commands in this section behave essentially like the corresponding user commands discussed in \secref{act:ctl}. The only difference is that they work quietly behind the scenes without writing any notices to the transcript file. The scope of these commands is local so that all changes may be confined to a group. Note that the active quotes are enabled at the beginning of the document body. Under no circumstances will this package make any characters active in the document preamble. You will only need the following commands when dealing with active quotes at the beginning of or in the document body.
+
+\begin{ltxsyntax}
+
+\csitem{@enablequotes}
+
+This command enables all characters allocated as active quotes. It also restores their definitions if they were disabled or accidentally overwritten. With single-byte encodings, this command (re)defines all allocated characters and makes them active. With \utf encoding, it redefines the internal macro used by the \sty{inputenc} package to typeset the respective \utf sequence (\cmd{u8:}\prm{character}). \utf characters in the range 0--127 are handled as with single-byte encodings. When using a \tex engine with native \utf support, such as \xetex, all characters are handled as with single-byte encodings.
+
+\csitem{@disablequotes}
+
+This command restores the \emph{status quo ante} of all active quotes. With single-byte encodings, there are two possible cases. (1) If a character had already been active when it was allocated as active quote, its former definition is restored. (2) If a character had not been active when it was allocated, its former category code is restored. With \utf encoding, this command restores the former definition of the internal macro used by the \sty{inputenc} package to typeset the respective \utf sequence. \utf characters in the range 0--127 are handled as with single-byte encodings. When using a \tex engine with native \utf support, such as \xetex, all characters are handled as with single-byte encodings.
+
+\csitem{@verbatimquotes}
+
+For verbatim environments and similar applications, use this command rather than \cmd{@disablequotes}. It redefines the active quotes in a way that is better suited for verbatim typesetting. With single-byte encodings, it will do one of the following things. (1) If a character is in the range 0--127, it is redefined such that it expands to itself with category code 12. (2) If a character is in the range 128--255, there are two possibilities. (a) If it had already been active when it was allocated, its former definition is restored. (b) If it had not been active before, it is redefined such that it expands to itself with its former category code.
+
+Characters in the range 0--127 are added to the \cmd{dospecials} list. Characters in the range 128--255 remain active, permitting the \sty{inputenc} package to typeset them verbatim (due to case 2a, which implies that you must load \sty{inputenc} before allocating active quotes). Case 2b is usually undesirable in verbatim environments. If \sty{inputenc} is loaded, however, this should not happen. With \utf encoding, this command restores the former definition of the internal macro used by the \sty{inputenc} package to typeset the respective \utf sequence. \utf characters in the range 0--127 are handled as with single-byte encodings. When using a \tex engine with native \utf support, such as \xetex, all characters are handled as with single-byte encodings.
+
+Due to case 1, \cmd{@verbatimquotes} itself is independent of any \cmd{dospecials} processing. You may typeset all active quotes verbatim by using this command exclusively. The advantage of this approach is that it does not require any category code changes, hence this command may also be used to modify an argument after it has been read. Also note that the standard \latex verbatim environments as well as all environments provided by or defined via the packages \sty{verbatim}, \sty{fancyvrb}, \sty{moreverb}, and \sty{alltt} are catered for automatically. This also applies to the \cmd{verb} command and the \sty{shortvrb} package.
+
+\csitem{@deletequotes}
+
+This command implicitly executes \cmd{@disablequotes} and deallocates all active quotes, which results in a complete reset of all active quotes so that they may be newly defined. This command should be used with care because the reset is not visible to the user. Using \cmd{DeleteQuotes} may be preferable.
+
+\end{ltxsyntax}
+
+\subsection{Active Quotes in a Strings-Only Context}
+\label{aut:str}
+
+A possible problem with active characters are strings-only contexts, i.\,e. cases in which an active character is used in the formation of a control sequence name. A typical example is the \cmd{label} command which expects a string of characters. Any active character may break \cmd{label} when used in its argument. There are two packages which try to remedy this situation, albeit in different ways: \sty{babel} and \sty{underscore}.
+
+The \sty{babel} package defines the switch \cmd{if@safe@actives} and patches several standard commands such that the switch is set to \opt{true} while they process their arguments. The approach taken by the \sty{underscore} package is slightly different. If \sty{underscore} is loaded with the \opt{strings} option, it patches several commands such that \cmd{protect} is equivalent to \cmd{string} while the arguments are processed. If any one of these packages is loaded, \sty{csquotes} will take advantage of that automatically. Unfortunately, both packages patch a different set of commands and neither one covers all possibly vulnerable commands. If \sty{babel} is loaded, for example, you may use active quotes in the argument of \cmd{label}, but not in the argument of \cmd{input}. If you load \sty{underscore} with its \opt{strings} option, active quotes may also be used in the argument of \cmd{input}.
+
+When writing a package which may have to process user"=supplied arguments in a strings-only context, there are two ways to deal with active quotes. Taking the approach of the \sty{babel} package, you may do the following:
+
+\begin{ltxcode}
+\let\if@safe@actives\iftrue
+\end{ltxcode}
+%
+This is best done in a group. If grouping is not feasible, you must ensure that the switch is properly restored. In contrast to using \cmd{@safe@activestrue}, this approach works even if \sty{babel} is not loaded. However, note that you must take three states into account when restoring the switch in this case: true, false, and undefined. Taking the approach of the \sty{underscore} package, you may also do the following:
+
+\begin{ltxcode}
+\let\@@protect\protect \let\protect\string
+\end{ltxcode}
+%
+This could either be done in a group or without any grouping, but followed by \cmd{restore@protect}. The first approach works with the active characters of the \sty{babel} and the \sty{underscore} packages. The second one works with the \sty{underscore} and the \sty{at} packages. Unfortunately, the active characters of the \sty{inputenc} package support neither of the above"=mentioned techniques. As far as \sty{csquotes} is concerned, it does not matter which approach you take. In both cases all active quotes expand to themselves with category code 12. With macro-level \utf support, \utf encoded active quotes expand to a string of characters with category code 12. This string will be valid \utf. In a verbatim \cmd{write} operation, you should employ one of the techniques discussed in this section rather than \cmd{@verbatimquotes}, which is geared to verbatim typesetting.
+
+\subsection{Block Quotations}
+\label{aut:blk}
+
+The block quotation facilities need to typeset all quotations twice. The first pass is required to measure the length of the quotation. The actual typesetting takes place on the second pass, in a format depending on the result of the first one. In order to prevent any side"=effects of the first (trial) pass, the \sty{csquotes} package (1) performs the first pass inside a group, (2) employs checkpointing to freeze all LaTeX counters, and (3) sets \cmd{if@filesw} to \texttt{false}. However, it can not prevent side"=effects caused by commands that (1) make any global assignments which are not overwritten on the second pass (for example, by way of \cmd{g@addto@macro}), (2) increment counters globally in a way that circumvents \latex's counter commands, or (3) do not check \cmd{if@filesw} every time they are about to write to an auxiliary file. If you observe any malfunctions related to the trial pass (for example, if counters are incremented twice or if an item appears twice in a list), use \cmd{BlockquoteDisable} to redefine or disable the affected command temporarily.
+
+\begin{ltxsyntax}
+
+\cmditem{BlockquoteDisable}{code}
+
+The \prm{code} may be arbitrary \latex code which redefines vulnerable commands locally such that they work differently during the trial pass. The \prm{code} itself should obviously not include any global assignments. This solution should be considered as a last ressort but may be the quickest way to fix a vulnerable package. Note that there is no need to escape parameter characters by doubling them in the \prm{code} argument. Simply use this command like \cmd{AtBeginDocument} and similar hooks.
+
+\end{ltxsyntax}
+
+\subsection{Registering Quotation Marks}
+\label{aut:sfc}
+
+In order to track punctuation marks inside quotations, this package requires that all quotation marks be transparent to the space factor, \ie that they have a space factor code of zero. This setting is specific to the output encoding. Settings for the encodings \acr{OT1}, \acr{OT2}, \acr{OT4}, \acr{T1}, \acr{LY1}, \acr{LGR}, \acr{T2A}, \acr{T2B}, \acr{T2C}, \acr{LCY}, \acr{X2}, and \acr{EU1}\slash \acr{EU2} are provided by default. Other encodings may be set up in the configuration file using the following command:
+
+\begin{ltxsyntax}
+\cmditem{DeclareQuoteGlyph}{encoding}{position}
+\end{ltxsyntax}
+
+The \prm{encoding} is the name of the output encoding, for example \texttt{OT1}. This string corresponds to the identifiers used when loading the \sty{fontenc} package. The \prm{position} argument is an integer indicating the position of a glyph in this encoding. You need to reqister all quotation marks in the output encoding, using one declaration for each glyph. As an example, these are the settings for the \acr{OT1} encoding:
+
+\begin{ltxcode}
+\DeclareQuoteGlyph{OT1}{34}% = \textquotedblright
+\DeclareQuoteGlyph{OT1}{39}% = \textquoteright
+\DeclareQuoteGlyph{OT1}{92}% = \textquotedblleft
+\DeclareQuoteGlyph{OT1}{96}% = \textquoteleft
+\end{ltxcode}
+%
+The \prm{position} argument may use any notation accepted by \tex in integer assignments, \eg \texttt{171} in decimal or \verb+"00AB+ in hexadecimal notation. See the settings in \path{csquotes.def} for further examples. The advantage of registering quotes with the above command (rather than adjusting the space factor codes globally) is that the declarations are only used locally inside quotations and will not affect any other part of the document.
+
+\subsection{Automatic Quotation Marks}
+\label{aut:amk}
+
+The commands in this section provide access to the automatic quotation facilities at a slightly lower level than the user commands in \secref{bas:reg,act:reg}. In contrast to the commands discussed in \secref{aut:imk}, the facilities in this section are fully"=fledged markup elements which verify the nesting level and issue an error if quotations are nested in an invalid way. They form groups and must always be balanced, see \secref{hnt:grp} for details. In other words, the facilities in this section are semantic markup elements, the ones in \secref{aut:imk} are physical markup elements.
+
+\begin{ltxsyntax}
+
+\csitem{openautoquote} Opens a nestable quotation.
+\csitem{closeautoquote} Closes a nestable quotation.
+
+\end{ltxsyntax}
+
+In terms of their function, the above commands correspond to the regular versions of \cmd{enquote} and \cmd{MakeAutoQuote}. The following commands correspond to the starred variants \cmd{enquote*} and \cmd{MakeAutoQuote*}:
+
+\begin{ltxsyntax}
+
+\csitem{openinnerquote} Opens an inner quotation.
+\csitem{closeinnerquote} Closes an inner quotation.
+
+\end{ltxsyntax}
+
+The above commands may be used to implement an alternative user interface. For example, you can combine them with the shorthands of the \sty{babel} package such that \sty{babel} provides the user interface and \sty{csquotes} the backend. See \secref{hnt:bbl} and the \sty{babel} manual for details.
+
+\subsection{Internal Quotation Marks}
+\label{aut:imk}
+
+The commands in this section print the quotation marks of the current style, as defined with \cmd{DeclareQuoteStyle}, without any grouping or nesting control. The quotation marks reflect all changes to the quotation style. If the multilingual interface is enabled, they are also synced with the current language.
+
+\begin{ltxsyntax}
+
+\csitem{textooquote} Prints the opening outer quotation mark of the currently active quote style.
+\csitem{textcoquote} Prints the closing outer quotation mark.
+\csitem{textmoquote} Prints the middle outer quotation mark.
+
+\csitem{textoiquote} Prints the opening inner quotation mark.
+\csitem{textciquote} Prints the closing inner quotation mark.
+\csitem{textmiquote} Prints the middle inner quotation mark.
+
+\end{ltxsyntax}
+
+Note that the initialization hooks for the respective quotation style are not executed automatically. They may be accessed separately:
+
+\begin{ltxsyntax}
+
+\csitem{initoquote} Executes the outer initialization hook.
+\csitem{initiquote} Executes the inner initialization hook.
+
+\end{ltxsyntax}
+
+The scope of these hooks must always be confined to a group.
+
+\section{Revision History}
+
+This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified}, \emph{renamed}, or \emph{removed} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The \opt{version} option from \secref{opt:opt} may be helpful in this case. The numbers on the right indicate the relevant section of this manual.
+
+\begin{changelog}
+
+\begin{release}{5.1d}{2011-10-22}
+\item Slightly modified quote style \opt{italian/guillemets}
+\item Made variant \opt{guillemets} the default for \opt{italian}
+\item Fixed \xetex kerning issue
+\end{release}
+
+\begin{release}{5.1c}{2011-03-25}
+\item Fixed spurious language reset
+\end{release}
+
+\begin{release}{5.1b}{2011-01-20}
+\item Fixed conflict with \sty{polyglossia} and French
+\end{release}
+
+\begin{release}{5.1a}{2011-01-11}
+\item Fix for paragraph environments inside \cmd{blockquote}
+\end{release}
+
+\begin{release}{5.1}{2010-11-19}
+\item Added package option \opt{debug}\see{opt:opt}
+\item Added package option \opt{threshold}\see{opt:opt}
+\item Added package option \opt{thresholdtype}\see{opt:opt}
+\item Added package option \opt{parthreshold}\see{opt:opt}
+\item Added package option \opt{splitcomp}\see{opt:opt}
+\item Improved block quotation facilities\see{bas:blk:reg}
+\item Improved integrated block quotation facilities\see{int:blk:reg}
+\end{release}
+
+\begin{release}{5.0c}{2010-09-21}
+\item Added package option \opt{csdisplay}\see{opt:opt}
+\item Added \cmd{csdisplaytrue} and \cmd{csdisplayfalse}\see{opt:opt}
+\item Fixed conflict with \sty{polyglossia}
+\end{release}
+
+\begin{release}{5.0b}{2010-08-06}
+\item Fixed issue with \sty{babel}'s active punctuation marks
+\end{release}
+
+\begin{release}{5.0a}{2010-06-09}
+\item Fixed bug related to middle quote marks
+\item Minor internal update for biblatex
+\end{release}
+
+\begin{release}{5.0}{2010-06-02}
+\item Renamed package option \opt{babel} to \opt{autostyle}\see{opt:opt}
+\item Added compatibility option \opt{babel}\see{opt:leg}
+\item Added preliminary \sty{polyglossia} interface\see{opt:opt}
+\item Added package option \opt{autopunct}\see{opt:opt}
+\item Added package option \opt{version}\see{opt:leg}
+\item Added \cmd{hybridblockquote}\see{bas:blk:bbl}
+\item Added \cmd{hybridblockcquote}\see{int:blk:bbl}
+\item Added \cmd{MakeHybridBlockQuote}\see{act:blk:bbl}
+\item Added \cmd{DeclareAutoPunct}\see{cfg:dap}
+\item Extended \cmd{textquote}\see{bas:txt:reg}
+\item Extended \cmd{foreigntextquote}\see{bas:txt:bbl}
+\item Extended \cmd{hyphentextquote}\see{bas:txt:bbl}
+\item Extended \cmd{blockquote}\see{bas:blk:reg}
+\item Extended \cmd{foreignblockquote}\see{bas:blk:bbl}
+\item Extended \cmd{hyphenblockquote}\see{bas:blk:bbl}
+\item Extended \cmd{textcquote}\see{int:txt:reg}
+\item Extended \cmd{foreigntextcquote}\see{int:txt:bbl}
+\item Extended \cmd{hyphentextcquote}\see{int:txt:bbl}
+\item Extended \cmd{blockcquote}\see{int:blk:reg}
+\item Extended \cmd{foreignblockcquote}\see{int:blk:bbl}
+\item Extended \cmd{hyphenblockcquote}\see{int:blk:bbl}
+\item Added \cmd{mktextquote}\see{cfg:aux}
+\item Added \cmd{mkblockquote}\see{cfg:aux}
+\item Added \cmd{mkbegdispquote}\see{cfg:aux}
+\item Added \cmd{mkenddispquote}\see{cfg:aux}
+\item Removed \cmd{mkpretextpunct}\see{cfg:aux}
+\item Removed \cmd{mkmidtextpunct}\see{cfg:aux}
+\item Removed \cmd{mkfintextpunct}\see{cfg:aux}
+\item Removed \cmd{mkpreblockpunct}\see{cfg:aux}
+\item Removed \cmd{mkmidblockpunct}\see{cfg:aux}
+\item Removed \cmd{mkfinblockpunct}\see{cfg:aux}
+\item Removed \cmd{mkpredisppunct}\see{cfg:aux}
+\item Removed \cmd{mkmiddisppunct}\see{cfg:aux}
+\item Removed \cmd{mkfindisppunct}\see{cfg:aux}
+\item Removed \cmd{quotetext}\see{cfg:aux}
+\item Removed \cmd{quoteblock}\see{cfg:aux}
+\item Renamed \cmd{ifquotepunct} to \cmd{ifpunct}\see{cfg:tst}
+\item Renamed \cmd{ifquoteterm} to \cmd{ifterm}\see{cfg:tst}
+\item Added \cmd{ifpunctmark}\see{cfg:tst}
+\item Removed \cmd{ifquotecolon}\see{cfg:tst}
+\item Removed \cmd{ifquotecomma}\see{cfg:tst}
+\item Removed \cmd{ifquoteexclam}\see{cfg:tst}
+\item Removed \cmd{ifquoteperiod}\see{cfg:tst}
+\item Removed \cmd{ifquotequestion}\see{cfg:tst}
+\item Removed \cmd{ifquotesemicolon}\see{cfg:tst}
+\item Renamed \cmd{ifstringblank} to \cmd{ifblank}\see{cfg:tst}
+\item Added \cmd{unspace}\see{cfg:tst}
+\item Added \cmd{textelp}\see{aux}
+\item Added \cmd{textins}\see{aux}
+\item Added \cmd{mktextelp}\see{cfg:elp}
+\item Added \cmd{mktextelpins}\see{cfg:elp}
+\item Added \cmd{mktextinselp}\see{cfg:elp}
+\item Added \cmd{mktextins}\see{cfg:elp}
+\item Added \cmd{mktextmod}\see{cfg:elp}
+\item Expanded documentation\see{use:hok}
+\item Removed \cmd{cquote} legacy alias (use \cmd{textcquote} instead)\see{int:txt:reg}
+\item Removed \cmd{foreigncquote} legacy alias (use \cmd{foreigntextcquote})\see{int:txt:bbl}
+\item Removed \cmd{hyphencquote} legacy alias (use \cmd{hyphentextcquote})\see{int:txt:bbl}
+\item Removed \cmd{RestoreQuotes} legacy alias (use \cmd{EnableQuotes})\see{act:ctl}
+\item Removed \cmd{@restorequotes} legacy alias (use \cmd{@enablequotes})\see{aut:ctl}
+\item Added support for \acr{EU2} encoding\see{aut:sfc}
+\item Added quote style for Croatian
+\end{release}
+
+\begin{release}{4.4d}{2010-02-06}
+\item Added quote style for Dutch
+\item Added quote style for Finnish
+\item Added quote style for Greek
+\item Added support for \acr{LGR} encoding\see{aut:sfc}
+\end{release}
+
+\begin{release}{4.4c}{2009-09-23}
+\item Fixed incompatibility with \sty{inputenx} package
+\end{release}
+
+\begin{release}{4.4b}{2009-07-24}
+\item Fixed bug in glyph declarations for \acr{EU1} encoding\see{aut:sfc}
+\end{release}
+
+\begin{release}{4.4a}{2009-07-04}
+\item Added support for \acr{EU1} encoding\see{aut:sfc}
+\item Added quote style for Brazilian
+\item Added preliminary quote style for Portuguese
+\end{release}
+
+\begin{release}{4.4}{2009-05-30}
+\item Added package option \opt{maxlevel}\see{opt:opt}
+\item Added special quote style \opt{debug}\see{hnt:pre}
+\item Added \cmd{DeclareQuoteGlyph}\see{aut:sfc}
+\item Added support for \acr{OT2} and \acr{OT4} encodings\see{aut:sfc}
+\item Added support for \acr{T2A}, \acr{T2B}, \acr{T2C}, \acr{X2} encodings\see{aut:sfc}
+\item Added support for \acr{LCY} encoding\see{aut:sfc}
+\item Added quote style for Russian
+\end{release}
+
+\begin{release}{4.3}{2008-11-23}
+\item Made package option \kvopt{babel}{tryonce} the default setting\see{opt:opt}
+\item Internal updates for \path{biblatex} package
+\end{release}
+
+\begin{release}{4.2}{2008-06-24}
+\item Upgrade to \sty{etoolbox} 1.6
+\end{release}
+
+\begin{release}{4.1}{2008-04-11}
+\item Fixed timing issue with active quotes introduced in 4.0
+\end{release}
+
+\begin{release}{4.0}{2008-03-02}
+\item \etex now mandatory requirement
+\item New dependency on \sty{etoolbox} package
+\item Added package option \opt{spanish}\see{opt:opt}
+\item Added variant \opt{mexican} to style \opt{spanish}\see{opt:opt}
+\item Removed variant \opt{oldstyle} from \opt{english} style\see{opt:opt}
+\item Removed variant \opt{oldstyle} from \opt{french} style\see{opt:opt}
+\item Removed variant \opt{imprimerie} from \opt{french} style\see{opt:opt}
+\item Expanded documentation\see{hnt:bbl}
+\item Added \cmd{openautoquote} and \cmd{closeautoquote}\see{aut:amk}
+\item Added \cmd{openinnerquote} and \cmd{closeinnerquote}\see{aut:amk}
+\item Moved predefined styles, variants, options to \path{csquotes.def}
+\item Added more hints and examples to \path{csquotes.cfg}
+\item Added extended \pdf bookmarks to this manual
+\end{release}
+
+\begin{release}{3.8}{2008-01-05}
+\item Added variant \opt{guillemets*} to style \opt{swedish}\see{opt:opt}
+\item Added language alias \opt{australian}\see{cfg:als}
+\item Added language alias \opt{newzealand}\see{cfg:als}
+\item Internal improvements
+\end{release}
+
+\begin{release}{3.7}{2007-03-25}
+\item Added package option \kvopt{babel}{try}\see{opt:opt}
+\item Added package option \kvopt{babel}{tryonce}\see{opt:opt}
+\item Added \cmd{MakeAutoQuote*}\see{act:reg}
+\item Added \cmd{MakeForeignQuote*}\see{act:bbl}
+\item Added \cmd{MakeHyphenQuote*}\see{act:bbl}
+\item Added \cmd{mkpretextpunct}\see{cfg:aux}
+\item Added \cmd{mkpreblockpunct}\see{cfg:aux}
+\item Added \cmd{mkpredisppunct}\see{cfg:aux}
+\item Removed compatibility code for \cmd{blockcite} legacy command
+\item Internal updates for \path{biblatex} package
+\end{release}
+
+\begin{release}{3.6}{2006-11-09}
+\item Added \cmd{BlockquoteDisable}\see{aut:blk}
+\item Fix for \sty{amsmath} package (active quotes in \env{split} and other environments)
+\item Fix for \sty{endnotes} package (endnotes in block quotations)
+\item Revised Spanish quote style
+\end{release}
+
+\begin{release}{3.5}{2006-08-24}
+\item Exchanged definitions of French \opt{quotes} and \opt{quotes*} variants\see{hnt:pre}
+\item Internal updates for \path{inputenc} 1.1\,b (2006-05-05)
+\end{release}
+
+\begin{release}{3.4}{2006-04-02}
+\item Stricter validation of user"=defined active characters\see{hnt:val}
+\item Author interface now documented in this manual\see{aut}
+\item Added documentation of \cmd{@enablequotes}\see{aut:ctl}
+\item Added documentation of \cmd{@disablequotes}\see{aut:ctl}
+\item Added documentation of \cmd{@verbatimquotes}\see{aut:ctl}
+\item Added documentation of \cmd{@deletequotes}\see{aut:ctl}
+\item Added documentation concerning string handling \see{aut:str}
+\item Added documentation of interface to internal marks\see{aut:imk}
+\end{release}
+
+\begin{release}{3.3}{2006-02-27}
+\item Added support for \utf encoded active quotes\see{hnt:inc}
+\item Modified active quotes, category codes 7, 8 no longer valid\see{hnt:val}
+\item Modified delimiters, category codes 3, 4, 7, 8 no longer valid\see{hnt:val}
+\item Active quotes may now be defined in the document body\see{act:ctl}
+\item Renamed \cmd{RestoreQuotes} to \cmd{EnableQuotes}\see{act:ctl}
+\item Added \cmd{DeleteQuotes}\see{act:ctl}
+\item Added \cmd{VerbatimQuotes}\see{act:ctl}
+\item Added \cmd{ExecuteQuoteOptions}\see{cfg:exe}
+\item Added package option \kvopt{babel}{once}\see{opt:opt}
+\item Added new style variant for French\see{hnt:pre}
+\item Improved nesting control of active block quotes
+\item Made active block quotes robust
+\end{release}
+
+\begin{release}{3.2}{2005-12-05}
+\item Added quote style for Spanish
+\item Fixed bug in \sty{hyperref} interface
+\end{release}
+
+\begin{release}{3.1}{2005-08-29}
+\item Added \cmd{textquote}\see{bas:txt:reg}
+\item Added \cmd{foreigntextquote}\see{bas:txt:bbl}
+\item Added \cmd{hyphentextquote}\see{bas:txt:bbl}
+\item Renamed \cmd{cquote} to \cmd{textcquote}\see{int:txt:reg}
+\item Renamed \cmd{foreigncquote} to \cmd{foreigntextcquote}\see{int:txt:bbl}
+\item Renamed \cmd{hyphencquote} to \cmd{hyphentextcquote}\see{int:txt:bbl}
+\item Extended \cmd{textcquote}\see{int:txt:reg}
+\item Extended \cmd{foreigntextcquote}\see{int:txt:bbl}
+\item Extended \cmd{hyphentextcquote}\see{int:txt:bbl}
+\item Modified environment \env{displayquote}\see{env:bas}
+\item Modified environment \env{foreigndisplayquote}\see{env:bas}
+\item Modified environment \env{hyphendisplayquote}\see{env:bas}
+\item Extended environment \env{displaycquote}\see{env:cit}
+\item Extended environment \env{foreigndisplaycquote}\see{env:cit}
+\item Extended environment \env{hyphendisplaycquote}\see{env:cit}
+\item Added \cmd{mkmidtextpunct}\see{cfg:aux}
+\item Added \cmd{mkfintextpunct}\see{cfg:aux}
+\item Added \cmd{mkmiddisppunct}\see{cfg:aux}
+\item Added \cmd{mkfindisppunct}\see{cfg:aux}
+\item Added auxiliary environment \env{quotetext}\see{cfg:aux}
+\item Added detection of paragraphs to all block quotation facilities\see{bas:blk:reg}
+\item \cmd{ifquote...} now usable in \cmd{mkcitation} and \cmd{mkccitation}\see{cfg:tst}
+\item Terminal punctuation now evaluated by all quotation facilities
+\item Prevent undesirable |?`| and |!`| ligatures in \acr{T1} encoding
+\item Always adjust space factor codes of backend quotes
+\end{release}
+
+\begin{release}{3.0}{2005-07-14}
+\item Extended \cmd{blockquote}\see{bas:blk:reg}
+\item Extended \cmd{foreignblockquote}\see{bas:blk:bbl}
+\item Extended \cmd{hyphenblockquote}\see{bas:blk:bbl}
+\item Extended \cmd{setquotestyle}\see{bas:set}
+\item Added \cmd{cquote}\see{int:txt:reg}
+\item Added \cmd{foreigncquote}\see{int:txt:bbl}
+\item Added \cmd{hyphencquote}\see{int:txt:bbl}
+\item Added \cmd{blockcquote}\see{int:blk:reg}
+\item Added \cmd{foreignblockcquote}\see{int:blk:bbl}
+\item Added \cmd{hyphenblockcquote}\see{int:blk:bbl}
+\item Added environment \env{displayquote}\see{env:bas}
+\item Added environment \env{foreigndisplayquote}\see{env:bas}
+\item Added environment \env{hyphendisplayquote}\see{env:bas}
+\item Added environment \env{displaycquote}\see{env:cit}
+\item Added environment \env{foreigndisplaycquote}\see{env:cit}
+\item Added environment \env{hyphendisplaycquote}\see{env:cit}
+\item Modified \cmd{DeclarePlainStyle}\see{cfg:pdf}
+\item Added \cmd{SetCiteCommand}\see{cfg:blk}
+\item Renamed \cmd{blockcite} to \cmd{mkcitation}\see{cfg:aux}
+\item Added \cmd{mkccitation}\see{cfg:aux}
+\item Added \cmd{mkmidblockpunct}\see{cfg:aux}
+\item Added \cmd{mkfinblockpunct}\see{cfg:aux}
+\item Added \cmd{ifquotepunct}\see{cfg:tst}
+\item Added \cmd{ifquoteterm}\see{cfg:tst}
+\item Added \cmd{ifquoteperiod}\see{cfg:tst}
+\item Added \cmd{ifquotecomma}\see{cfg:tst}
+\item Added \cmd{ifquotesemicolon}\see{cfg:tst}
+\item Added \cmd{ifquotecolon}\see{cfg:tst}
+\item Added \cmd{ifquoteexclam}\see{cfg:tst}
+\item Added \cmd{ifquotequestion}\see{cfg:tst}
+\item Added \cmd{ifstringblank}\see{cfg:tst}
+\item Added evaluation of terminal punctuation within block quotations
+\item With \cmd{nonfrenchspacing}, adjust space factor codes of backend quotes
+\item Improved nesting control when running under \etex
+\end{release}
+
+%\begin{release}{2.8}{2005-05-11}
+%\item Added \cmd{DisableQuotes}\see{act:ctl}
+%\item Fixed bug causing kerning restoration to fail in some rare cases
+%\end{release}
+%
+%\begin{release}{2.7}{2005-04-13}
+%\item Use the font's kerning pairs for adjoining quotes, if available\see{cfg:sty}
+%\item Renamed \cmd{setblockthreshold} to \cmd{SetBlockThreshold}\see{cfg:blk}
+%\item Renamed \cmd{setblockenvironment} to \cmd{SetBlockEnvironment}\see{cfg:blk}
+%\item Provided more useful default definition of \cmd{blockcite}\see{cfg:aux}
+%\item Improved handling of adjoining quotes with respect to line breaking
+%\item When restoring active quotes, restore catcodes of delimiters as well
+%\item Improved workaround for \cmd{uppercase} and some \sty{babel} languages
+%\item Issue error message on quote mismatch regardless of \opt{strict} option
+%\item Issue \sty{hyperref} warning with block quotation commands in \pdf strings
+%\item Fixed bug in \cmd{DeclareQuoteStyle} and \cmd{DeclareQuoteAlias}
+%\end{release}
+%
+%\begin{release}{2.6}{2005-02-24}
+%\item Always reset quote style, even for inner quotations
+%\item Fixed bug preventing hyphenation in certain places
+%\end{release}
+%
+%\begin{release}{2.5}{2004-12-04}
+%\item Added \cmd{MakeBlockQuote}\see{act:blk:reg}
+%\item Added \cmd{MakeForeignBlockQuote}\see{act:blk:bbl}
+%\item Added \cmd{MakeHyphenBlockQuote}\see{act:blk:bbl}
+%\item Added \cmd{ifblockquote}\see{cfg:tst}
+%\item Modified \cmd{blockquote}\see{bas:blk:reg}
+%\item Modified \cmd{foreignblockquote}\see{bas:blk:bbl}
+%\item Modified \cmd{hyphenblockquote}\see{bas:blk:bbl}
+%\item Changed default threshold for block quotations\see{cfg:blk}
+%\item Improved math mode compatibility\see{hnt:mod}
+%\item Improved verbatim compatibility\see{hnt:mod}
+%\item Improved backend and active character handling
+%\item Improved validation of user"=defined active characters
+%\item Fixed bug suppressing kerning after block quotations
+%\item Issue error message with nested block quotations
+%\end{release}
+%
+%\begin{release}{2.4}{2004-11-01}
+%\item Prevent use of \cmd{RestoreQuotes} in preamble\see{act:ctl}
+%\item Fixed bug causing premature expansion of backend quote macros
+%\item Fixed bug suppressing kerning before closing quotes
+%\end{release}
+%
+%\begin{release}{2.3}{2004-09-18}
+%\item Reduced default kerning between adjoining curved quotes
+%\item Fixed bug with \cmd{DeclareQuoteStyle} in preamble
+%\end{release}
+%
+%\begin{release}{2.2}{2004-07-13}
+%\item Extended \cmd{DeclareQuoteStyle}\see{cfg:sty}
+%\item Added initialization hook for inner quotations\see{cfg:sty}
+%\item Added support for middle inner quotes\see{cfg:sty}
+%\item Rearranged French quote styles, removing two variants\see{hnt:pre}
+%\item Added new style variant for French\see{hnt:pre}
+%\item Fixed bug causing stacking of reset hook for footnotes
+%\item Fixed bug preventing hyphenation in certain places
+%\item Fixed kerning issue specific to \textsc{ec} fonts
+%\end{release}
+%
+%\begin{release}{2.1}{2004-06-15}
+%\item Added auxiliary environment \env{quoteblock}\see{cfg:aux}
+%\item Added support for language reset in footnotes\see{hnt:ftn}
+%\item Disable active characters in \cmd{verb} and \env{verbatim}\see{hnt:mod}
+%\item Disable active characters in \cmd{index} and \cmd{glossary}\see{hnt:mod}
+%\item Added package option and style variants for Norwegian
+%\item Removed some uncertain quote styles and aliases
+%\item Rearranged quote styles and aliases
+%\end{release}
+%
+%\begin{release}{2.0}{2004-06-04}
+%\item Added \cmd{blockquote}\see{bas:blk:reg}
+%\item Added \cmd{foreignblockquote}\see{bas:blk:bbl}
+%\item Added \cmd{hyphenblockquote}\see{bas:blk:bbl}
+%\item Added \cmd{setblockthreshold}\see{cfg:blk}
+%\item Added \cmd{setblockenvironment}\see{cfg:blk}
+%\item Added auxiliary command \cmd{blockcite}\see{cfg:aux}
+%\item Extended \cmd{DeclareQuoteStyle}\see{cfg:sty}
+%\item Added initialization hook for outer quotations\see{cfg:sty}
+%\item Added support for middle outer quotes\see{cfg:sty}
+%\item Added support for kerning between adjoining quotes\see{cfg:sty}
+%\item Disable active characters in math and display math mode\see{hnt:mod}
+%\item Revised and improved error recovery\see{opt:opt}
+%\item Added package option \opt{strict}\see{opt:opt}
+%\item Added package option and new style variants for French
+%\item Added package option and new style variant for Italian
+%\item Added new style variant for English
+%\end{release}
+%
+%\begin{release}{1.7}{2004-05-14}
+%\item Added \cmd{setquotestyle}\see{bas:set}
+%\item Modified \cmd{DeclarePlainStyle}\see{cfg:pdf}
+%\item Improved quote handling in \pdf strings\see{hnt:pdf}
+%\item Amended default French quote style\see{hnt:pre}
+%\end{release}
+%
+%\begin{release}{1.5}{2004-02-27}
+%\item Reset quote nesting level in footnotes within quotations\see{hnt:ftn}
+%\end{release}
+%
+%\begin{release}{1.4}{2003-12-13}
+%\item Added \cmd{MakeForeignQuote}\see{act:bbl}
+%\item Added \cmd{MakeHyphenQuote}\see{act:bbl}
+%\item Added \cmd{RestoreQuotes}\see{act:ctl}
+%\item Improved \sty{hyperref} interface\see{hnt:pdf}
+%\end{release}
+%
+%\begin{release}{1.0}{2003-09-14}
+%\item Initial public release
+%\end{release}
+
+\end{changelog}
+
+\end{document}
