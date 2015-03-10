@@ -44,7 +44,7 @@ MiKTeX:   The `csquotes` package is included in MiKTeX.
 
 1. Download the file
 
-   http://www.ctan.org/tex-archive/install/macros/latex/contrib/csquotes.tds.zip
+   http://mirror.ctan.org/install/macros/latex/contrib/csquotes.tds.zip
 
 2. Unpack the archive in the root directory of the local TeX
    installation tree, for example
