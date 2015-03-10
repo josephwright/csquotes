@@ -8,7 +8,7 @@
 \usepackage{shortvrb}
 \usepackage{needspace}
 \usepackage{pifont}
-\MakeAutoQuote{«}{»}
+\MakeAutoQuote{Â«}{Â»}
 \MakeAutoQuote*{<}{>}
 \MakeShortVerb{\|}
 
@@ -110,7 +110,7 @@ This package provides advanced facilities for inline and display quotations. It 
 
 \subsection{License}
 
-Copyright © 2003--2011 Philipp Lehman. Permission is granted to copy, distribute and\slash or modify this software under the terms of the \lppl, version 1.3c.\fnurl{http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt} This package is author"=maintained.
+Copyright Â© 2003--2011 Philipp Lehman, 2015 Joseph Wright. Permission is granted to copy, distribute and\slash or modify this software under the terms of the \lppl, version 1.3c or any later version.\fnurl{http://www.latex-project.org/lppl/} 
 
 \subsection{Contributions}
 
@@ -1024,7 +1024,7 @@ The \cmd{textins} command passes its \prm{text} argument to \cmd{mktextins} for 
 \newcommand{<<\mktextmod>>}[1]{[#1]}
 \end{ltxcode}
 %
-You may redefine the above hooks to change the format of the printed output. For example, if you prefer replacements to be indicated by «[\textellipsis text]» rather than «[\textellipsis\unkern] [text]», redefine \cmd{mktextelpins} accordingly:
+You may redefine the above hooks to change the format of the printed output. For example, if you prefer replacements to be indicated by Â«[\textellipsis text]Â» rather than Â«[\textellipsis\unkern] [text]Â», redefine \cmd{mktextelpins} accordingly:
 
 \begin{ltxcode}
 \newcommand{<<\mktextelpins>>}[1]{[\textellipsis #1]}
@@ -1894,8 +1894,8 @@ This revision history is a list of changes relevant to users of this package. Ch
 %\begin{release}{2.1}{2004-06-15}
 %\item Added auxiliary environment \env{quoteblock}\see{cfg:aux}
 %\item Added support for language reset in footnotes\see{hnt:ftn}
-%\item Disable active characters in \cmd{verb} and \env{verbatim}\see{hnt:mod}
-%\item Disable active characters in \cmd{index} and \cmd{glossary}\see{hnt:mod}
+%\item Disable active characters in \cmd{verb}Â and \env{verbatim}\see{hnt:mod}
+%\item Disable active characters in \cmd{index}Â and \cmd{glossary}\see{hnt:mod}
 %\item Added package option and style variants for Norwegian
 %\item Removed some uncertain quote styles and aliases
 %\item Rearranged quote styles and aliases
