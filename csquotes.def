@@ -31,13 +31,19 @@
   {\quotedblbase}
   {\textquotedblleft}
   [0.05em]
-  {\textquoteright}% unsure
-  {\textquoteright}% unsure
+  {\textquoteright}
+  {\textquoteright}
 \DeclareQuoteStyle[guillemets]{danish}
   {\guillemotright}
   {\guillemotleft}
-  {\textquoteright}% unsure
-  {\textquoteright}% unsure
+  {\textquoteleft}
+  {\textquoteright}
+\DeclareQuoteStyle[topquotes]{danish}
+  {\textquotedblleft}
+  {\textquotedblright}
+  [0.05em]
+  {\textquoteleft}
+  {\textquoteright}
 \DeclareQuoteStyle{dutch}
   {\quotedblbase}
   {\textquotedblright}
