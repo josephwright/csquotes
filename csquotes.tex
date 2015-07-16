@@ -144,6 +144,7 @@ This option controls multilingual support. It requires either the \sty{babel} pa
   \toprule
   \multicolumn{1}{@{}H}{Option key} & \multicolumn{1}{@{}H}{Possible values} \\
   \cmidrule(r){1-1}\cmidrule{2-2}
+  austrian	& quotes, guillemets \\
   croatian	& quotes, guillemets, guillemets\*\\
   danish	& quotes, guillemets, topquotes \\
   english	& american, british\\
@@ -620,6 +621,7 @@ If available, this package will load the configuration file \path{csquotes.cfg}.
   \toprule
   \multicolumn{1}{@{}H}{Quote style} & \multicolumn{1}{@{}H}{Style variants} \\
   \cmidrule(r){1-1}\cmidrule{2-2}
+  austrian	& quotes, guillemets \\
   croatian	& quotes, guillemets, guillemets\*\\
   danish	& quotes, guillemets \\
   dutch		& -- \\
@@ -677,15 +679,15 @@ This command may be used in the configuration file or in the document preamble. 
   \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias} \\
   \cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule{4-4}
   american	& english/american	&
-	  naustrian	& austrian		\\
-  australian	& english/british	&
 	  newzealand	& english/british	\\
-  austrian	& german/quotes		&
+  australian	& english/british	&
 	  ngerman	& german		\\
-  brazil	& brazilian 		&
+  austrian	& austrian/quotes		&
 	  norsk		& norwegian		\\
-  brazilian	& portuguese/brazilian	&
+  brazil	& brazilian 		&
 	  norwegian	& norwegian/guillemets	\\
+  brazilian	& portuguese/brazilian	&
+	  nswissgerman	& siwssgerman		\\
   british	& english/british	&
 	  nynorsk	& norwegian		\\
   canadian	& english/american	&
@@ -699,10 +701,12 @@ This command may be used in the configuration file or in the document preamble. 
   french	& french/quotes		&
 	  swiss		& german/swiss		\\
   german	& german/quotes		&
-	  UKenglish	& british		\\
+	  swissgerman	& german/swiss		\\
   italian	& italian/guillemets	&
-	  USenglish	& american		\\
+	  UKenglish	& british		\\
   mexican	& spanish/mexican	&
+	  USenglish	& american		\\
+  naustrian	& austrian		&
 						\\
   \bottomrule
 \end{tabularx}

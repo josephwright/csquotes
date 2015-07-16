@@ -9,6 +9,18 @@
 
 % Predefined backend styles
 
+\DeclareQuoteStyle[quotes]{austrian}% verified
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.05em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteleft}
+\DeclareQuoteStyle[guillemets]{austrian}% verified
+  {\guillemotright}
+  {\guillemotleft}
+  [0.025em]
+  {\guilsinglright}
+  {\guilsinglleft}
 \DeclareQuoteStyle[quotes]{croatian}% verified
   {\quotedblbase}
   {\textquotedblright}
@@ -201,6 +213,7 @@
 
 % Predefined aliases
 
+\DeclareQuoteAlias[quotes]{austrian}{austrian}
 \DeclareQuoteAlias[quotes]{croatian}{croatian}
 \DeclareQuoteAlias[quotes]{danish}{danish}
 \DeclareQuoteAlias[american]{english}{american}
@@ -210,9 +223,9 @@
 \DeclareQuoteAlias[british]{english}{australian}% unsure
 \DeclareQuoteAlias[british]{english}{newzealand}% unsure
 \DeclareQuoteAlias[quotes]{french}{french}
-\DeclareQuoteAlias[quotes]{german}{austrian}
 \DeclareQuoteAlias[quotes]{german}{german}
 \DeclareQuoteAlias[swiss]{german}{swiss}
+\DeclareQuoteAlias[swiss]{german}{swissgerman}
 \DeclareQuoteAlias[guillemets]{italian}{italian}
 \DeclareQuoteAlias[guillemets]{norwegian}{norwegian}
 \DeclareQuoteAlias[brazilian]{portuguese}{brazilian}
@@ -230,12 +243,14 @@
 \DeclareQuoteAlias{british}{ukenglish}
 \DeclareQuoteAlias{german}{ngerman}
 \DeclareQuoteAlias{austrian}{naustrian}
+\DeclareQuoteAlias{swissgerman}{nswissgerman}
 \DeclareQuoteAlias{norwegian}{norsk}
 \DeclareQuoteAlias{norwegian}{nynorsk}
 \DeclareQuoteAlias{portuguese}{portuges}
 
 % Language options
 
+\DeclareQuoteOption{austrian}
 \DeclareQuoteOption{danish}
 \DeclareQuoteOption{english}
 \DeclareQuoteOption{french}
