@@ -1300,7 +1300,7 @@ The active quotes provided by this package may depend on or benefit from the \st
 \subsection{Output Encodings}
 \label{hnt:onc}
 
-The \acr{OT1} font encoding, which is the default output encoding of \latex, merely includes the quotation marks used in English. You will need an encoding like \acr{T1}, \acr{LY1}, or, with \xetex or \luatex, \acr{EU1}\slash \acr{EU2}, in order to get guillemets or baseline quotation marks. This package deliberately refrains from providing any workarounds for the \acr{OT1} legacy encoding. If you need \acr{T1} or some other extended encoding for some of the quotation marks, you will most likely need it anyway to get proper hyphenation for the respective language. See \tabref{tab:out} for a list of common quotation marks included in \acr{T1}, \acr{LY1}, and \acr{EU1}\slash \acr{EU2}.
+The \acr{OT1} font encoding, which is the default output encoding of \latex, merely includes the quotation marks used in English. You will need an encoding like \acr{T1}, \acr{LY1}, or, with \xetex or \luatex, \acr{TU}, in order to get guillemets or baseline quotation marks. This package deliberately refrains from providing any workarounds for the \acr{OT1} legacy encoding. If you need \acr{T1} or some other extended encoding for some of the quotation marks, you will most likely need it anyway to get proper hyphenation for the respective language. See \tabref{tab:out} for a list of common quotation marks included in \acr{T1}, \acr{LY1}, and \acr{TU}.
 
 \begin{table}
 \tablesetup
@@ -1323,7 +1323,7 @@ The \acr{OT1} font encoding, which is the default output encoding of \latex, mer
   \cmd{guilsinglright}		& \mksample[60]{\guilsinglright} \\
   \bottomrule
 \end{tabularx}
-\caption[Quotation Marks]{Quotation Marks Provided by Encodings \acr{T1}, \acr{LY1}, \acr{EU1}\slash \acr{EU2}}
+\caption[Quotation Marks]{Quotation Marks Provided by Encodings \acr{T1}, \acr{LY1}, \acr{ETU}}
 \label{tab:out}
 \end{table}
 
@@ -1459,7 +1459,7 @@ The \prm{code} may be arbitrary \latex code which redefines vulnerable commands 
 \subsection{Registering Quotation Marks}
 \label{aut:sfc}
 
-In order to track punctuation marks inside quotations, this package requires that all quotation marks be transparent to the space factor, \ie that they have a space factor code of zero. This setting is specific to the output encoding. Settings for the encodings \acr{OT1}, \acr{OT2}, \acr{OT4}, \acr{T1}, \acr{LY1}, \acr{LGR}, \acr{T2A}, \acr{T2B}, \acr{T2C}, \acr{LCY}, \acr{X2}, and \acr{EU1}\slash \acr{EU2} are provided by default. Other encodings may be set up in the configuration file using the following command:
+In order to track punctuation marks inside quotations, this package requires that all quotation marks be transparent to the space factor, \ie that they have a space factor code of zero. This setting is specific to the output encoding. Settings for the encodings \acr{OT1}, \acr{OT2}, \acr{OT4}, \acr{T1}, \acr{LY1}, \acr{LGR}, \acr{T2A}, \acr{T2B}, \acr{T2C}, \acr{LCY}, \acr{X2}, and \acr{ETU} are provided by default. Other encodings may be set up in the configuration file using the following command:
 
 \begin{ltxsyntax}
 \cmditem{DeclareQuoteGlyph}{encoding}{position}
@@ -1532,6 +1532,10 @@ The scope of these hooks must always be confined to a group.
 This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified}, \emph{renamed}, or \emph{removed} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The \opt{version} option from \secref{opt:opt} may be helpful in this case. The numbers on the right indicate the relevant section of this manual.
 
 \begin{changelog}
+
+\begin{release}{5.1g}{2016-01-31}
+\item Update for new \acr{TU} Unicode encoding
+\end{release}
 
 \begin{release}{5.1f}{2015-07-18}
 \item Update \opt{(n)swissgerman} and \opt{(n)austrian} quote styles

@@ -401,6 +401,23 @@
 \DeclareQuoteGlyph{EU2}{"2039}% = angle quot. mark, left-pointing single  = \guilsinglleft
 \DeclareQuoteGlyph{EU2}{"203A}% = angle quot. mark, right-pointing single = \guilsinglright
 
+% Unicode (2016/02/01 ownards)
+\DeclareQuoteGlyph{TU}{"0022}% = neutral quot. mark, double              = \textquotedbl
+\DeclareQuoteGlyph{TU}{"0027}% = neutral quot. mark, single              = \textquotesingle
+\DeclareQuoteGlyph{TU}{"00AB}% = angle quot. mark, left-pointing double  = \guillemotleft
+\DeclareQuoteGlyph{TU}{"00BB}% = angle quot. mark, right-pointing double = \guillemotright
+\DeclareQuoteGlyph{TU}{"2018}% = comma quot. mark, single turned         = \textquoteleft
+\DeclareQuoteGlyph{TU}{"2019}% = comma quot. mark, single                = \textquoteright
+\DeclareQuoteGlyph{TU}{"201A}% = comma quot. mark, low single            = \quotesinglbase
+\DeclareQuoteGlyph{TU}{"201B}% = comma quot. mark, single reversed       = n/a
+\DeclareQuoteGlyph{TU}{"201C}% = comma quot. mark, double turned         = \textquotedblleft
+\DeclareQuoteGlyph{TU}{"201D}% = comma quot. mark, double                = \textquotedblright
+\DeclareQuoteGlyph{TU}{"201E}% = comma quot. mark, low double            = \quotedblbase
+\DeclareQuoteGlyph{TU}{"201F}% = comma quot. mark, double reversed       = n/a
+\DeclareQuoteGlyph{TU}{"2039}% = angle quot. mark, left-pointing single  = \guilsinglleft
+\DeclareQuoteGlyph{TU}{"203A}% = angle quot. mark, right-pointing single = \guilsinglright
+
+
 \endinput
 
 % Auxiliary commands for some styles
