@@ -129,6 +129,12 @@
   {\guillemotright}
   {\textquotedblleft} 
   {\textquotedblright}
+\DeclareQuoteStyle{icelandic}
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.05em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteleft}
 \DeclareQuoteStyle[quotes]{italian}
   {\textquotedblleft}
   {\textquotedblright}
@@ -255,6 +261,7 @@
 \DeclareQuoteOption{english}
 \DeclareQuoteOption{french}
 \DeclareQuoteOption{german}
+\DeclareQuoteOption{icelandic}
 \DeclareQuoteOption{italian}
 \DeclareQuoteOption{norwegian}
 \DeclareQuoteOption{spanish}
