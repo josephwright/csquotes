@@ -25,7 +25,27 @@
      {Outdated 'etoolbox' package}
      {Upgrade to etoolbox v1.7 (2008/06/28) or later.\MessageBreak
       I found: '\csuse{ver@etoolbox.sty}'.\MessageBreak
-      This is a fatal error. I'm aborting now.}%
+      This is a fatal error. I'm aborting now.}%\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{xparse}
+\usepackage{xcolor}
+
+\NewDocumentCommand\MyMacro{k_}{%
+    \IfNoValueTF{#1}{%
+        \mathbf{A}
+    }{%
+        A_{\textcolor{red}{#1}}
+    }%
+}
+
+\begin{document}
+
+With a subscript: $\MyMacro_{\pi}$ 
+
+Without any subscript: $\MyMacro$ 
+
+\end{document}
    \endinput}
 
 \@ifpackageloaded{inputenc}
@@ -2254,13 +2274,13 @@
 \newrobustcmd*{\fixligatures}{%
   \ifhmode
     \ifnum\spacefactor>3000
-      \relax
+      \kern0pt
     \else
       \ifnum\spacefactor=1007
-        \relax
+        \kern0pt
       \else
         \ifnum\spacefactor=1008
-          \relax
+          \kern0pt
         \fi
       \fi
     \fi
