@@ -2408,10 +2408,6 @@ Without any subscript: $\MyMacro$
     {\csq@info{Checking for multilingual support..}%
      \@ifpackageloaded{polyglossia}
        {\csq@info{... found 'polyglossia' package}%
-	\csq@warning
-	  {Using preliminary 'polyglossia' interface.\MessageBreak
-           Some of the multilingual features may not\MessageBreak
-	   work as expected\@gobble}%
 	\def\csq@main@language{\xpg@main@language}%
 	\csq@hook@multilang}
        {\@ifpackageloaded{babel}
