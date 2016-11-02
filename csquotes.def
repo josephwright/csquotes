@@ -1,5 +1,5 @@
 \ProvidesFile{csquotes.def}
-  [2016/01/31 v5.1g csquotes generic definitions (JAW)]
+  [2016/07/14 v5.1h csquotes generic definitions (JAW)]
 
 % Set defaults
 
@@ -39,6 +39,12 @@
   [0.025em]
   {\quotesinglbase}
   {\textquoteright}
+\DeclareQuoteStyle{czech} 
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.025em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteleft}
 \DeclareQuoteStyle[quotes]{danish}
   {\quotedblbase}
   {\textquotedblleft}
@@ -182,6 +188,12 @@
   [0.05em]
   {\textquoteleft}
   {\textquoteright}
+\DeclareQuoteStyle{slovak} 
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.025em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteleft}
 \DeclareQuoteStyle[spanish]{spanish}% verified
   {\guillemotleft}
   [\guillemotright]
