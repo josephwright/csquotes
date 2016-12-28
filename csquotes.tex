@@ -578,7 +578,7 @@ This environment combines \env{displaycquote} with \env{hyphenrules}. Apart from
 \section{Auxiliary Commands}
 \label{aux}
 
-When quoting text in a formal way, any changes applied to the quoted material, such as omissions, insertions, or alterations, are typically marked as such by using the ellipsis mark and square brackets or parentheses. Use the following commands to indicate such changes in formal quotations:
+When quoting text in a formal way, any changes applied to the quoted material, such as omissions, insertions, or alterations, are typically marked as such by using square brackets or parentheses and, where appropriate, ellipses. Use the following commands to indicate such changes in formal quotations:
 
 \begin{ltxsyntax}
 
@@ -604,6 +604,16 @@ By default, \cmd{textins} will enclose the \prm{text} added to the quoted materi
 \begin{ltxcode}[escapechar={\%},escapebegin={\rmfamily}]
 \textins{text}	%= \textins{text} %
 \textins*{T}ext	%= \textins*{T}ext %
+\end{ltxcode}
+%
+The deletion of individual letters may be indicated with the following command:
+
+\cmditem{textdel}{text}
+
+By default, \cmd{textdel} will output two square brackets. The omitted \prm{text} is not output.
+
+\begin{ltxcode}[escapechar={\%},escapebegin={\rmfamily}]
+	text\textdel{s}	%= text\textdel{s} %
 \end{ltxcode}
 %
 See \secref{cfg:elp} on how to configure the appearance of ellipses and insertions.
@@ -1010,10 +1020,10 @@ This definition is restored automatically whenever the \opt{autopunct} package o
 
 \end{ltxsyntax}
 
-\subsection{Configuring Ellipses}
+\subsection{Configuring Auxiliary Commands}
 \label{cfg:elp}
 
-The appearance of ellipses and insertions formatted with the auxiliary commands from \secref{aux} is controlled by five hooks. When \cmd{textelp} is used with an empty argument (ellipsis only), it will execute \cmd{mktextelp}. When used with a non-empty \prm{text} argument (ellipsis and insertion), the \prm{text} will be passed as an argument to \cmd{mktextelpins}. The starred form will pass the \prm{text} to \cmd{mktextinselp} instead. These are the default definitions:
+The appearance of ellipses and insertions formatted with the auxiliary commands from \secref{aux} is controlled by six hooks. When \cmd{textelp} is used with an empty argument (ellipsis only), it will execute \cmd{mktextelp}. When used with a non-empty \prm{text} argument (ellipsis and insertion), the \prm{text} will be passed as an argument to \cmd{mktextelpins}. The starred form will pass the \prm{text} to \cmd{mktextinselp} instead. These are the default definitions:
 
 \begin{ltxcode}[showspaces=true]
 \newcommand{<<\mktextelp>>}{[\textellipsis\unkern]}
@@ -1026,6 +1036,12 @@ The \cmd{textins} command passes its \prm{text} argument to \cmd{mktextins} for 
 \begin{ltxcode}[showspaces=true]
 \newcommand{<<\mktextins>>}[1]{[#1]}
 \newcommand{<<\mktextmod>>}[1]{[#1]}
+\end{ltxcode}
+%
+The \cmd{textdel} command passes its \prm{text} argument to \cmd{mktextdel} for further processing. This is the default definition (note that the argument is not output):
+
+\begin{ltxcode}[showspaces=true]
+\newcommand{<<\mktextdel>>}[1]{[]}
 \end{ltxcode}
 %
 You may redefine the above hooks to change the format of the printed output. For example, if you prefer replacements to be indicated by «[\textellipsis text]» rather than «[\textellipsis\unkern] [text]», redefine \cmd{mktextelpins} accordingly:
@@ -1532,6 +1548,10 @@ The scope of these hooks must always be confined to a group.
 This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified}, \emph{renamed}, or \emph{removed} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The \opt{version} option from \secref{opt:opt} may be helpful in this case. The numbers on the right indicate the relevant section of this manual.
 
 \begin{changelog}
+
+\begin{release}{5.1i}{2016-??-??}
+	\item Add \cmd{textdel} auxiliary command.\see{aux}
+\end{release}
 
 \begin{release}{5.1h}{2016-07-14}
 \item Adapt \cmd{fixligatures} to work correctly with \luatex
