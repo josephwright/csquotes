@@ -20,9 +20,6 @@ unpackfiles = {""}
 -- Release a TDS-style zip
 packtdszip  = true
 
--- No tests for this bundle
-testfildir = ""
-
 -- Detail how to set the version automatically
 versionfiles = {"*.def", "*.sty", "*.tex"}
 function setversion_update_line(line, date, release)
