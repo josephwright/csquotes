@@ -1137,7 +1137,7 @@
   \csq@ifnested
     {\csq@err@nbquote}
     {\csq@getpunct{%
-       \ifbool{inner}
+       \ifboolexpr{ bool {inner} and bool {hmode} }
          {\csq@bquote@ii}
 	 {\ifbool{csdisplay}
 	    {\csq@bquote@i}
