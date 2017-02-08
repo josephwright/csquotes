@@ -173,7 +173,7 @@
 % Grouping control
 
 \protected\def\csq@bqgroup{%
-  \bgroup\leavevmode
+  \begingroup\leavevmode
   \csq@glevel\currentgrouplevel
   \csq@gtype\currentgrouptype}
 
@@ -186,7 +186,7 @@
   \else
     \csq@err@gtype
   \fi
-  \egroup}
+  \endgroup}
 
 \AtEndDocument{%
   \ifnum\csq@qlevel>\z@
