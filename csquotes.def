@@ -276,6 +276,7 @@
 \DeclareQuoteOption{icelandic}
 \DeclareQuoteOption{italian}
 \DeclareQuoteOption{norwegian}
+\DeclareQuoteOption{portuguese}
 \DeclareQuoteOption{spanish}
 \DeclareQuoteOption{swedish}
 
