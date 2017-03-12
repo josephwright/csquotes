@@ -130,6 +130,18 @@
   [0.025em]
   {\guilsinglleft}
   {\guilsinglright}
+\DeclareQuoteStyle[guillemets]{galician}
+  {\guillemotleft}
+  {\guillemotright}
+  [0.025em]
+  {\textquotedblleft}
+  {\textquotedblright}
+\DeclareQuoteStyle[quotes]{galician}
+  {\textquotedblleft}
+  {\textquotedblright}
+  [0.05em]
+  {\textquoteleft}
+  {\textquoteright}
 \DeclareQuoteStyle{greek}% verified
   {\guillemotleft}
   {\guillemotright}
@@ -241,6 +253,7 @@
 \DeclareQuoteAlias[british]{english}{australian}% unsure
 \DeclareQuoteAlias[british]{english}{newzealand}% unsure
 \DeclareQuoteAlias[quotes]{french}{french}
+\DeclareQuoteAlias[quotes]{galician}{galician}
 \DeclareQuoteAlias[quotes]{german}{german}
 \DeclareQuoteAlias[swiss]{german}{swiss}
 \DeclareQuoteAlias[swiss]{german}{swissgerman}
@@ -272,6 +285,7 @@
 \DeclareQuoteOption{danish}
 \DeclareQuoteOption{english}
 \DeclareQuoteOption{french}
+\DeclareQuoteOption{galician}
 \DeclareQuoteOption{german}
 \DeclareQuoteOption{icelandic}
 \DeclareQuoteOption{italian}
