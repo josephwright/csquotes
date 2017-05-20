@@ -151,7 +151,7 @@
 \DeclareQuoteStyle{greek}% verified
   {\guillemotleft}
   {\guillemotright}
-  {\textquotedblleft} 
+  {\textquotedblleft}
   {\textquotedblright}
 \DeclareQuoteStyle{icelandic}
   {\quotedblbase}
@@ -206,7 +206,7 @@
   [0.05em]
   {\textquoteleft}
   {\textquoteright}
-\DeclareQuoteStyle{slovak} 
+\DeclareQuoteStyle{slovak}
   {\quotedblbase}
   {\textquotedblleft}
   [0.025em]
