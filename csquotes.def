@@ -39,12 +39,18 @@
   [0.025em]
   {\quotesinglbase}
   {\textquoteright}
-\DeclareQuoteStyle{czech} 
+\DeclareQuoteStyle[quotes]{czech}
   {\quotedblbase}
   {\textquotedblleft}
   [0.025em]
   {\quotesinglbase}
   {\fixligatures\textquoteleft}
+\DeclareQuoteStyle[guillemets]{czech}
+  {\guillemotright}
+  {\guillemotleft}
+  [0.025em]
+  {\guilsinglright}
+  {\guilsinglleft}
 \DeclareQuoteStyle[quotes]{danish}
   {\quotedblbase}
   {\textquotedblleft}
@@ -255,6 +261,7 @@
 \DeclareQuoteAlias[quotes]{french}{french}
 \DeclareQuoteAlias[quotes]{galician}{galician}
 \DeclareQuoteAlias[quotes]{german}{german}
+\DeclareQuoteAlias[quotes]{czech}{czech}
 \DeclareQuoteAlias[swiss]{german}{swiss}
 \DeclareQuoteAlias[swiss]{german}{swissgerman}
 \DeclareQuoteAlias[guillemets]{italian}{italian}
@@ -282,6 +289,7 @@
 % Language options
 
 \DeclareQuoteOption{austrian}
+\DeclareQuoteOption{czech}
 \DeclareQuoteOption{danish}
 \DeclareQuoteOption{english}
 \DeclareQuoteOption{french}
