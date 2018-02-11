@@ -171,6 +171,12 @@
   [0.025em]
   {\textquotedblleft}
   {\textquotedblright}
+\DeclareQuoteStyle{latvian}
+  {\quotedblbase}
+  {\textquotedblright}
+  [0.05em]
+  {\quotesinglbase}
+  {\textquoteright}
 \DeclareQuoteStyle[guillemets]{norwegian}
   {\guillemotleft}
   {\guillemotright}
@@ -297,6 +303,7 @@
 \DeclareQuoteOption{german}
 \DeclareQuoteOption{icelandic}
 \DeclareQuoteOption{italian}
+\DeclareQuoteOption{latvian}
 \DeclareQuoteOption{norwegian}
 \DeclareQuoteOption{portuguese}
 \DeclareQuoteOption{spanish}
