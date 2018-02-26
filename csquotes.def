@@ -189,6 +189,21 @@
   [0.05em]
   {\quotesinglbase}
   {\textquoteright}
+\DeclareQuoteStyle[guillemets]{polish}
+  {\quotedblbase}
+  {\textquotedblright}
+  {\guillemotleft}
+  {\guillemotright}
+\DeclareQuoteStyle[guillemets*]{polish}
+  {\quotedblbase}
+  {\textquotedblright}
+  {\guillemotright}
+  {\guillemotleft}
+\DeclareQuoteStyle[quotes]{polish}
+  {\quotedblbase}
+  {\textquotedblright}
+  {\quotesinglbase}
+  {\textquoteright}
 \DeclareQuoteStyle[brazilian]{portuguese}% verified
   {\textquotedblleft}
   {\textquotedblright}
@@ -272,6 +287,7 @@
 \DeclareQuoteAlias[swiss]{german}{swissgerman}
 \DeclareQuoteAlias[guillemets]{italian}{italian}
 \DeclareQuoteAlias[guillemets]{norwegian}{norwegian}
+\DeclareQuoteAlias[guillemets]{polish}{polish}
 \DeclareQuoteAlias[brazilian]{portuguese}{brazilian}
 \DeclareQuoteAlias[portuguese]{portuguese}{portuguese}
 \DeclareQuoteAlias[mexican]{spanish}{mexican}
@@ -305,6 +321,7 @@
 \DeclareQuoteOption{italian}
 \DeclareQuoteOption{latvian}
 \DeclareQuoteOption{norwegian}
+\DeclareQuoteOption{polish}
 \DeclareQuoteOption{portuguese}
 \DeclareQuoteOption{spanish}
 \DeclareQuoteOption{swedish}
