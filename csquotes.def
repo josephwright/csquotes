@@ -86,7 +86,7 @@
   [0.05em]
   {\textquotedblleft}
   {\textquotedblright}
-\DeclareQuoteStyle{estonian}
+\DeclareQuoteStyle{estonian}% verified
   {\quotedblbase}
   {\textquotedblleft}
   [0.05em]
