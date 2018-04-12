@@ -20,24 +20,25 @@ unpackfiles = { }
 -- Release a TDS-style zip
 packtdszip  = true
 
--- Detail how to set the version automatically
-versionfiles = {"*.def", "*.sty", "*.tex"}
-function setversion_update_line(line, date, release)
-  local date = string.gsub(date, "%-", "/")
-  -- Code
-  if string.match(line,  "^  %[%d%d%d%d/%d%d/%d%d") then
-    line = string.gsub(line, "%d%d%d%d/%d%d/%d%d [^ ]*", date ..  " " .. release)
+-- Detail how to set the tag automatically
+tagfiles = {"*.def", "*.sty", "*.tex"}
+function update_tag(file,content,tagname,tagdate)
+  if string.match(file, "%.tex$") then
+    return string.gsub(content,
+      "\n  %[%d%d%d%d/%d%d/%d%d", -- ]
+      "\n  %[%d%d%d%d/%d%d/%d%d [^ ]*"  -- ]
+        .. tagdate .. " " .. tagname)
+  else
+    return string.gsub(content,
+      "\n  revision=%{v%d%.%d.?},\n  date=%{%d%d%d%d/%d%d/%d%d%}",
+      "\n  revision=%{" .. tagname .. "%},\n  date=%{" .. tagdate .. "%}")
   end
-  -- Docs
-  if string.match(line,  "^  date=") then
-    line = string.gsub(line, "{[^}]*}", "{" .. date .."}")
-  end
-  if string.match(line,  "^  revision=") then
-    line = string.gsub(line, "{[^}]*}", "{" .. release .."}")
-  end
-  return line
+  return contents
 end
 
 -- Find and run the build system
 kpse.set_program_name ("kpsewhich")
-dofile (kpse.lookup ("l3build.lua"))
+if not release_date then
+  dofile(kpse.lookup("l3build.lua"))
+end
+
