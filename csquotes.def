@@ -1,5 +1,5 @@
 \ProvidesFile{csquotes.def}
-  [2018/04/13 v5.2d csquotes generic definitions (JAW)]
+  [2019/05/10 v5.2e csquotes generic definitions (JAW)]
 
 % Set defaults
 
@@ -270,11 +270,6 @@
   [0.025em]
   {\guilsinglright}
   {\guilsinglleft}
-\DeclareQuoteStyle{ukrainian}
-  {\guillemotleft}
-  {\guillemotright}
-  {\quotedblbase}
-  {\textquotedblleft}
 
 % Plain style for PDF strings
 

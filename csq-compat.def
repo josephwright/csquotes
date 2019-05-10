@@ -1,5 +1,5 @@
 \ProvidesFile{csq-compat.def}
-  [2018/04/113 v5.2d csquotes backwards compatibility (JAW)]
+  [2019/05/10 v5.2e csquotes backwards compatibility (JAW)]
 
 \def\csq@getversion#1{%
   \expandafter\csq@getversion@i
