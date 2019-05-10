@@ -159,6 +159,11 @@
   {\guillemotright}
   {\textquotedblleft}
   {\textquotedblright}
+\DeclareQuoteStyle{hungarian}
+  {\quotedblbase}
+  {\textquotedblright}
+  {\guillemotright}
+  {\guillemotleft}
 \DeclareQuoteStyle{icelandic}
   {\quotedblbase}
   {\textquotedblleft}
@@ -312,6 +317,7 @@
 \DeclareQuoteAlias{brazilian}{brazil}
 \DeclareQuoteAlias{british}{UKenglish}
 \DeclareQuoteAlias{british}{ukenglish}
+\DeclareQuoteAlias{hungarian}{magyar}
 \DeclareQuoteAlias{german}{ngerman}
 \DeclareQuoteAlias{austrian}{naustrian}
 \DeclareQuoteAlias{swissgerman}{nswissgerman}
