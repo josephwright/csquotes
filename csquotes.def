@@ -232,18 +232,18 @@
   {\guillemotright}
   {\quotedblbase}
   {\textquotedblleft}
-\DeclareQuoteStyle[mexican]{spanish}
-  {\textquotedblleft}
-  {\textquotedblright}
-  [0.05em]
-  {\textquoteleft}
-  {\textquoteright}
 \DeclareQuoteStyle{slovak}
   {\quotedblbase}
   {\textquotedblleft}
   [0.025em]
   {\quotesinglbase}
   {\fixligatures\textquoteleft}
+\DeclareQuoteStyle[mexican]{spanish}
+  {\textquotedblleft}
+  {\textquotedblright}
+  [0.05em]
+  {\textquoteleft}
+  {\textquoteright}
 \DeclareQuoteStyle[spanish]{spanish}% verified
   {\guillemotleft}
   [\guillemotright]
