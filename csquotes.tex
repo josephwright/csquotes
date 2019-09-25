@@ -156,6 +156,7 @@ This option controls multilingual support. It requires either the \sty{babel} pa
   hungarian & \\
   icelandic & \\
   italian	& guillemets, quotes \\
+  latin	& \raggedright italianguillemets, germanquotes, germanguillemets, britishquotes, americanquotes \tabularnewline
   latvian   & \\
   norwegian	& guillemets, quotes \\
   polish	& guillemets, guillemets\*\\
@@ -650,8 +651,9 @@ If available, this package will load the configuration file \path{csquotes.cfg}.
   french	& quotes, quotes\*, guillemets, guillemets\*\\
   german	& quotes, guillemets, swiss \\
   greek		& -- \\
-  italian	& guillemets, quotes \\
   icelandic & -- \\
+  italian	& guillemets, quotes \\
+  latin	& \raggedright italianguillemets, germanquotes, germanguillemets, britishquotes, americanquotes \tabularnewline
   latvian & \\
   norwegian	& guillemets, quotes \\
   polish & 1-- \\
@@ -703,35 +705,35 @@ This command may be used in the configuration file or in the document preamble. 
   \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias} \\
   \cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule{4-4}
   american	& english/american	&
-	  newzealand	& english/british	\\
+    naustrian	& austrian		\\
   australian	& english/british	&
-	  ngerman	& german		\\
+	  newzealand	& english/british	\\
   austrian	& austrian/quotes		&
-	  norsk		& norwegian		\\
+	  ngerman	& german		\\
   brazil	& brazilian 		&
-	  norwegian	& norwegian/guillemets	\\
+	  norsk		& norwegian		\\
   brazilian	& portuguese/brazilian	&
-	  nswissgerman	& swissgerman		\\
+	  norwegian	& norwegian/guillemets	\\
   british	& english/british	&
-	  nynorsk	& norwegian		\\
+	  nswissgerman	& swissgerman		\\
   canadian	& english/american	&
-	  portuges	& portuguese		\\
+	  nynorsk	& norwegian		\\
   croatian	& croatian/quotes	&
-	  portuguese	& portuguese/portuguese \\
+	  portuges	& portuguese		\\
   danish	& danish/quotes		&
-	  spanish	& spanish/spanish	\\
+	  portuguese	& portuguese/portuguese \\
   english	& english/american	&
-	  swedish	& swedish/quotes	\\
+	  spanish	& spanish/spanish	\\
   french	& french/quotes		&
-	  swiss		& german/swiss		\\
+	  swedish	& swedish/quotes	\\
   german	& german/quotes		&
-	  swissgerman	& german/swiss		\\
+	  swiss		& german/swiss		\\
   italian	& italian/guillemets	&
+	  swissgerman	& german/swiss		\\
+  latin	& latin/italianguillemets	&
 	  UKenglish	& british		\\
   mexican	& spanish/mexican	&
 	  USenglish	& american		\\
-  naustrian	& austrian		&
-						\\
   \bottomrule
 \end{tabularx}
 \caption[Language Aliases]{Language Aliases Defined by Default}

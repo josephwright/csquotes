@@ -304,6 +304,12 @@
 \DeclareQuoteAlias[mexican]{spanish}{mexican}
 \DeclareQuoteAlias[spanish]{spanish}{spanish}
 \DeclareQuoteAlias[quotes]{swedish}{swedish}
+\DeclareQuoteAlias{italian}{latin/italianguillemets}
+\DeclareQuoteAlias[italianguillemets]{latin}{latin}
+\DeclareQuoteAlias{german}{latin/germanquotes}
+\DeclareQuoteAlias[guillemets]{german}{latin/germanguillemets}
+\DeclareQuoteAlias{british}{latin/britishquotes}
+\DeclareQuoteAlias{american}{latin/americanquotes}
 
 % Babel aliases
 
@@ -331,6 +337,7 @@
 \DeclareQuoteOption{german}
 \DeclareQuoteOption{icelandic}
 \DeclareQuoteOption{italian}
+\DeclareQuoteOption{latin}
 \DeclareQuoteOption{latvian}
 \DeclareQuoteOption{norwegian}
 \DeclareQuoteOption{polish}
