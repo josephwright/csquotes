@@ -207,6 +207,9 @@
 \protected\def\csq@warning#1{%
   \PackageWarning{csquotes}{#1}}
 
+\protected\def\csq@warning@noline#1{%
+  \PackageWarningNoLine{csquotes}{#1}}
+
 \protected\def\csq@info#1{%
   \iftoggle{csq@quiet}
     {}
@@ -778,20 +781,33 @@
      \endgroup}}
 
 \def\csq@resetstyle{%
+  \ifundef\babelname
+    {\csq@resetstyle@i{\languagename}}%
+    {\csq@resetstyle@i{\babelname}}}
+
+\def\csq@resetstyle@i#1{%
+  \begingroup
+  \edef\csq@tempa{\endgroup
+    \noexpand\csq@resetstyle@ii{#1}}%
+  \csq@tempa}
+
+\def\csq@resetstyle@ii#1{%
   \ifnum\csq@reset=\@ne
-    \ifx\csq@currentstyle\languagename
+    \ifx\csq@currentstyle#1
     \else
-      \ifcsundef{csq@qstyle@\languagename}
-        {\csq@warn@style\languagename
+      \ifcsundef{csq@qstyle@#1}
+        {\csq@warn@style#1
          \csq@setstyle{fallback}}
-        {\csq@setstyle{\languagename}}%
+        {\csq@setstyle{#1}}%
     \fi
   \fi}
 
 \def\csq@savelang{%
   \ifdef\csq@mainlang
     {}
-    {\edef\csq@mainlang{\languagename}}}
+    {\ifdef\babelname
+       {\edef\csq@mainlang{\babelname}}
+       {\edef\csq@mainlang{\langname}}}}
 
 \def\csq@resetlang{%
   \ifdef\csq@mainlang
@@ -1139,10 +1155,10 @@
     {\csq@getpunct{%
        \ifboolexpr{ bool {inner} and bool {hmode} }
          {\csq@bquote@ii}
-	 {\ifbool{csdisplay}
-	    {\csq@bquote@i}
-	    {\iftoggle{csq@parbox}\csq@bquote@ii\csq@bquote@i}}%
-	 {#1}{#2}{#3}{#4}{#5}{#6}}}}
+         {\ifbool{csdisplay}
+            {\csq@bquote@i}
+            {\iftoggle{csq@parbox}\csq@bquote@ii\csq@bquote@i}}%
+         {#1}{#2}{#3}{#4}{#5}{#6}}}}
 
 % {<init>}{<endinit>}{<citehook>}{<cite>}{<punct>}{<text>}{<apunct>}<tpunct>
 
@@ -1325,8 +1341,8 @@
     {\ifdimgreater\lastskip\z@
        {\unskip\unspace}
        {\ifnumgreater\lastpenalty\z@
-	  {\unpenalty\unspace}
-	  {}}}
+          {\unpenalty\unspace}
+          {}}}
     {}}
 
 % {<punct>}{<cite>}
@@ -1762,8 +1778,8 @@
         \def\@inpenc@undefined@##1{\def\inputencodingname{##1}}%
         \@inpenc@undefined
         \ifdefstring\inputencodingname{utf8}
-	  {\aftergroup\@firstoftwo}
-	  {\aftergroup\@secondoftwo}%
+          {\aftergroup\@firstoftwo}
+          {\aftergroup\@secondoftwo}%
         \endgroup}}}
   {\def\csq@ifutfenc{%
      \csq@ifucs
@@ -2138,7 +2154,7 @@
   \def\openinnerquote{\csq@pdf@oiqmark}%
   \def\closeinnerquote{\csq@pdf@ciqmark}}
 
-%% Author interface to internal marks 
+%% Author interface to internal marks
 
 \newrobustcmd*{\initoquote}{%
   \csq@resetstyle
@@ -2250,7 +2266,14 @@
   \@ifpackageloaded{polyglossia}
     {\@ifpackagelater{polyglossia}{2009/11/20}
        {\let\@frenchquotespace\@empty}
-       {}}
+       {}%
+     \@ifpackagelater{polyglossia}{2019/10/27}
+       {}
+       {\csq@warning@noline{%
+          Outdated 'polyglossia' version detected.\MessageBreak
+          csquotes works best with 'polyglossia' v1.45\MessageBreak
+          (2019/10/27) or above, but you are using\MessageBreak
+          '\csuse{ver@polyglossia.sty}'}}}
     {}}
 
 % German
@@ -2392,19 +2415,21 @@
     {\csq@info{Checking for multilingual support..}%
      \@ifpackageloaded{polyglossia}
        {\csq@info{... found 'polyglossia' package}%
-	\def\csq@main@language{\xpg@main@language}%
-	\csq@hook@multilang}
+        \ifundef\mainbabelname
+          {\def\csq@main@language{\xpg@main@language}}
+          {\def\csq@main@language{\mainbabelname}}%
+        \csq@hook@multilang}
        {\@ifpackageloaded{babel}
-	  {\csq@info{... found 'babel' package}%
+          {\csq@info{... found 'babel' package}%
            \def\csq@main@language{\bbl@main@language}%
            \csq@hook@multilang}
-	  {\csq@info{... none found}%
+          {\csq@info{... none found}%
            \csq@hook@nomultilang}}}
     {\@ifpackageloaded{polyglossia}
        {}
        {\@ifpackageloaded{babel}
-	  {}
-	  {\csq@hook@nomultilang}}}%
+          {}
+          {\csq@hook@nomultilang}}}%
   \undef\csq@hook@multilang
   \undef\csq@hook@nomultilang
   \@ifpackageloaded{hyperref}

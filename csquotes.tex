@@ -136,7 +136,7 @@ This option selects a fixed quotation style. The style is used throughout the do
 
 \optitem[tryonce]{autostyle}{\opt{true}, \opt{false}, \opt{try}, \opt{once}, \opt{tryonce}}
 
-This option controls multilingual support. It requires either the \sty{babel} package or the \sty{polyglossia} package.\footnote{Note that \sty{polyglossia} support is currently in a preliminary state because \sty{polyglossia} is lacking a proper interface for other packages. In practice, this means that \sty{csquotes} can detect the language (\eg \texttt{english}) but not the language variant (\eg \texttt{british}).} \kvopt{autostyle}{true} continuously adapts the quote style to the current document language; \opt{once} will only adapt the style once so that it matches the main language of the document. \kvopt{autostyle}{try} and \opt{tryonce} are similar to \opt{true} and \opt{once} if multilingual support is available but will not issue any warnings if not (\ie if neither \sty{babel} nor \sty{polyglossia} have been loaded). The short form \opt{autostyle} is equivalent to \kvopt{autostyle}{true}. See also \secref{bas:set}.
+This option controls multilingual support. It requires either the \sty{babel} package or the \sty{polyglossia} package.\footnote{Note that \sty{polyglossia} support requires \sty{polyglossia}~v1.45 (2019/10/27) or above. With older \sty{polyglossia} versions language variants will not be detected as expected.} \kvopt{autostyle}{true} continuously adapts the quote style to the current document language; \opt{once} will only adapt the style once so that it matches the main language of the document. \kvopt{autostyle}{try} and \opt{tryonce} are similar to \opt{true} and \opt{once} if multilingual support is available but will not issue any warnings if not (\ie if neither \sty{babel} nor \sty{polyglossia} have been loaded). The short form \opt{autostyle} is equivalent to \kvopt{autostyle}{true}. See also \secref{bas:set}.
 
 \begin{table}
 \tablesetup
@@ -1562,6 +1562,9 @@ The scope of these hooks must always be confined to a group.
 This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified}, \emph{renamed}, or \emph{removed} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The \opt{version} option from \secref{opt:opt} may be helpful in this case. The numbers on the right indicate the relevant section of this manual.
 
 \begin{changelog}
+\begin{release}{5.??}{2019-??-??}
+\item Improved \sty{polyglossia} support\see{opt:opt}
+\end{release}
 
 \begin{release}{5.2d}{2018-04-13}
 \item Update for \LaTeX{} kernel changes in 2018
