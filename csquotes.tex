@@ -139,34 +139,33 @@ This option selects a fixed quotation style. The style is used throughout the do
 This option controls multilingual support. It requires either the \sty{babel} package or the \sty{polyglossia} package.\footnote{Note that \sty{polyglossia} support requires \sty{polyglossia}~v1.45 (2019/10/27) or above. With older \sty{polyglossia} versions language variants will not be detected as expected.} \kvopt{autostyle}{true} continuously adapts the quote style to the current document language; \opt{once} will only adapt the style once so that it matches the main language of the document. \kvopt{autostyle}{try} and \opt{tryonce} are similar to \opt{true} and \opt{once} if multilingual support is available but will not issue any warnings if not (\ie if neither \sty{babel} nor \sty{polyglossia} have been loaded). The short form \opt{autostyle} is equivalent to \kvopt{autostyle}{true}. See also \secref{bas:set}.
 
 \begin{table}
-\tablesetup
-\begin{tabularx}{\columnwidth}{@{}P@{}X@{}}
-  \toprule
-  \multicolumn{1}{@{}H}{Option key} & \multicolumn{1}{@{}H}{Possible values} \\
-  \cmidrule(r){1-1}\cmidrule{2-2}
-  austrian	& quotes, guillemets \\
-  croatian	& quotes, guillemets, guillemets\*\\
-  czech		& quotes, guillemets \\
-  danish	& quotes, guillemets, topquotes \\
-  english	& american, british\\
-  estonian   & \\
-  french	& quotes, quotes\*, guillemets, guillemets\*\\
-  galician	& quotes, guillemets \\
-  german	& quotes, guillemets, swiss \\
-  hungarian & \\
-  icelandic & \\
-  italian	& guillemets, quotes \\
-  latvian   & \\
-  norwegian	& guillemets, quotes \\
-  polish	& guillemets, guillemets\*\\
-  portuguese	& portuguese, brazilian \\
-  slovak & \\
-  spanish	& spanish, mexican \\
-  swedish	& quotes, guillemets, guillemets\*\\
-  \bottomrule
-\end{tabularx}
-\caption[Language Options]{Language Options Defined by Default}
-\label{tab:lng}
+  \tablesetup
+  \begin{tabularx}{\columnwidth}{@{}P@{}X@{}}
+    \toprule
+    \multicolumn{1}{@{}H}{Option key} & \multicolumn{1}{@{}H}{Possible values}     \\
+    \cmidrule(r){1-1}\cmidrule{2-2}
+    austrian                          & quotes, guillemets                         \\
+    croatian                          & quotes, guillemets, guillemets\*           \\
+    czech                             & quotes, guillemets                         \\
+    danish                            & quotes, guillemets, topquotes              \\
+    english                           & american, british                          \\
+    estonian                          &                                            \\
+    french                            & quotes, quotes\*, guillemets, guillemets\* \\
+    galician                          & quotes, guillemets                         \\
+    german                            & quotes, guillemets, swiss                  \\
+    hungarian                         &                                            \\
+    italian                           & guillemets, quotes                         \\
+    latvian                           &                                            \\
+    norwegian                         & guillemets, quotes                         \\
+    polish                            & guillemets, guillemets\*                   \\
+    portuguese                        & portuguese, brazilian                      \\
+    serbian                           & quotes, guillemets, german                 \\
+    spanish                           & spanish, mexican                           \\
+    swedish                           & quotes, guillemets, guillemets\*           \\
+    \bottomrule
+  \end{tabularx}
+  \caption[Language Options]{Language Options Defined by Default}
+  \label{tab:lng}
 \end{table}
 
 \varitem{language}{\prm{variant}}
@@ -634,36 +633,32 @@ See \secref{cfg:elp} on how to configure the appearance of ellipses and insertio
 If available, this package will load the configuration file \path{csquotes.cfg}. You may use this file to define new quote styles and aliases or redefine existing ones.
 
 \begin{table}
-\tablesetup
-\begin{tabularx}{\columnwidth}{@{}P@{}X@{}}
-  \toprule
-  \multicolumn{1}{@{}H}{Quote style} & \multicolumn{1}{@{}H}{Style variants} \\
-  \cmidrule(r){1-1}\cmidrule{2-2}
-  austrian	& quotes, guillemets \\
-  croatian	& quotes, guillemets, guillemets\*\\
-  czech		& quotes, guillemets \\
-  danish	& quotes, guillemets \\
-  dutch		& -- \\
-  english	& american, british\\
-  estonian & -- \\
-  finnish	& -- \\
-  french	& quotes, quotes\*, guillemets, guillemets\*\\
-  german	& quotes, guillemets, swiss \\
-  greek		& -- \\
-  italian	& guillemets, quotes \\
-  icelandic & -- \\
-  latvian & \\
-  norwegian	& guillemets, quotes \\
-  polish & 1-- \\
-  portuguese	& portuguese, brazilian \\
-  russian	& -- \\
-  spanish	& spanish, mexican \\
-  slovak & -- \\
-  swedish	& quotes, guillemets, guillemets\*\\
-  \bottomrule
-\end{tabularx}
-\caption[Styles and Variants]{Quote Styles and Style Variants Defined by Default}
-\label{tab:sty}
+  \tablesetup
+  \begin{tabularx}{\columnwidth}{@{}P@{}X@{}}
+    \toprule
+    \multicolumn{1}{@{}H}{Quote style} & \multicolumn{1}{@{}H}{Style variants}      \\
+    \cmidrule(r){1-1}\cmidrule{2-2}
+    austrian                           & quotes, guillemets                         \\
+    croatian                           & quotes, guillemets, guillemets\*           \\
+    czech                              & quotes, guillemets                         \\
+    danish                             & quotes, guillemets                         \\
+    dutch                              & --                                         \\
+    english                            & american, british                          \\
+    finnish                            & --                                         \\
+    french                             & quotes, quotes\*, guillemets, guillemets\* \\
+    german                             & quotes, guillemets, swiss                  \\
+    greek                              & --                                         \\
+    italian                            & guillemets, quotes                         \\
+    norwegian                          & guillemets, quotes                         \\
+    portuguese                         & portuguese, brazilian                      \\
+    russian                            & --                                         \\
+    serbian                            & quotes, guillemets, german                 \\
+    spanish                            & spanish, mexican                           \\
+    swedish                            & quotes, guillemets, guillemets\*           \\
+    \bottomrule
+  \end{tabularx}
+  \caption[Styles and Variants]{Quote Styles and Style Variants Defined by Default}
+  \label{tab:sty}
 \end{table}
 
 \subsection{Defining Quote Styles}
@@ -696,46 +691,31 @@ This command may be used in the configuration file or in the document preamble. 
 \end{ltxsyntax}
 
 \begin{table}
-\tablesetup
-\begin{tabularx}{\columnwidth}{@{}Q@{}X@{}Q@{}X@{}}
-  \toprule
-  \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias} &
-  \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias} \\
-  \cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule{4-4}
-  american	& english/american	&
-	  newzealand	& english/british	\\
-  australian	& english/british	&
-	  ngerman	& german		\\
-  austrian	& austrian/quotes		&
-	  norsk		& norwegian		\\
-  brazil	& brazilian 		&
-	  norwegian	& norwegian/guillemets	\\
-  brazilian	& portuguese/brazilian	&
-	  nswissgerman	& swissgerman		\\
-  british	& english/british	&
-	  nynorsk	& norwegian		\\
-  canadian	& english/american	&
-	  portuges	& portuguese		\\
-  croatian	& croatian/quotes	&
-	  portuguese	& portuguese/portuguese \\
-  danish	& danish/quotes		&
-	  spanish	& spanish/spanish	\\
-  english	& english/american	&
-	  swedish	& swedish/quotes	\\
-  french	& french/quotes		&
-	  swiss		& german/swiss		\\
-  german	& german/quotes		&
-	  swissgerman	& german/swiss		\\
-  italian	& italian/guillemets	&
-	  UKenglish	& british		\\
-  mexican	& spanish/mexican	&
-	  USenglish	& american		\\
-  naustrian	& austrian		&
-						\\
-  \bottomrule
-\end{tabularx}
-\caption[Language Aliases]{Language Aliases Defined by Default}
-\label{tab:als}
+  \tablesetup
+  \begin{tabularx}{\columnwidth}{@{}Q@{}X@{}Q@{}X@{}}
+    \toprule
+    \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias} &
+    \multicolumn{1}{@{}H}{Alias} & \multicolumn{1}{@{}H}{Backend style or alias}                                        \\
+    \cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule{4-4}
+    american                     & english/american                              & newzealand   & english/british       \\
+    australian                   & english/british                               & ngerman      & german                \\
+    austrian                     & austrian/quotes                               & norsk        & norwegian             \\
+    brazil                       & brazilian                                     & norwegian    & norwegian/guillemets  \\
+    brazilian                    & portuguese/brazilian                          & nswissgerman & swissgerman           \\
+    british                      & english/british                               & nynorsk      & norwegian             \\
+    canadian                     & english/american                              & portuges     & portuguese            \\
+    croatian                     & croatian/quotes                               & portuguese   & portuguese/portuguese \\
+    danish                       & danish/quotes                                 & serbian      & serbian/quotes        \\
+    english                      & english/american                              & spanish      & spanish/spanish       \\
+    french                       & french/quotes                                 & swedish      & swedish/quotes        \\
+    german                       & german/quotes                                 & swiss        & german/swiss          \\
+    italian                      & italian/guillemets                            & swissgerman  & german/swiss          \\
+    mexican                      & spanish/mexican                               & UKenglish    & british               \\
+    naustrian                    & austrian                                      & USenglish    & american              \\
+    \bottomrule
+  \end{tabularx}
+  \caption[Language Aliases]{Language Aliases Defined by Default}
+  \label{tab:als}
 \end{table}
 
 \subsection{Defining Package Options}
@@ -1564,6 +1544,10 @@ This revision history is a list of changes relevant to users of this package. Ch
 \begin{changelog}
 \begin{release}{5.??}{2019-??-??}
 \item Improved \sty{polyglossia} support\see{opt:opt}
+\end{release}
+
+\begin{release}{5.2f}{2019-11-12}
+\item Added language option \opt{serbian}\see{opt:opt}
 \end{release}
 
 \begin{release}{5.2d}{2018-04-13}
