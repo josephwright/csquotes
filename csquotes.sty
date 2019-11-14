@@ -803,7 +803,9 @@
     {}
     {\ifdef\babelname
        {\edef\csq@mainlang{\babelname}}
-       {\edef\csq@mainlang{\langname}}}}
+       {\ifdef\languagename
+          {\edef\csq@mainlang{\languagename}}
+          {\csq@warn@multilang{Cannot detect main document language}}}}}
 
 \def\csq@resetlang{%
   \ifdef\csq@mainlang
