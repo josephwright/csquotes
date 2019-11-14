@@ -790,7 +790,7 @@
   \fi}
 
 \def\csq@resetstyle@i#1{%
-  \ifx\csq@currentstyle#1
+  \ifx\csq@currentstyle#1\relax
   \else
     \ifcsundef{csq@qstyle@#1}
       {\csq@warn@style#1
