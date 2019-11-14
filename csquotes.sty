@@ -781,25 +781,21 @@
      \endgroup}}
 
 \def\csq@resetstyle{%
-  \ifundef\babelname
-    {\csq@resetstyle@i{\languagename}}%
-    {\csq@resetstyle@i{\babelname}}}
+  \ifnum\csq@reset=\@ne
+    \ifundef\babelname
+      {\ifundef\languagename
+         {\csq@warn@multilang{Cannot detect current language}}
+         {\csq@resetstyle@i{\languagename}}}%
+      {\csq@resetstyle@i{\babelname}}%
+  \fi}
 
 \def\csq@resetstyle@i#1{%
-  \begingroup
-  \edef\csq@tempa{\endgroup
-    \noexpand\csq@resetstyle@ii{#1}}%
-  \csq@tempa}
-
-\def\csq@resetstyle@ii#1{%
-  \ifnum\csq@reset=\@ne
-    \ifx\csq@currentstyle#1
-    \else
-      \ifcsundef{csq@qstyle@#1}
-        {\csq@warn@style#1
-         \csq@setstyle{fallback}}
-        {\csq@setstyle{#1}}%
-    \fi
+  \ifx\csq@currentstyle#1\relax
+  \else
+    \ifcsundef{csq@qstyle@#1}
+      {\csq@warn@style#1
+       \csq@setstyle{fallback}}
+      {\csq@setstyle{#1}}%
   \fi}
 
 \def\csq@savelang{%
