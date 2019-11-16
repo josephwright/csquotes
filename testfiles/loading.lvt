@@ -1,0 +1,11 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage{babel}
+
+% csquotes dependencies
+\usepackage{keyval}
+\usepackage{etoolbox}
+
+\START
+\usepackage{csquotes}
+\END

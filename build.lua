@@ -11,6 +11,8 @@ module = "csquotes"
 installfiles = {"*.cfg", "*.def", "*.sty"}
 sourcefiles  = installfiles
 
+checkruns = 2
+
 -- Documentation is standalone
 typesetfiles = {"*.tex"}
 

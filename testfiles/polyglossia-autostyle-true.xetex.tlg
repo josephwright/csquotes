@@ -1,0 +1,175 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+Package polyglossia Info: Option: English, variant=american.
+Completed box being shipped out [1]
+\vbox(633.0+0.0)x407.0
+.\glue 16.0
+.\vbox(617.0+0.0)x345.0, shifted 62.0
+..\vbox(12.0+0.0)x345.0, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x345.0
+..\glue 25.0
+..\glue(\lineskip) 0.0
+..\vbox(550.0+0.0)x345.0, glue set 477.88898fil
+...\write-{}
+...\write1{\protect \selectlanguage *[variant=british]{english}}
+...\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+...\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+...\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+...\glue(\topskip) 3.06
+...\hbox(6.94+0.10999)x345.0, glue set 239.15fil
+....\hbox(0.0+0.0)x15.0
+....\TU/lmr/m/n/10 Lorem
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 ‘
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\TU/lmr/m/n/10 british’
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 dolor
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\baselineskip) 4.95001
+...\hbox(6.94+1.94998)x345.0, glue set 238.97fil
+....\hbox(0.0+0.0)x15.0
+....\TU/lmr/m/n/10 Lorem
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 „
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\TU/lmr/m/n/10 dutch“
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 dolor
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\write1{\bgroup }
+...\write1{\@writefile{toc}{\bgroup }}
+...\write1{\@writefile{lof}{\bgroup }}
+...\write1{\@writefile{lot}{\bgroup }}
+...\write1{\protect \selectlanguage *[variant=american]{english}}
+...\write1{\@writefile{toc}{\protect \selectlanguage *[variant=american]{english\ETC.}
+...\write1{\@writefile{lof}{\protect \selectlanguage *[variant=american]{english\ETC.}
+...\write1{\@writefile{lot}{\protect \selectlanguage *[variant=american]{english\ETC.}
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\baselineskip) 3.11002
+...\hbox(6.94+0.10999)x345.0, glue set 217.56999fil
+....\hbox(0.0+0.0)x15.0
+....\TU/lmr/m/n/10 Lorem
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 “
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\TU/lmr/m/n/10 american”
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 dolor
+....\glue 3.33 plus 1.665 minus 1.11
+....\write1{\egroup }
+....\write1{\@writefile{toc}{\egroup }}
+....\write1{\@writefile{lof}{\egroup }}
+....\write1{\@writefile{lot}{\egroup }}
+....\glue 3.33 plus 1.665 minus 1.11
+....\write1{\protect \selectlanguage *[variant=british]{english}}
+....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\baselineskip) 4.95001
+...\hbox(6.94+0.10999)x345.0, glue set 239.15fil
+....\hbox(0.0+0.0)x15.0
+....\TU/lmr/m/n/10 Lorem
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 ‘
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\TU/lmr/m/n/10 british’
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 dolor
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\write1{\bgroup }
+...\write1{\@writefile{toc}{\bgroup }}
+...\write1{\@writefile{lof}{\bgroup }}
+...\write1{\@writefile{lot}{\bgroup }}
+...\write1{\protect \selectlanguage *{french}}
+...\write1{\@writefile{toc}{\protect \selectlanguage *{french}}}
+...\write1{\@writefile{lof}{\protect \selectlanguage *{french}}}
+...\write1{\@writefile{lot}{\protect \selectlanguage *{french}}}
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\baselineskip) 4.84001
+...\hbox(7.05+1.94998)x345.0, glue set 230.34fil
+....\hbox(0.0+0.0)x15.0
+....\TU/lmr/m/n/10 Lorem
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 „
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\TU/lmr/m/n/10 french“
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 dolor
+....\glue 3.33 plus 1.665 minus 1.11
+....\write1{\egroup }
+....\write1{\@writefile{toc}{\egroup }}
+....\write1{\@writefile{lof}{\egroup }}
+....\write1{\@writefile{lot}{\egroup }}
+....\glue 3.33 plus 1.665 minus 1.11
+....\write1{\protect \selectlanguage *[variant=british]{english}}
+....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\write1{\bgroup }
+...\write1{\@writefile{toc}{\bgroup }}
+...\write1{\@writefile{lof}{\bgroup }}
+...\write1{\@writefile{lot}{\bgroup }}
+...\write1{\protect \selectlanguage *{german}}
+...\write1{\@writefile{toc}{\protect \selectlanguage *{german}}}
+...\write1{\@writefile{lof}{\protect \selectlanguage *{german}}}
+...\write1{\@writefile{lot}{\protect \selectlanguage *{german}}}
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\baselineskip) 3.11002
+...\hbox(6.94+2.05998)x345.0, glue set 219.23fil
+....\hbox(0.0+0.0)x15.0
+....\TU/lmr/m/n/10 Lorem
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 „
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\TU/lmr/m/n/10 ngerman“
+....\glue 3.33 plus 1.665 minus 1.11
+....\TU/lmr/m/n/10 dolor
+....\glue 3.33 plus 1.665 minus 1.11
+....\write1{\egroup }
+....\write1{\@writefile{toc}{\egroup }}
+....\write1{\@writefile{lof}{\egroup }}
+....\write1{\@writefile{lot}{\egroup }}
+....\glue 3.33 plus 1.665 minus 1.11
+....\write1{\protect \selectlanguage *[variant=british]{english}}
+....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 23.34
+..\hbox(6.66+0.0)x345.0, glue set 170.0fil
+...\glue 0.0 plus 1.0fil
+...\TU/lmr/m/n/10 1
+...\glue 0.0 plus 1.0fil
