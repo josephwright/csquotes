@@ -1,0 +1,34 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage{iftex}
+\iftutex
+\else
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\fi
+\usepackage{babel}
+
+\usepackage{csquotes}
+
+\newcommand{\lorem}{Lorem ipsum dolor sit amet consectur.}
+
+\begin{document}
+\START
+\showoutput
+
+\lorem\ \lorem\ \lorem\
+
+\blockquote{\lorem\ \lorem\ \lorem}
+
+\lorem\ \lorem\ \lorem\
+
+
+\blockquote{\lorem\ \lorem\ \lorem\ \lorem\ \lorem\ \lorem\ 
+  \lorem\ \lorem\ \lorem\ \lorem\ \lorem\ \lorem}
+
+\lorem\ \lorem\ \lorem\
+
+\vfil\break
+\END
+\end{document}
