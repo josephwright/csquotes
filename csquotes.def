@@ -1,5 +1,5 @@
 \ProvidesFile{csquotes.def}
-  [2019/05/10 v5.2e csquotes generic definitions (JAW)]
+  [2019-11-15 v5.2h csquotes generic definitions (JAW)]
 
 % Set defaults
 
@@ -232,18 +232,36 @@
   {\guillemotright}
   {\quotedblbase}
   {\textquotedblleft}
-\DeclareQuoteStyle{slovak}
+\DeclareQuoteStyle[quotes]{serbian}% verified
+  {\quotedblbase}
+  {\textquotedblright}
+  [0.05em]
+  {\textquoteright}
+  {\textquoteright}
+\DeclareQuoteStyle[guillemets]{serbian}% verified
+  {\guillemotright}
+  {\guillemotleft}
+  [0.025em]
+  {\textquoteright}
+  {\textquoteright}
+\DeclareQuoteStyle[german]{serbian}% verified
   {\quotedblbase}
   {\textquotedblleft}
-  [0.025em]
-  {\quotesinglbase}
-  {\fixligatures\textquoteleft}
+  [0.05em]
+  {\textquoteright}
+  {\textquoteright}
 \DeclareQuoteStyle[mexican]{spanish}
   {\textquotedblleft}
   {\textquotedblright}
   [0.05em]
   {\textquoteleft}
   {\textquoteright}
+\DeclareQuoteStyle{slovak}
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.025em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteleft}
 \DeclareQuoteStyle[spanish]{spanish}% verified
   {\guillemotleft}
   [\guillemotright]
@@ -301,6 +319,7 @@
 \DeclareQuoteAlias[guillemets]{polish}{polish}
 \DeclareQuoteAlias[brazilian]{portuguese}{brazilian}
 \DeclareQuoteAlias[portuguese]{portuguese}{portuguese}
+\DeclareQuoteAlias[quotes]{serbian}{serbian}
 \DeclareQuoteAlias[mexican]{spanish}{mexican}
 \DeclareQuoteAlias[spanish]{spanish}{spanish}
 \DeclareQuoteAlias[quotes]{swedish}{swedish}
@@ -325,6 +344,7 @@
 \DeclareQuoteAlias{norwegian}{norsk}
 \DeclareQuoteAlias{norwegian}{nynorsk}
 \DeclareQuoteAlias{portuguese}{portuges}
+\DeclareQuoteAlias{serbian}{serbianc}
 
 % Language options
 

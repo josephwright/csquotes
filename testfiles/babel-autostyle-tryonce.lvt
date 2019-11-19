@@ -1,0 +1,37 @@
+\input{regression-test.tex}
+\documentclass[american,dutch,french,ngerman,british]{article}
+\usepackage{iftex}
+\iftutex
+\else
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\fi
+\usepackage{babel}
+
+\usepackage[autostyle=tryonce]{csquotes}
+
+
+\begin{document}
+\START
+\showoutput
+
+Lorem \enquote{british} dolor
+
+\foreignlanguage{dutch}{Lorem \enquote{dutch} dolor}
+
+\begin{otherlanguage}{american}
+Lorem \enquote{american} dolor
+\end{otherlanguage}
+
+Lorem \enquote{british} dolor
+
+\selectlanguage{french}
+Lorem \enquote{french} dolor
+
+\selectlanguage{ngerman}
+Lorem \enquote{ngerman} dolor
+
+\vfil\break
+\END
+\end{document}

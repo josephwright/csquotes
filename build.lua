@@ -11,6 +11,8 @@ module = "csquotes"
 installfiles = {"*.cfg", "*.def", "*.sty"}
 sourcefiles  = installfiles
 
+checkruns = 2
+
 -- Documentation is standalone
 typesetfiles = {"*.tex"}
 
@@ -23,15 +25,14 @@ packtdszip  = true
 -- Detail how to set the tag automatically
 tagfiles = {"*.def", "*.sty", "*.tex"}
 function update_tag(file,content,tagname,tagdate)
-  if string.match(file, "%.tex$") then
+  if not string.match(file, "%.tex$") then
     return string.gsub(content,
-      "\n  %[%d%d%d%d/%d%d/%d%d", -- ]
-      "\n  %[%d%d%d%d/%d%d/%d%d [^ ]*"  -- ]
-        .. tagdate .. " " .. tagname)
+      "\n  %[%d%d%d%d%-%d%d%-%d%d [^ ]*v%d%.%d.?", -- ]
+      "\n  [" .. tagdate .. " " .. "v" .. tagname)
   else
     return string.gsub(content,
-      "\n  revision=%{v%d%.%d.?},\n  date=%{%d%d%d%d/%d%d/%d%d%}",
-      "\n  revision=%{" .. tagname .. "%},\n  date=%{" .. tagdate .. "%}")
+      "\n  revision=%{v%d%.%d.?%},\n  date=%{%d%d%d%d%-%d%d%-%d%d%}",
+      "\n  revision={v" .. tagname .. "},\n  date={" .. tagdate .. "}")
   end
   return contents
 end
