@@ -807,18 +807,21 @@
           {\edef\csq@mainlang{\languagename}}
           {\csq@warn@multilang{Cannot detect main document language}}}}}
 
+\newcommand*{\csq@otherlang@star}{\csuse{otherlanguage*}}
+\newcommand*{\csq@otherlang@star@end}{\csuse{endotherlanguage*}}
+
 \def\csq@resetlang{%
   \ifdef\csq@mainlang
-    {\csuse{otherlanguage*}{\csq@mainlang}%
+    {\expandafter\csq@otherlang@star\expandafter{\csq@mainlang}%
      \let\csq@resetlang\relax}
     {}}
 
 \protected\long\def\csq@switchlang#1{%
   \ifdef\csq@mainlang
     {\begingroup
-     \csuse{otherlanguage*}{\csq@mainlang}%
+     \expandafter\csq@otherlang@star\expandafter{\csq@mainlang}%
      #1%
-     \csuse{endotherlanguage*}%
+     \csq@otherlang@star@end
      \endgroup}
     {#1}}
 
@@ -826,9 +829,9 @@
 
 \def\csq@lang#1{%
   \csq@savelang
-  \lowercase{\csuse{otherlanguage*}{#1}}}
+  \lowercase{\csq@otherlang@star{#1}}}
 \def\csq@endlang{%
-  \csuse{endotherlanguage*}}
+  \csq@otherlang@star@end}
 
 \def\csq@nolang#1{%
   \begingroup
