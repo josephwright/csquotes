@@ -834,21 +834,22 @@
  \def\csq@tempa{#1}%
  \def\csq@tempb{\MakeUppercase{#1}}%
   \ifx\csq@tempa\csq@tempb
+     \endgroup
      \lowercase{#1}%
   \else
+    \endgroup
      #1%
-  \fi%
-  \endgroup}
+  \fi}
 
 \def\csq@lang#1{%
   \csq@savelang
-  \csuse{otherlanguage*}{\csq@lc@if@uc{#1}}}
+  \csq@lc@if@uc{\csuse{otherlanguage*}{#1}}}
 \def\csq@endlang{%
   \csq@otherlang@star@end}
 
 \def\csq@nolang#1{%
   \begingroup
-  \def\csq@tempa{\csq@lc@if@uc{#1}}%
+  \csq@lc@if@uc{\def\csq@tempa{#1}}%
   \csq@warn@multilang{Cannot switch to language '\csq@tempa'}%
   \endgroup}
 
