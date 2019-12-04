@@ -832,7 +832,7 @@
 \def\csq@lc@if@uc#1{%
  \begingroup
  \def\csq@tempa{#1}%
- \def\csq@tempb{\MakeUppercase{#1}}%
+ \MakeUppercase{\def\csq@tempb{#1}}%
   \ifx\csq@tempa\csq@tempb
      \endgroup
      \lowercase{#1}%
