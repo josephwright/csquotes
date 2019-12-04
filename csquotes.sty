@@ -830,13 +830,15 @@
 % names e.g. in page headers of book.cls et al., while letting mixed-case language
 % names such as USenglish untouched.
 \def\csq@lc@if@uc#1{%
- \def\tempa{#1}%
- \def\tempb{\MakeUppercase{#1}}%
-  \ifx\tempa\tempb
+ \begingroup
+ \def\csq@tempa{#1}%
+ \def\csq@tempb{\MakeUppercase{#1}}%
+  \ifx\csq@tempa\csq@tempb
      \lowercase{#1}%
   \else
      #1%
-  \fi}
+  \fi%
+  \endgroup}
 
 \def\csq@lang#1{%
   \csq@savelang
