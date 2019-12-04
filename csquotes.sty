@@ -825,42 +825,28 @@
      \endgroup}
     {#1}}
 
-% The following checks if a string is completely uppercase. If so, it is lowecased,
-% if not, it is returned as is. This works around issues with uppercased language
-% names e.g. in page headers of book.cls et al., while letting mixed-case language
-% names such as USenglish untouched.
-\def\csq@lc@if@uc#1{%
- \begingroup
- \def\csq@tempa{#1}%
- \MakeUppercase{\def\csq@tempb{#1}}%
-  \ifx\csq@tempa\csq@tempb
-     \endgroup
-     \lowercase{#1}%
-  \else
-    \endgroup
-     #1%
-  \fi}
+% \lowercase: workaround for page headers of book.cls et al.
 
 \def\csq@lang#1{%
   \csq@savelang
-  \csq@lc@if@uc{\csuse{otherlanguage*}{#1}}}
+  \lowercase{\csq@otherlang@star{#1}}}
 \def\csq@endlang{%
   \csq@otherlang@star@end}
 
 \def\csq@nolang#1{%
   \begingroup
-  \csq@lc@if@uc{\def\csq@tempa{#1}}%
+  \lowercase{\def\csq@tempa{#1}}%
   \csq@warn@multilang{Cannot switch to language '\csq@tempa'}%
   \endgroup}
 
 \def\csq@hyph#1{%
   \csq@savelang
-  \csq@hyphenrules{\csq@lc@if@uc{#1}}}
+  \lowercase{\csq@hyphenrules{#1}}}
 \let\csq@endhyph\@empty
 
 \def\csq@nohyph#1{%
   \begingroup
-  \def\csq@tempa{\csq@lc@if@uc{#1}}%
+  \lowercase{\def\csq@tempa{#1}}%
   \csq@warn@multilang{No hyphenation rules for '\csq@tempa'}%
   \endgroup}
 
