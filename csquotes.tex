@@ -1041,7 +1041,7 @@ The \cmd{textdel} command passes its \prm{text} argument to \cmd{mktextdel} for 
 You may redefine the above hooks to change the format of the printed output. For example, if you prefer replacements to be indicated by «[\textellipsis text]» rather than «[\textellipsis\unkern] [text]», redefine \cmd{mktextelpins} accordingly:
 
 \begin{ltxcode}
-\newcommand{<<\mktextelpins>>}[1]{[\textellipsis #1]}
+\renewcommand{<<\mktextelpins>>}[1]{[\textellipsis #1]}
 \end{ltxcode}
 %
 The \cmd{unkern} in the default definitions is required because \cmd{textellipsis} adds asymmetric kerning by default. The kerning after the final dot is similar to the spacing between the dots, which is fine if \cmd{textellipsis} is followed by any text, but undesirable if it is enclosed in brackets.
@@ -1544,6 +1544,7 @@ This revision history is a list of changes relevant to users of this package. Ch
 \begin{changelog}
 
 \begin{release}{5.2j}{2019-12-04}
+\item Fix issue with some combinations of language and document class
 \item Added support for Latin quotations
 \end{release}
 
