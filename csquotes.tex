@@ -155,8 +155,6 @@ This option controls multilingual support. It requires either the \sty{babel} pa
     german                            & quotes, guillemets, swiss                  \\
     hungarian                         &                                            \\
     italian                           & guillemets, quotes                         \\
-    latin                             & \raggedright italianguillemets, germanquotes, germanguillemets,
-                                        britishquotes, americanquotes \tabularnewline
     latvian                           &                                            \\
     norwegian                         & guillemets, quotes                         \\
     polish                            & guillemets, guillemets\*                   \\
@@ -651,8 +649,6 @@ If available, this package will load the configuration file \path{csquotes.cfg}.
     german                             & quotes, guillemets, swiss                  \\
     greek                              & --                                         \\
     italian                            & guillemets, quotes                         \\
-    latin                              & \raggedright italianguillemets, germanquotes, germanguillemets,
-                                         britishquotes, americanquotes \tabularnewline
     norwegian                          & guillemets, quotes                         \\
     portuguese                         & portuguese, brazilian                      \\
     russian                            & --                                         \\
@@ -714,9 +710,8 @@ This command may be used in the configuration file or in the document preamble. 
     french                       & french/quotes                                 & swedish      & swedish/quotes        \\
     german                       & german/quotes                                 & swiss        & german/swiss          \\
     italian                      & italian/guillemets                            & swissgerman  & german/swiss          \\
-    latin                        & latin/italianguillemets                       & UKenglish    & british               \\
-    mexican                      & spanish/mexican                               & USenglish    & american              \\ 
-    naustrian                    & austrian                                                                             \\
+    mexican                      & spanish/mexican                               & UKenglish    & british               \\
+    naustrian                    & austrian                                      & USenglish    & american              \\
     \bottomrule
   \end{tabularx}
   \caption[Language Aliases]{Language Aliases Defined by Default}
@@ -1550,6 +1545,7 @@ This revision history is a list of changes relevant to users of this package. Ch
 
 \begin{release}{5.2j}{2019-12-04}
 \item Fix issue with some combinations of language and document class
+\item Added support for Latin quotations
 \end{release}
 
 
