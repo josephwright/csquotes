@@ -21,23 +21,17 @@
   [0.025em]
   {\guilsinglright}
   {\guilsinglleft}
-\DeclareQuoteStyle[quotes]{croatian}% verified
+\DeclareQuoteStyle[quotes]{croatian}% based on Croatian Orthography by IHJJ (The Institute of Croatian Language and Linguistics)
   {\quotedblbase}
   {\textquotedblright}
-  [0.05em]% unsure
-  {\quotesinglbase}
+  [0.05em]
+  {\textquoteleft}
   {\textquoteright}
-\DeclareQuoteStyle[guillemets]{croatian}% verified
+\DeclareQuoteStyle[guillemets]{croatian}% based on Croatian Orthography by IHJJ (The Institute of Croatian Language and Linguistics)
   {\guillemotright}
   {\guillemotleft}
   [0.025em]
-  {\quotesinglbase}
-  {\textquoteright}
-\DeclareQuoteStyle[guillemets*]{croatian}% verified
-  {\guillemotleft}
-  {\guillemotright}
-  [0.025em]
-  {\quotesinglbase}
+  {\textquoteleft}
   {\textquoteright}
 \DeclareQuoteStyle[quotes]{czech}
   {\quotedblbase}
