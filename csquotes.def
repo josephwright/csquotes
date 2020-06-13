@@ -176,6 +176,12 @@
   [0.025em]
   {\textquotedblleft}
   {\textquotedblright}
+\DeclareQuoteStyle{japanese}
+  {「}
+  {」}
+  [0pt]
+  {『}
+  {』}
 \DeclareQuoteStyle{latvian}
   {\quotedblbase}
   {\textquotedblright}
@@ -356,6 +362,7 @@
 \DeclareQuoteOption{german}
 \DeclareQuoteOption{icelandic}
 \DeclareQuoteOption{italian}
+\DeclareQuoteOption{japanese}
 \DeclareQuoteOption{latin}
 \DeclareQuoteOption{latvian}
 \DeclareQuoteOption{norwegian}
@@ -520,6 +527,10 @@
 \DeclareQuoteGlyph{TU}{"201F}% = comma quot. mark, double reversed       = n/a
 \DeclareQuoteGlyph{TU}{"2039}% = angle quot. mark, left-pointing single  = \guilsinglleft
 \DeclareQuoteGlyph{TU}{"203A}% = angle quot. mark, right-pointing single = \guilsinglright
+\DeclareQuoteGlyph{TU}{"300C}% = LEFT CORNER BRACKET                     = n/a
+\DeclareQuoteGlyph{TU}{"300D}% = RIGHT CORNER BRACKET                    = n/a
+\DeclareQuoteGlyph{TU}{"300E}% = LEFT WHITE CORNER BRACKET               = n/a
+\DeclareQuoteGlyph{TU}{"300F}% = RIGHT WHITE CORNER BRACKET              = n/a
 
 
 \endinput
