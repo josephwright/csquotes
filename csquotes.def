@@ -224,8 +224,8 @@
 \DeclareQuoteStyle{romanian}
   {\quotedblbase}
   {\textquotedblright}
-  {\guillemetleft}
-  {\guillemetright}
+  {\guillemotleft}
+  {\guillemotright}
 \DeclareQuoteStyle{russian}% verified
   {\guillemotleft}
   {\guillemotright}
