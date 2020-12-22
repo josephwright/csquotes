@@ -221,6 +221,11 @@
   [0.05em]
   {\textquotedblleft}
   {\textquotedblright}
+\DeclareQuoteStyle{romanian}
+  {\quotedblbase}
+  {\textquotedblright}
+  {\guillemetleft}
+  {\guillemetright}
 \DeclareQuoteStyle{russian}% verified
   {\guillemotleft}
   {\guillemotright}
