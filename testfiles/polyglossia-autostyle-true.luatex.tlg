@@ -1,7 +1,37 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
 Package polyglossia Info: Option: English, variant=american.
+Package polyglossia Info: Option: English, variant=american.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
+Package polyglossia Info: Option: English, variant=american.
+Package polyglossia Info: Option: English, variant=american.
+Package polyglossia Info: Option: english variant=british.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
+Package polyglossia Info: Option: english variant=british.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
+Package polyglossia Info: Option: english variant=british.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
+Package polyglossia Info: Option: english variant=british.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
 Module polyglossia Info: Language ngerman already loaded; id is 6 on input line ...
+Package polyglossia Info: Option: english variant=british.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
+Package polyglossia Info: Option: english variant=british.
 Completed box being shipped out [1]
 \vbox(633.0+0.0)x407.0, direction TLT
 .\glue 16.0
@@ -86,7 +116,7 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10 c
 ....\kern-0.28 (font)
 ....\TU/lmr/m/n/10 h
-....\TU/lmr/m/n/10 “
+....\TU/lmr/m/n/10 ”
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
 ....\TU/lmr/m/n/10 d
 ....\TU/lmr/m/n/10 o
@@ -111,7 +141,7 @@ h\ETC.}
 h\ETC.}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 3.11
-...\hbox(6.94+0.11)x345.0, glue set 217.56999fil, direction TLT
+...\hbox(6.94+0.11)x345.0, glue set 220.9fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0
 .....\localbrokenpenalty=0
@@ -150,7 +180,6 @@ h\ETC.}
 ....\write1{\@writefile{toc}{\egroup }}
 ....\write1{\@writefile{lof}{\egroup }}
 ....\write1{\@writefile{lot}{\egroup }}
-....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
 ....\write1{\protect \selectlanguage *[variant=british]{english}}
 ....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{englis
 h}\ETC.}
@@ -209,7 +238,7 @@ h}\ETC.}
 ...\write1{\@writefile{lot}{\protect \selectlanguage *{french}}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\baselineskip) 4.84
-...\hbox(7.05+1.95)x345.0, glue set 230.34fil, direction TLT
+...\hbox(7.05+0.11)x345.0, glue set 228.66002fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0
 .....\localbrokenpenalty=0
@@ -224,10 +253,8 @@ h}\ETC.}
 ....\TU/lmr/m/n/10 e
 ....\TU/lmr/m/n/10 m
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\TU/lmr/m/n/10 „
-....\penalty 10000
-....\glue -0.0002
-....\glue 0.0002
+....\TU/lmr/m/n/10 ^^ab
+....\kern1.665
 ....\TU/lmr/m/n/10 f
 ....\TU/lmr/m/n/10 r
 ....\TU/lmr/m/n/10 e
@@ -235,7 +262,8 @@ h}\ETC.}
 ....\TU/lmr/m/n/10 c
 ....\kern-0.28 (font)
 ....\TU/lmr/m/n/10 h
-....\TU/lmr/m/n/10 “
+....\kern1.665
+....\TU/lmr/m/n/10 ^^bb
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
 ....\TU/lmr/m/n/10 d
 ....\TU/lmr/m/n/10 o
@@ -249,7 +277,6 @@ h}\ETC.}
 ....\write1{\@writefile{toc}{\egroup }}
 ....\write1{\@writefile{lof}{\egroup }}
 ....\write1{\@writefile{lot}{\egroup }}
-....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
 ....\write1{\protect \selectlanguage *[variant=british]{english}}
 ....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{englis
 h}\ETC.}
@@ -269,8 +296,8 @@ h}\ETC.}
 ...\write1{\@writefile{lof}{\protect \selectlanguage *{german}}}
 ...\write1{\@writefile{lot}{\protect \selectlanguage *{german}}}
 ...\glue(\parskip) 0.0 plus 1.0
-...\glue(\baselineskip) 3.11
-...\hbox(6.94+2.06)x345.0, glue set 219.23fil, direction TLT
+...\glue(\baselineskip) 4.95
+...\hbox(6.94+2.06)x345.0, glue set 222.56fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0
 .....\localbrokenpenalty=0
@@ -312,7 +339,6 @@ h}\ETC.}
 ....\write1{\@writefile{toc}{\egroup }}
 ....\write1{\@writefile{lof}{\egroup }}
 ....\write1{\@writefile{lot}{\egroup }}
-....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
 ....\write1{\protect \selectlanguage *[variant=british]{english}}
 ....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{englis
 h}\ETC.}
