@@ -354,6 +354,7 @@
 % Language options
 
 \DeclareQuoteOption{austrian}
+\DeclareQuoteOption{croatian}
 \DeclareQuoteOption{czech}
 \DeclareQuoteOption{danish}
 \DeclareQuoteOption{english}
