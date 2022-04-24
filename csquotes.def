@@ -203,13 +203,18 @@
 \DeclareQuoteStyle[guillemets]{polish}
   {\quotedblbase}
   {\textquotedblright}
-  {\guillemotleft}
   {\guillemotright}
+  {\guillemotleft}
 \DeclareQuoteStyle[guillemets*]{polish}
   {\quotedblbase}
   {\textquotedblright}
-  {\guillemotright}
   {\guillemotleft}
+  {\guillemotright}
+\DeclareQuoteStyle[oguillemets]{polish}
+  {\guillemotleft}
+  {\guillemotright}
+  {\quotesinglbase}
+  {\textquoteright}
 \DeclareQuoteStyle[quotes]{polish}
   {\quotedblbase}
   {\textquotedblright}
