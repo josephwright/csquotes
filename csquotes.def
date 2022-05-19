@@ -293,6 +293,11 @@
   [0.025em]
   {\guilsinglright}
   {\guilsinglleft}
+\DeclareQuoteStyle{ukrainian}
+  {\guillemotleft}
+  {\guillemotright}
+  {\quotedblbase}
+  {\textquotedblleft}
 
 % Plain style for PDF strings
 
