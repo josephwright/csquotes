@@ -293,12 +293,18 @@
   [0.025em]
   {\guilsinglright}
   {\guilsinglleft}
-\DeclareQuoteStyle{turkish}
+\DeclareQuoteStyle[quotes]{turkish}
   {\textquotedblleft}
   {\textquotedblright}
   [0.05em]
   {\textquoteleft}
   {\textquoteright}
+\DeclareQuoteStyle[guillemets]{turkish}
+  {\guillemotleft}
+  {\guillemotright}
+  [0.025em]
+  {\guilsinglleft}
+  {\guilsinglright}
 \DeclareQuoteStyle{ukrainian}
   {\guillemotleft}
   {\guillemotright}
