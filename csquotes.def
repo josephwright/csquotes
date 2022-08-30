@@ -255,6 +255,18 @@
   [0.05em]
   {\textquoteright}
   {\textquoteright}
+\DeclareQuoteStyle[guillemets]{slovenian}%
+  {\guillemotright}
+  {\guillemotleft}
+  [0.025em]
+  {\guilsinglright}
+  {\guilsinglleft}
+\DeclareQuoteStyle[quotes]{slovenian}%
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.05em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteleft}
 \DeclareQuoteStyle[mexican]{spanish}
   {\textquotedblleft}
   {\textquotedblright}
@@ -342,6 +354,7 @@
 \DeclareQuoteAlias[brazilian]{portuguese}{brazilian}
 \DeclareQuoteAlias[portuguese]{portuguese}{portuguese}
 \DeclareQuoteAlias[quotes]{serbian}{serbian}
+\DeclareQuoteAlias[guillemets]{slovenian}{slovenian}
 \DeclareQuoteAlias[mexican]{spanish}{mexican}
 \DeclareQuoteAlias[spanish]{spanish}{spanish}
 \DeclareQuoteAlias[quotes]{swedish}{swedish}
@@ -367,6 +380,7 @@
 \DeclareQuoteAlias{norwegian}{nynorsk}
 \DeclareQuoteAlias{portuguese}{portuges}
 \DeclareQuoteAlias{serbian}{serbianc}
+\DeclareQuoteAlias{slovenian}{slovene}
 
 % Language options
 
@@ -386,6 +400,7 @@
 \DeclareQuoteOption{norwegian}
 \DeclareQuoteOption{polish}
 \DeclareQuoteOption{portuguese}
+\DeclareQuoteOption{slovenian}
 \DeclareQuoteOption{spanish}
 \DeclareQuoteOption{swedish}
 
