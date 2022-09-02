@@ -7,6 +7,7 @@ Completed box being shipped out [1]
 ..\vbox(12.0+0.0)x345.0, glue set 12.0fil
 ...\glue 0.0 plus 1.0fil
 ...\hbox(0.0+0.0)x345.0
+....\hbox(0.0+0.0)x345.0
 ..\glue 25.0
 ..\glue(\lineskip) 0.0
 ..\vbox(550.0+0.0)x345.0, glue set 478.00452fil
@@ -43,6 +44,7 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 242.86153fil
 ....\hbox(0.0+0.0)x15.0
@@ -74,6 +76,7 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\write1{\babel@aux{american}{}}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 224.77849fil
 ....\hbox(0.0+0.0)x15.0
@@ -108,6 +111,7 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 239.16707fil
 ....\hbox(0.0+0.0)x15.0
@@ -140,6 +144,7 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\write1{\babel@aux{french}{}}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 240.88936fil
 ....\hbox(0.0+0.0)x15.0
@@ -172,6 +177,7 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\write1{\babel@aux{ngerman}{}}
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+1.94443)x345.0, glue set 229.77858fil
 ....\hbox(0.0+0.0)x15.0
@@ -206,7 +212,8 @@ Completed box being shipped out [1]
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
 ..\glue(\baselineskip) 23.70276
-..\hbox(6.29724+0.0)x345.0, glue set 170.0fil
-...\glue 0.0 plus 1.0fil
-...\T1/lmr/m/n/10 1
-...\glue 0.0 plus 1.0fil
+..\hbox(6.29724+0.0)x345.0
+...\hbox(6.29724+0.0)x345.0, glue set 170.0fil
+....\glue 0.0 plus 1.0fil
+....\T1/lmr/m/n/10 1
+....\glue 0.0 plus 1.0fil
