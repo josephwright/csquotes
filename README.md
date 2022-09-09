@@ -16,7 +16,7 @@ quotes are freely configurable.
 
 ## License
 
-Copyright (c) 2003-2011 Philipp Lehman, 2015-2019,2021 Joseph Wright.
+Copyright (c) 2003-2011 Philipp Lehman, 2015-2019,2021,2022 Joseph Wright.
 Permission is granted to copy, distribute and/or modify this
 software under the terms of the LaTeX Project Public License (LPPL),
 version 1.3c or any later version.
