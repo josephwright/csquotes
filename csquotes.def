@@ -63,11 +63,11 @@
   {\textquoteleft}
   {\textquoteright}
 \DeclareQuoteStyle{dutch}
-  {\quotedblbase}
+  {\textquotedblleft}
   {\textquotedblright}
   [0.05em]
-  {\quotesinglbase}% unsure
-  {\textquoteright}% unsure
+  {\textquoteleft}
+  {\textquoteright}
 \DeclareQuoteStyle[american]{english}% verified
   {\textquotedblleft}
   {\textquotedblright}
