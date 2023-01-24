@@ -188,6 +188,12 @@
   [0.05em]
   {\quotesinglbase}
   {\textquoteright}
+\DeclareQuoteStyle{lithuanian}
+  {\quotedblbase}
+  {\textquotedblleft}
+  [0.05em]
+  {\textquoteright}
+  {\textquoteright}
 \DeclareQuoteStyle[guillemets]{norwegian}
   {\guillemotleft}
   {\guillemotright}
@@ -397,6 +403,7 @@
 \DeclareQuoteOption{japanese}
 \DeclareQuoteOption{latin}
 \DeclareQuoteOption{latvian}
+\DeclareQuoteOption{lithuanian}
 \DeclareQuoteOption{norwegian}
 \DeclareQuoteOption{polish}
 \DeclareQuoteOption{portuguese}
