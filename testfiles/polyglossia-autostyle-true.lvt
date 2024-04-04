@@ -10,6 +10,13 @@
 
 
 \begin{document}
+
+\begin{german}
+Lorem \enquote{ngerman} dolor
+\end{german}
+
+\newpage
+
 \START
 \showoutput
 

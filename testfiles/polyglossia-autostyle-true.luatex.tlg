@@ -39,21 +39,14 @@ Package polyglossia Info: Option: english variant=british.
 LaTeX Info: Redefining \rmfamily on input line ....
 LaTeX Info: Redefining \sffamily on input line ....
 LaTeX Info: Redefining \ttfamily on input line ....
-Module polyglossia Info: Language data for ngerman
-(polyglossia)            loader^^Iloadhyph-de-1996.tex
-(polyglossia)            hyphenation^^I
-(polyglossia)            lefthyphenmin^^I2
-(polyglossia)            patterns^^Ihyph-de-1996.pat.txt
-(polyglossia)            synonyms^^I
-(polyglossia)            righthyphenmin^^I2 on input line ...
-Module polyglossia Info: Language ngerman was not yet loaded; created with id 6 on input line ...
+Module polyglossia Info: Language ngerman already loaded; id is 6 on input line ...
 Package polyglossia Info: Option: english variant=british.
 Package polyglossia Info: Option: english variant=british.
 LaTeX Info: Redefining \rmfamily on input line ....
 LaTeX Info: Redefining \sffamily on input line ....
 LaTeX Info: Redefining \ttfamily on input line ....
 Package polyglossia Info: Option: english variant=british.
-Completed box being shipped out [1]
+Completed box being shipped out [2]
 \vbox(633.0+0.0)x407.0, direction TLT
 .\glue 16.0
 .\vbox(617.0+0.0)x345.0, shifted 62.0, direction TLT
@@ -64,8 +57,6 @@ Completed box being shipped out [1]
 ..\glue 25.0
 ..\glue(\lineskip) 0.0
 ..\vbox(550.0+0.0)x345.0, glue set 477.88895fil, direction TLT
-...\write-{}
-...\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
 ...\glue(\topskip) 3.06
 ...\hbox(6.94+0.11)x345.0, glue set 239.15001fil, direction TLT
 ....\localpar
@@ -326,5 +317,5 @@ Completed box being shipped out [1]
 ..\hbox(6.66+0.0)x345.0, direction TLT
 ...\hbox(6.66+0.0)x345.0, glue set 170.0fil, direction TLT
 ....\glue 0.0 plus 1.0fil
-....\TU/lmr/m/n/10 1
+....\TU/lmr/m/n/10 2
 ....\glue 0.0 plus 1.0fil
