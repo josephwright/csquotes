@@ -1034,22 +1034,22 @@
 
 % PDF strings
 
-\long\def\csq@pdf@quote#1{%
-  \if#1*\relax
+\long\def\csq@pdf@quote#1#{%
+  \if*#1\relax
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
   \fi
     {\csq@pdf@quote@ii}
-    {\csq@pdf@quote@i{#1}}}
+    {\csq@pdf@quote@i #1}}
 
 \long\def\csq@pdf@quote@i#1{%
   \csq@pdf@ooqmark #1\csq@pdf@coqmark}
 \long\def\csq@pdf@quote@ii#1{%
   \csq@pdf@oiqmark #1\csq@pdf@ciqmark}
 
-\long\def\csq@pdf@fquote#1{%
-  \if#1*\relax
+\long\def\csq@pdf@fquote#1#{%
+  \if*#1\relax
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
