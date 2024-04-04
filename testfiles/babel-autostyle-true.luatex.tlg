@@ -53,7 +53,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.95
-...\hbox(6.94+1.95)x345.0, glue set 238.97fil, direction TLT
+...\hbox(6.94+0.11)x345.0, glue set 238.97fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0
 .....\localbrokenpenalty=0
@@ -68,7 +68,7 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10 e
 ....\TU/lmr/m/n/10 m
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\TU/lmr/m/n/10 „
+....\TU/lmr/m/n/10 “
 ....\penalty 10000
 ....\glue -0.0002
 ....\glue 0.0002
@@ -93,7 +93,7 @@ Completed box being shipped out [1]
 ...\write1{\babel@aux{american}{}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 3.11
+...\glue(\baselineskip) 4.95
 ...\hbox(6.94+0.11)x345.0, glue set 220.9fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0

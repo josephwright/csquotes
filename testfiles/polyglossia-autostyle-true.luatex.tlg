@@ -3,6 +3,9 @@ Don't change this file in any respect.
 LaTeX Info: Redefining \rmfamily on input line ....
 LaTeX Info: Redefining \sffamily on input line ....
 LaTeX Info: Redefining \ttfamily on input line ....
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
 Package polyglossia Info: Option: English, variant=american.
 Package polyglossia Info: Option: English, variant=american.
 LaTeX Info: Redefining \rmfamily on input line ....
@@ -11,9 +14,6 @@ LaTeX Info: Redefining \ttfamily on input line ....
 Package polyglossia Info: Option: English, variant=american.
 Package polyglossia Info: Option: English, variant=american.
 Package polyglossia Info: Option: english variant=british.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
 Package polyglossia Info: Option: english variant=british.
 LaTeX Info: Redefining \rmfamily on input line ....
 LaTeX Info: Redefining \sffamily on input line ....
@@ -22,12 +22,32 @@ Package polyglossia Info: Option: english variant=british.
 LaTeX Info: Redefining \rmfamily on input line ....
 LaTeX Info: Redefining \sffamily on input line ....
 LaTeX Info: Redefining \ttfamily on input line ....
+Removing  `luaotfload.node_processor' from `pre_linebreak_filter'.
+Inserting `polyglossia-punct.process' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Removing  `luaotfload.node_processor' from `hpack_filter'.
+Removing  `luaotfload.harf.finalize_hlist' from `hpack_filter'.
+Inserting `polyglossia-punct.process' in `hpack_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Package polyglossia Info: Option: english variant=british.
 Package polyglossia Info: Option: english variant=british.
 LaTeX Info: Redefining \rmfamily on input line ....
 LaTeX Info: Redefining \sffamily on input line ....
 LaTeX Info: Redefining \ttfamily on input line ....
-Module polyglossia Info: Language ngerman already loaded; id is 6 on input line ...
-31
+Package polyglossia Info: Option: english variant=british.
+LaTeX Info: Redefining \rmfamily on input line ....
+LaTeX Info: Redefining \sffamily on input line ....
+LaTeX Info: Redefining \ttfamily on input line ....
+Module polyglossia Info: Language data for ngerman
+(polyglossia)            righthyphenmin^^I2
+(polyglossia)            patterns^^Ihyph-de-1996.pat.txt
+(polyglossia)            hyphenation^^I
+(polyglossia)            synonyms^^I
+(polyglossia)            loader^^Iloadhyph-de-1996.tex
+(polyglossia)            lefthyphenmin^^I2 on input line ...
+Module polyglossia Info: Language ngerman was not yet loaded; created with id 6 on input line ...
+Package polyglossia Info: Option: english variant=british.
 Package polyglossia Info: Option: english variant=british.
 LaTeX Info: Redefining \rmfamily on input line ....
 LaTeX Info: Redefining \sffamily on input line ....
@@ -45,10 +65,7 @@ Completed box being shipped out [1]
 ..\glue(\lineskip) 0.0
 ..\vbox(550.0+0.0)x345.0, glue set 477.88895fil, direction TLT
 ...\write-{}
-...\write1{\protect \selectlanguage *[variant=british]{english}}
-...\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-...\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-...\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+...\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
 ...\glue(\topskip) 3.06
 ...\hbox(6.94+0.11)x345.0, glue set 239.15001fil, direction TLT
 ....\localpar
@@ -89,7 +106,7 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.95
-...\hbox(6.94+1.95)x345.0, glue set 238.97fil, direction TLT
+...\hbox(6.94+0.11)x345.0, glue set 238.97fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0
 .....\localbrokenpenalty=0
@@ -104,7 +121,7 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10 e
 ....\TU/lmr/m/n/10 m
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\TU/lmr/m/n/10 „
+....\TU/lmr/m/n/10 “
 ....\penalty 10000
 ....\glue -0.0002
 ....\glue 0.0002
@@ -128,13 +145,10 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \selectlanguage *[variant=american]{english}}
-...\write1{\@writefile{toc}{\protect \selectlanguage *[variant=american]{english\ETC.}
-...\write1{\@writefile{lof}{\protect \selectlanguage *[variant=american]{english\ETC.}
-...\write1{\@writefile{lot}{\protect \selectlanguage *[variant=american]{english\ETC.}
+...\write1{\@writefile{toc}{\selectlanguage *[variant=american]{english}}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 3.11
+...\glue(\baselineskip) 4.95
 ...\hbox(6.94+0.11)x345.0, glue set 220.9fil, direction TLT
 ....\localpar
 .....\localinterlinepenalty=0
@@ -170,14 +184,8 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10 o
 ....\TU/lmr/m/n/10 r
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\write1{\protect \selectlanguage *[variant=british,ordinalmonthday=false]{eng\ETC.}
-....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british,ordinalmo\ETC.}
-....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british,ordinalmo\ETC.}
-....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british,ordinalmo\ETC.}
-....\write1{\protect \selectlanguage *[variant=british]{english}}
-....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{toc}{\selectlanguage *[variant=british,ordinalmonthday=false]{english}}}
+....\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -220,10 +228,7 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \selectlanguage *{french}}
-...\write1{\@writefile{toc}{\protect \selectlanguage *{french}}}
-...\write1{\@writefile{lof}{\protect \selectlanguage *{french}}}
-...\write1{\@writefile{lot}{\protect \selectlanguage *{french}}}
+...\write1{\@writefile{toc}{\selectlanguage *[]{french}}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.84
@@ -262,21 +267,12 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10 o
 ....\TU/lmr/m/n/10 r
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\write1{\protect \selectlanguage *[variant=french,autospacing=true,thincolons\ETC.}
-....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=french,autospacin\ETC.}
-....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=french,autospacin\ETC.}
-....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=french,autospacin\ETC.}
-....\write1{\protect \selectlanguage *[variant=british]{english}}
-....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{toc}{\selectlanguage *[variant=british,ordinalmonthday=false]{english}}}
+....\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\protect \selectlanguage *{german}}
-...\write1{\@writefile{toc}{\protect \selectlanguage *{german}}}
-...\write1{\@writefile{lof}{\protect \selectlanguage *{german}}}
-...\write1{\@writefile{lot}{\protect \selectlanguage *{german}}}
+...\write1{\@writefile{toc}{\selectlanguage *[]{german}}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.95
@@ -318,14 +314,8 @@ Completed box being shipped out [1]
 ....\TU/lmr/m/n/10 o
 ....\TU/lmr/m/n/10 r
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\write1{\protect \selectlanguage *[variant=german,spelling=new,script=latin,b\ETC.}
-....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=german,spelling=n\ETC.}
-....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=german,spelling=n\ETC.}
-....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=german,spelling=n\ETC.}
-....\write1{\protect \selectlanguage *[variant=british]{english}}
-....\write1{\@writefile{toc}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-....\write1{\@writefile{lof}{\protect \selectlanguage *[variant=british]{english}\ETC.}
-....\write1{\@writefile{lot}{\protect \selectlanguage *[variant=british]{english}\ETC.}
+....\write1{\@writefile{toc}{\selectlanguage *[variant=british,ordinalmonthday=false]{english}}}
+....\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0

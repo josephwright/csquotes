@@ -48,7 +48,7 @@ Completed box being shipped out [1]
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 233.42152fil
 ....\hbox(0.0+0.0)x15.0
-....\setlanguage20 (hyphenmin 2,3)
+....\setlanguage22 (hyphenmin 2,3)
 ....\T1/lmr/m/n/10 `
 ....\penalty 10000
 ....\glue -0.0002
@@ -119,7 +119,7 @@ Completed box being shipped out [1]
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 231.44936fil
 ....\hbox(0.0+0.0)x15.0
-....\setlanguage29 (hyphenmin 2,3)
+....\setlanguage31 (hyphenmin 2,3)
 ....\T1/lmr/m/n/10 `
 ....\penalty 10000
 ....\glue -0.0002

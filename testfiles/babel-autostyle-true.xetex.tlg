@@ -31,11 +31,11 @@ Completed box being shipped out [1]
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.95001
-...\hbox(6.94+1.94998)x345.0, glue set 238.97fil
+...\hbox(6.94+0.10999)x345.0, glue set 238.97fil
 ....\hbox(0.0+0.0)x15.0
 ....\TU/lmr/m/n/10 Lorem
 ....\glue 3.33 plus 1.665 minus 1.11
-....\TU/lmr/m/n/10 „
+....\TU/lmr/m/n/10 “
 ....\penalty 10000
 ....\glue -0.0002
 ....\glue 0.0002
@@ -48,7 +48,7 @@ Completed box being shipped out [1]
 ...\write1{\babel@aux{american}{}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
-...\glue(\baselineskip) 3.11002
+...\glue(\baselineskip) 4.95001
 ...\hbox(6.94+0.10999)x345.0, glue set 220.9fil
 ....\hbox(0.0+0.0)x15.0
 ....\TU/lmr/m/n/10 Lorem
