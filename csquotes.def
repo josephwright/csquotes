@@ -328,6 +328,12 @@
   {\guillemotright}
   {\quotedblbase}
   {\textquotedblleft}
+\DeclareQuoteStyle[british]{welsh}
+  {\textquoteleft}
+  {\textquoteright}
+  [0.05em]
+  {\textquotedblleft}
+  {\textquotedblright}
 
 % Plain style for PDF strings
 
@@ -370,6 +376,7 @@
 \DeclareQuoteAlias[guillemets]{german}{latin/germanguillemets}
 \DeclareQuoteAlias{british}{latin/britishquotes}
 \DeclareQuoteAlias{american}{latin/americanquotes}
+\DeclareQuoteAlias[british]{welsh}{welsh}
 
 % Babel aliases
 
@@ -410,6 +417,7 @@
 \DeclareQuoteOption{slovenian}
 \DeclareQuoteOption{spanish}
 \DeclareQuoteOption{swedish}
+\DeclareQuoteOption{welsh}
 
 % Register quotation marks (per output encoding)
 
