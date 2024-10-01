@@ -167,6 +167,7 @@ This option controls multilingual support. It requires either the \sty{babel} pa
     slovenian                         & guillemets, quotes                         \\
     spanish                           & spanish, mexican                           \\
     swedish                           & quotes, guillemets, guillemets\*           \\
+    welsh                             & british                                    \\
     \bottomrule
   \end{tabularx}
   \caption[Language Options]{Language Options Defined by Default}
@@ -662,6 +663,7 @@ If available, this package will load the configuration file \path{csquotes.cfg}.
     serbian                            & quotes, guillemets, german                 \\
     spanish                            & spanish, mexican                           \\
     swedish                            & quotes, guillemets, guillemets\*           \\
+    welsh                              & british                                    \\
     \bottomrule
   \end{tabularx}
   \caption[Styles and Variants]{Quote Styles and Style Variants Defined by Default}
@@ -719,7 +721,7 @@ This command may be used in the configuration file or in the document preamble. 
     italian                      & italian/guillemets                            & swissgerman  & german/swiss          \\
     latin                        & latin/italianguillemets                       & UKenglish    & british               \\
     mexican                      & spanish/mexican                               & USenglish    & american              \\
-    naustrian                    & austrian                                                                             \\
+    naustrian                    & austrian                                      & welsh        & welsh/british         \\
     \bottomrule
   \end{tabularx}
   \caption[Language Aliases]{Language Aliases Defined by Default}
@@ -1554,6 +1556,10 @@ Bugs may be reported at \url{https://github.com/josephwright/csquotes/issues}.
 This revision history is a list of changes relevant to users of this package. Changes of a more technical nature which do not affect the user interface or the behavior of the package are not included in the list. If an entry in the revision history states that a feature has been \emph{extended}, this indicates a syntactically backwards compatible modification, such as the addition of an optional argument to an existing command. Entries stating that a feature has been \emph{modified}, \emph{renamed}, or \emph{removed} demand attention. They indicate a modification which may require changes to existing documents in some, hopefully rare, cases. The \opt{version} option from \secref{opt:opt} may be helpful in this case. The numbers on the right indicate the relevant section of this manual.
 
 \begin{changelog}
+
+% \begin{release}{??}{????-??-??}
+% \item Add support for Welsh
+% \end{release}
 
 \begin{release}{5.2o}{2024-04-04}
 \item Correct detection of \texttt{*} at start of quotes in bookmarks
