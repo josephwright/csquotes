@@ -1,0 +1,29 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Show PDF Tags
+============================================================
+-------- tagging-gh81.xml (start) ---------
+
+warning  (pdfe lib): no valid pdf file './build/test/tagging-gh81.pdf'
+
+warning  (pdfe lib): lua <pdfe document> expected
+C:\texlive\2026\bin\windows\runscript.tlu:953: .../2026/texmf-dist/scripts/show-pdf-tags/show-pdf-tags.lua:765: Failed to open document
+stack traceback:
+	[C]: in function 'error'
+	C:\texlive\2026\bin\windows\runscript.tlu:953: in main chunk
+-------- tagging-gh81.xml (end) -----------
+============================================================
+Package tagpdf Info: Finalizing the tagging structure:
+(tagpdf)             Writing out ~6 structure objects
+(tagpdf)             with ~3 'MC' leaf nodes.
+(tagpdf)             Be patient if there are lots of objects!
+Package tagpdf Info: writing ParentTree
+Package tagpdf Info: writing IDTree
+Package tagpdf Info: writing RoleMap
+Package tagpdf Info: writing ClassMap
+Package tagpdf Info: writing NameSpaces
+Package tagpdf Info: writing StructElems
+Package tagpdf Info: writing Root
+[1
+] (tagging-gh81.aux)

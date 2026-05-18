@@ -1,0 +1,12 @@
+\DocumentMetadata{tagging=on}
+\input{regression-test.tex}
+\documentclass{article}
+\usepackage{csquotes}
+
+\title{csquotes tagging test - 1}
+\begin{document}
+\START
+% this should not produces duplicate tags
+\blockquote{Random sentence}
+\SHOWPDFTAGS
+\end{document}
