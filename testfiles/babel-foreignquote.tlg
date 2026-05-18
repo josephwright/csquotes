@@ -1,5 +1,7 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+Package babel Info: 'dutch' activates 'dutch' shorthands.
+(babel)             Reported on input line ....
 Completed box being shipped out [1]
 \vbox(633.0+0.0)x407.0
 .\glue 16.0
@@ -48,7 +50,7 @@ Completed box being shipped out [1]
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 233.42152fil
 ....\hbox(0.0+0.0)x15.0
-....\setlanguage23 (hyphenmin 2,3)
+....\setlanguage21 (hyphenmin 2,3)
 ....\T1/lmr/m/n/10 `
 ....\penalty 10000
 ....\glue -0.0002
@@ -119,7 +121,7 @@ Completed box being shipped out [1]
 ...\glue(\baselineskip) 5.11125
 ...\hbox(6.88875+0.0)x345.0, glue set 231.44936fil
 ....\hbox(0.0+0.0)x15.0
-....\setlanguage32 (hyphenmin 2,3)
+....\setlanguage30 (hyphenmin 2,3)
 ....\T1/lmr/m/n/10 `
 ....\penalty 10000
 ....\glue -0.0002
