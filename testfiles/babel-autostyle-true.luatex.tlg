@@ -1,5 +1,7 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
+Package babel Info: 'dutch' activates 'dutch' shorthands.
+(babel)             Reported on input line ....
 Completed box being shipped out [1]
 \vbox(633.0+0.0)x407.0, direction TLT
 .\glue 16.0
@@ -10,7 +12,7 @@ Completed box being shipped out [1]
 ....\hbox(0.0+0.0)x345.0, direction TLT
 ..\glue 25.0
 ..\glue(\lineskip) 0.0
-..\vbox(550.0+0.0)x345.0, glue set 477.88895fil, direction TLT
+..\vbox(550.0+0.0)x345.0, glue set 479.94873fil, direction TLT
 ...\write-{}
 ...\write1{\babel@aux{british}{}}
 ...\glue(\topskip) 3.06
@@ -197,7 +199,7 @@ Completed box being shipped out [1]
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
 ....\TU/lmr/m/n/10 ^^ab
 ....\penalty 10000
-....\glue 2.664 plus 0.4995 minus 0.333
+....\glue 2.664 plus 0.4995 minus 0.888
 ....\penalty 10000
 ....\glue -0.0002
 ....\glue 0.0002
@@ -209,7 +211,8 @@ Completed box being shipped out [1]
 ....\kern-0.28 (font)
 ....\TU/lmr/m/n/10 h
 ....\penalty 10000
-....\glue 2.664 plus 0.4995 minus 0.333
+....\penalty 10000
+....\glue 2.664 plus 0.4995 minus 0.888
 ....\TU/lmr/m/n/10 ^^bb
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
 ....\TU/lmr/m/n/10 d
@@ -266,6 +269,7 @@ Completed box being shipped out [1]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
+...\glue -2.06
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil

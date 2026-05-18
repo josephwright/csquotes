@@ -1,51 +1,5 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-Package polyglossia Info: Option: English, variant=american.
-Package polyglossia Info: Option: English, variant=american.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-Package polyglossia Info: Option: English, variant=american.
-Package polyglossia Info: Option: English, variant=american.
-Package polyglossia Info: Option: english variant=british.
-Package polyglossia Info: Option: english variant=british.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-Package polyglossia Info: Option: english variant=british.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-Removing  `luaotfload.node_processor' from `pre_linebreak_filter'.
-Inserting `polyglossia-punct.process' in `pre_linebreak_filter'.
-Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
-Removing  `luaotfload.node_processor' from `hpack_filter'.
-Removing  `luaotfload.harf.finalize_hlist' from `hpack_filter'.
-Inserting `polyglossia-punct.process' in `hpack_filter'.
-Inserting `luaotfload.node_processor' in `hpack_filter'.
-Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
-Package polyglossia Info: Option: english variant=british.
-Package polyglossia Info: Option: english variant=british.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-Package polyglossia Info: Option: english variant=british.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-Module polyglossia Info: Language ngerman already loaded; id is 6 on input line ...
-Package polyglossia Info: Option: english variant=british.
-Package polyglossia Info: Option: english variant=british.
-LaTeX Info: Redefining \rmfamily on input line ....
-LaTeX Info: Redefining \sffamily on input line ....
-LaTeX Info: Redefining \ttfamily on input line ....
-Package polyglossia Info: Option: english variant=british.
 Completed box being shipped out [2]
 \vbox(633.0+0.0)x407.0, direction TLT
 .\glue 16.0
@@ -56,7 +10,7 @@ Completed box being shipped out [2]
 ....\hbox(0.0+0.0)x345.0, direction TLT
 ..\glue 25.0
 ..\glue(\lineskip) 0.0
-..\vbox(550.0+0.0)x345.0, glue set 477.88895fil, direction TLT
+..\vbox(550.0+0.0)x345.0, glue set 479.94873fil, direction TLT
 ...\glue(\topskip) 3.06
 ...\hbox(6.94+0.11)x345.0, glue set 239.15001fil, direction TLT
 ....\localpar
@@ -136,7 +90,7 @@ Completed box being shipped out [2]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\@writefile{toc}{\selectlanguage *[variant=american]{english}}}
+...\write1{\@writefile{toc}{\xpg@aux {variant=american}{english}}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.95
@@ -175,8 +129,7 @@ Completed box being shipped out [2]
 ....\TU/lmr/m/n/10 o
 ....\TU/lmr/m/n/10 r
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\write1{\@writefile{toc}{\selectlanguage *[variant=british,ordinalmonthday=false]{english}}}
-....\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
+....\write1{\@writefile{toc}{\xpg@aux {variant=british}{english}}}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
@@ -219,7 +172,7 @@ Completed box being shipped out [2]
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\@writefile{toc}{\selectlanguage *[]{french}}}
+...\write1{\@writefile{toc}{\xpg@aux {}{french}}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.84
@@ -258,12 +211,11 @@ Completed box being shipped out [2]
 ....\TU/lmr/m/n/10 o
 ....\TU/lmr/m/n/10 r
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\write1{\@writefile{toc}{\selectlanguage *[variant=british,ordinalmonthday=false]{english}}}
-....\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
+....\write1{\@writefile{toc}{\xpg@aux {variant=british}{english}}}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
-...\write1{\@writefile{toc}{\selectlanguage *[]{german}}}
+...\write1{\@writefile{toc}{\xpg@aux {}{german}}}
 ...\glue(\parskip) 0.0 plus 1.0
 ...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 4.95
@@ -305,11 +257,11 @@ Completed box being shipped out [2]
 ....\TU/lmr/m/n/10 o
 ....\TU/lmr/m/n/10 r
 ....\glue(\spaceskip) 3.33 plus 1.665 minus 1.11
-....\write1{\@writefile{toc}{\selectlanguage *[variant=british,ordinalmonthday=false]{english}}}
-....\write1{\@writefile{toc}{\selectlanguage *[variant=british]{english}}}
+....\write1{\@writefile{toc}{\xpg@aux {variant=british}{english}}}
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
+...\glue -2.06
 ...\glue 0.0 plus 1.0fil
 ...\glue 0.0
 ...\glue 0.0 plus 0.0001fil
