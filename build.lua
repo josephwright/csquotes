@@ -27,6 +27,7 @@ packtdszip  = true
 -- Detail how to set the tag automatically
 tagfiles = {"*.def", "*.sty", "*.tex"}
 function update_tag(file,content,tagname,tagdate)
+  tagname = string.gsub(tagname, "^v", "")
   if not string.match(file, "%.tex$") then
     return string.gsub(content,
       "\n  %[%d%d%d%d%-%d%d%-%d%d [^ ]*v%d%.%d.?", -- ]
