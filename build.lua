@@ -11,6 +11,8 @@ module = "csquotes"
 installfiles = {"*.cfg", "*.def", "*.sty"}
 sourcefiles  = installfiles
 
+checkengines = {"pdftex", "luatex"}
+
 checkruns = 2
 
 -- Documentation is standalone
