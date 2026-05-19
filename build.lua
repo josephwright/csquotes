@@ -36,10 +36,3 @@ function update_tag(file,content,tagname,tagdate)
   end
   return contents
 end
-
--- Find and run the build system
-kpse.set_program_name ("kpsewhich")
-if not release_date then
-  dofile(kpse.lookup("l3build.lua"))
-end
-
