@@ -182,6 +182,24 @@
   [0pt]
   {『}
   {』}
+\DeclareQuoteStyle[quotes]{korean}
+  {\textquotedblleft}
+  {\textquotedblright}
+  [0.05em]
+  {\textquoteleft}
+  {\textquoteright}
+\DeclareQuoteStyle[corners]{korean}
+  {『}
+  {』}
+  [0em]
+  {「}
+  {」}
+\DeclareQuoteStyle[angles]{korean}
+  {《}
+  {》}
+  [0em]
+  {〈}
+  {〉}
 \DeclareQuoteStyle{latvian}
   {\quotedblbase}
   {\textquotedblright}
@@ -361,6 +379,7 @@
 \DeclareQuoteAlias[swiss]{german}{swiss}
 \DeclareQuoteAlias[swiss]{german}{swissgerman}
 \DeclareQuoteAlias[guillemets]{italian}{italian}
+\DeclareQuoteAlias[quotes]{korean}{korean}
 \DeclareQuoteAlias[guillemets]{norwegian}{norwegian}
 \DeclareQuoteAlias[guillemets]{polish}{polish}
 \DeclareQuoteAlias[brazilian]{portuguese}{brazilian}
@@ -408,6 +427,7 @@
 \DeclareQuoteOption{icelandic}
 \DeclareQuoteOption{italian}
 \DeclareQuoteOption{japanese}
+\DeclareQuoteOption{korean}
 \DeclareQuoteOption{latin}
 \DeclareQuoteOption{latvian}
 \DeclareQuoteOption{lithuanian}
